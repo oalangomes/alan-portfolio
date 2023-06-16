@@ -1,0 +1,60 @@
+import {
+  Flex,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Button,
+} from '@chakra-ui/react';
+
+
+import mypersonLogo from "../../images/home/mypersonLogo.svg"
+import {SmallAndBigLogo} from "../logos/SmallAndBigLogo"
+
+export default function CallToActionWithIllustration() {
+  return (
+    <Container maxW={'2xl'}>
+      <Stack
+        textAlign={'center'}
+        align={'center'}
+        py={{ base: 20, md: 14 }}>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+          lineHeight={'75%'}>
+          Portfolio {' '}
+          <Text as={'span'} color={'orange.400'}>
+            Alan Gomes
+          </Text>
+        </Heading>
+        <Text color={'gray.500'} maxW={'2xl'}>
+          This page was create to showcase my Software Development and Architeture Skills.
+        </Text>
+        <Stack spacing={6} direction={'row'}>
+          <Button
+            rounded={'full'}
+            px={4}
+            colorScheme={'orange'}
+            bg={'orange.400'}
+            _hover={{ bg: 'orange.500' }}>
+            See Projects
+          </Button>
+          <Button rounded={'full'} px={6}>
+            About Me
+          </Button>
+        </Stack>
+        <Flex w={'full'}>
+        <SmallAndBigLogo
+         paddingLeft="5%"
+         paddingRight="5%"
+         justifyItems="center"
+         alignItems="center"
+         height="100%"
+         width="100%" logo={ mypersonLogo} />
+        </Flex>
+
+      </Stack>
+    </Container>
+  );
+}
+;
