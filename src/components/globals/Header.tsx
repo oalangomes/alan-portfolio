@@ -15,7 +15,9 @@ import {
   Center,
 } from '@chakra-ui/react';
 
-import logo from "../../images/header/Alan.png"
+import  Logo   from "../logos/Logo"
+import  MyAvatar   from "../logos/MyAvatar"
+
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
     px={2}
@@ -36,8 +38,8 @@ export default function Nav() {
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>
-            <Avatar
-                src={logo}
+            <Logo
+                size={28}
               />
             </Box>
 
@@ -52,18 +54,12 @@ export default function Nav() {
                   variant={'link'}
                   cursor={'pointer'}
                   minW={0}>
-                  <Avatar
-                    size={'sm'}
-                    src={'https://media.licdn.com/dms/image/C4D03AQHNlCczs9qcMg/profile-displayphoto-shrink_800_800/0/1643423739332?e=1692230400&v=beta&t=jK3Z-IbcUEjYbZZc4orLEgn2g5tIBvPpDlSqpNkBqgM'}
-                  />
+                  <MyAvatar size={'md'}/>
                 </MenuButton>
                 <MenuList alignItems={'center'}>
                   <br />
                   <Center>
-                    <Avatar
-                      size={'2xl'}
-                      src={'https://media.licdn.com/dms/image/C4D03AQHNlCczs9qcMg/profile-displayphoto-shrink_800_800/0/1643423739332?e=1692230400&v=beta&t=jK3Z-IbcUEjYbZZc4orLEgn2g5tIBvPpDlSqpNkBqgM'}
-                    />
+                    <MyAvatar size={'xl'}/>
                   </Center>
                   <br />
                   <Center>
