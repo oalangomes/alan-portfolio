@@ -1,7 +1,7 @@
-import { FadeInLogo } from "./logos/FadeInLogo"
-import { SmallAndBigLogo } from "./logos/SmallAndBigLogo"
-import { ReducedMotionLogo } from "./logos/ReducedMotionLogo"
-import { UpAndDownLogo } from "./logos/UpAndDownLogo"
+import { FadeInLogo } from "./animatedsImage/FadeInLogo"
+import { SmallAndBigLogo } from "./animatedsImage/SmallAndBigLogo"
+import { ReducedMotionLogo } from "./animatedsImage/ReducedMotionLogo"
+import { UpAndDownLogo } from "./animatedsImage/UpAndDownLogo"
 
 
 import React from "react";
@@ -10,6 +10,8 @@ import {  Grid } from "@chakra-ui/react";
 interface ImageGridProps {
   images: string[];
 }
+
+//Component to show animated images in page, with auto size and auto circular moviment
 
 const ImageGrid: React.FC<ImageGridProps> = ({ images }) => {
 
