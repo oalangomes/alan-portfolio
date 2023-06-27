@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { FaInstagram, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 import { ReactNode } from 'react';
-import Logo from "../logos/Logo"
+import Logo from "../../logos/Logo"
 
 
 const SocialButton = ({

@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
-import { ColorModeSwitcher }  from "./ColorModeSwitcher"
+import { ColorModeSwitcher }  from "../ColorModeSwitcher"
 import {
   Box,
   Flex,
-  Avatar,
   Link,
   Button,
   Menu,
@@ -15,8 +14,8 @@ import {
   Center,
 } from '@chakra-ui/react';
 
-import  Logo   from "../logos/Logo"
-import  MyAvatar   from "../logos/MyAvatar"
+import  Logo   from "../../logos/Logo"
+import  MyAvatar   from "../../logos/MyAvatar"
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
