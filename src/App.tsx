@@ -1,11 +1,11 @@
 import * as React from "react"
-import CenterFooter from "./components/globals/CenterFooter"
+import CenterFooter from "./components/globals/footer/CenterFooter"
 import {
   ChakraProvider,
   theme,
 } from "@chakra-ui/react"
 
-import Header from "./components/globals/Header"
+import Header from "./components/globals/header/Header"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import Home from "./pages/Home"
