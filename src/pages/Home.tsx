@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 
-import mypersonLogo from "../images/home/mypersonLogo.svg"
+import mypersonLogo from "../images/home/mypersonLogo.png"
 import { SmallAndBigLogo } from "../components/animatedsImage/SmallAndBigLogo"
 
 export default function Home() {
