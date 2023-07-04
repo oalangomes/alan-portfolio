@@ -76,9 +76,6 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
 
             console.log('Email is valid');
             sendEmail();
-            setName("");
-            setEmail("");
-            setMessage("");
             allAlertsProp.title = "Email Sent"
             allAlertsProp.value = "Thanks for your Attention!"
             allAlertsProp.error = false
@@ -86,6 +83,9 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
             allAlertsProp.info = false
             allAlertsProp.warning = false
             setAllAlert(allAlertsProp);
+            setName("");
+            setEmail("");
+            setMessage("");
         } else {
 
             if (emailInputRef.current) {
@@ -106,8 +106,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
     useEffect(() => emailjs.init("kroFCeiLjtWjh5MW4"), []);
 
     const sendEmail = () => {
-    
-        emailjs.send('service_7smwktj', 'template_lbiemcm', {
+        emailjs.send('service_7smwktj', 'template_f9i5snb', {
             name: name,
             email: email,
             message: message
