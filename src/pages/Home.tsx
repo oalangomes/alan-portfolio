@@ -5,7 +5,8 @@ import {
   Stack,
   Text,
   Button,
-  Link
+  Link,
+  Box
 } from '@chakra-ui/react';
 
 
@@ -14,7 +15,7 @@ import { SmallAndBigLogo } from "../components/animatedsImage/SmallAndBigLogo"
 
 export default function Home() {
   return (
-    <Container maxW={'2xl'}>
+    <Container maxW={'1xl'}>
       <Stack
         textAlign={'center'}
         align={'center'}
@@ -48,16 +49,17 @@ export default function Home() {
             </Link>
           </Button>
         </Stack>
-        <Flex w={'full'}>
-          <SmallAndBigLogo
-            paddingLeft="5%"
-            paddingRight="5%"
-            justifyItems="center"
-            alignItems="center"
-            height="100%"
-            width="100%" logo={mypersonLogo} />
-        </Flex>
-
+        <Stack spacing={6} direction={'row'}>
+          <Flex w={'full'}>
+            <SmallAndBigLogo
+              paddingLeft="5%"
+              paddingRight="5%"
+              justifyItems="center"
+              alignItems="center"
+              height="100%"
+              width="100%" logo={mypersonLogo} />
+          </Flex>
+        </Stack>
       </Stack>
     </Container>
   );
