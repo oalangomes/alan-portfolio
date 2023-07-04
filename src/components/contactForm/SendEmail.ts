@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import e from 'express';
+
 
 export const sendEmail = (e: { preventDefault: () => void; props: HTMLFormElement; }, form: HTMLFormElement) => {
    e.preventDefault(); // prevents the page from reloading when you hit “Send”
@@ -13,3 +13,4 @@ export const sendEmail = (e: { preventDefault: () => void; props: HTMLFormElemen
      });
 }
 
+export default sendEmail;

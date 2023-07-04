@@ -19,9 +19,10 @@ import {
 } from '@chakra-ui/react';
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdEmail, MdPerson } from 'react-icons/md';
-import { useState, useRef } from 'react';
-import { sendEmailValidationRequest } from './ValidateEmail.js';
+import { useState, useRef, useEffect, MouseEvent } from 'react';
+//import { sendEmailValidationRequest } from './ValidateEmail.js';
 import { AllAlerts } from '../alerts/AllAlerts';
+import emailjs from '@emailjs/browser';
 
 interface ContactProps {
     title: string,
@@ -72,8 +73,9 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
             }
             
         }else if (validateEmail(email)) {
+
             console.log('Email is valid');
-            console.log('Formulário enviado!');
+            sendEmail();
             setName("");
             setEmail("");
             setMessage("");
@@ -100,6 +102,24 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
             }
         };
     };
+
+    useEffect(() => emailjs.init("kroFCeiLjtWjh5MW4"), []);
+
+    const sendEmail = () => {
+    
+        emailjs.send('service_7smwktj', 'template_lbiemcm', {
+            name: name,
+            email: email,
+            message: message
+        })
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
+    
+
     return <>
         <AllAlerts
             title={allAlert.title}
@@ -241,7 +261,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
                                 bg: 'blue.500',
                             }}
                             width="100%"
-                            onClick={sendContactForm}>
+                            onClick={(e) => sendContactForm()}>
                             Send Message
                         </Button>
                     </VStack>
