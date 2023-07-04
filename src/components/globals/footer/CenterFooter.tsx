@@ -47,7 +47,7 @@ const SocialButton = ({
 export default function CenterFooter() {
   return (
     <Box
-      style={{position: 'fixed', width: '100%', bottom: 0}}
+      style={{position: 'relative', width: '100%', bottom: 0}}
       bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
     >
