@@ -12,10 +12,13 @@ import {
   useColorModeValue,
   Stack,
   Center,
+  HStack,
 } from '@chakra-ui/react';
 
 import  Logo   from "../../logos/Logo"
 import  MyAvatar   from "../../logos/MyAvatar"
+
+const Links = ['AboutMe', 'Projects', 'Contact'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -26,7 +29,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
+    href={children?.toString()}>
     {children}
   </Link>
 );
@@ -37,10 +40,22 @@ export default function Nav() {
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <Box>
+            <Link href={"/"}>
             <Logo
                 size={28}
               />
+              </Link>
             </Box>
+            
+
+            <HStack
+              as={'nav'}
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </HStack>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7}>

@@ -62,8 +62,8 @@ export default function CenterFooter() {
           size={150}
         />
         <Stack direction={'row'} spacing={6}>
-          <Link href={'/'}>Home</Link>
           <Link href={'/AboutMe'}>About</Link>
+          <Link href={'/Projects'}>Projects</Link>
           <Link href={'/Contact'}>Contact</Link>
         </Stack>
       </Container>

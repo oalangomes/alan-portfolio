@@ -9,7 +9,7 @@ export default function MyAvatar({ size }: MyAvatarProps) {
     <>
       <Avatar
         size={size}
-        src={'https://media.licdn.com/dms/image/C4D03AQHNlCczs9qcMg/profile-displayphoto-shrink_800_800/0/1643423739332?e=1692230400&v=beta&t=jK3Z-IbcUEjYbZZc4orLEgn2g5tIBvPpDlSqpNkBqgM'}
+        src={'https://media.licdn.com/dms/image/D4D03AQEyMoNOTkOUug/profile-displayphoto-shrink_200_200/0/1688024264692?e=1694044800&v=beta&t=Ijs05eQurw6H4gi1BGvy8pL-1tN6bY1uoeXW4tFLIOk'}
       />
     </>
   );
