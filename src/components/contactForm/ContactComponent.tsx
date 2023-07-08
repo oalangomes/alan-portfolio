@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 import { MdEmail, MdPerson } from 'react-icons/md';
-import { useState, useRef, useEffect, MouseEvent } from 'react';
+import { useState, useRef, useEffect } from 'react';
 //import { sendEmailValidationRequest } from './ValidateEmail.js';
 import { AllAlerts } from '../alerts/AllAlerts';
 import emailjs from '@emailjs/browser';

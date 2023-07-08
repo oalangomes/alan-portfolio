@@ -1,4 +1,3 @@
-import { Alert } from '@chakra-ui/react';
 import { AlertCustom } from './AlertCustom';
 
 interface AllAlertsProp {

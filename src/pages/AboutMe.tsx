@@ -10,10 +10,10 @@ export default function AboutMe() {
       spacing={{ base: 16, md: 16 }}
       align={'center'}
       direction={'column'}>
-      <Text
+    <Box maxW={'2x1'} width='75%'><Text
         fontSize={{ base: 'lg', md: '1xl' }}
         textAlign={'center'}
-        maxW={'1x5'}>
+        maxW={'1x2'}>
         I am a technology professional with over 9 years of experience in the field. I started my career in 2012, working with .NET C#, and later transitioned to the Java platform, specifically Sap Hybris Commerce. Since 2015, I have been working with Hybris Commerce and have had the opportunity to collaborate with major clients such as Carrefour, Abril, Makro, Suzano, Marisa, and Claro, among others.
 
         Throughout my professional journey, I have also gained experience in solution architecture, which has provided me with a broader and more strategic perspective on projects. Additionally, since 2014, I have been using JavaScript in various contexts and enjoy programming in Node.js for fun. I have a genuine fascination for APIs and microservices, as I believe they are key to creating scalable and efficient solutions.
@@ -28,6 +28,7 @@ export default function AboutMe() {
 
         I hope this helps create an effective professional summary. Remember to adapt the text to reflect your own personality and specific experiences.
       </Text>
+      </Box>
       <Box textAlign={'center'}>
 
 
