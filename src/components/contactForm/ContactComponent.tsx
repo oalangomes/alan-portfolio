@@ -29,14 +29,14 @@ interface ContactProps {
     emailOnCopy: string
 }
 
-let allAlertsProp = {
+const createAlertState = () => ({
     title: "",
     value: "",
     success: false,
     error: false,
     info: false,
     warning: false,
-}
+});
 
 const validateEmail = (email: string) => {
     try {
@@ -56,18 +56,19 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const {hasCopied, onCopy } = useClipboard(emailOnCopy);
-    const [allAlert, setAllAlert ] = useState(allAlertsProp);
+    const [allAlert, setAllAlert ] = useState(createAlertState());
 
     const sendContactForm = () => {
 
         if (!name || !email || !message) {
-            allAlertsProp.title = "Error"
-            allAlertsProp.value = 'Please, fill all fields'
-            allAlertsProp.error = true
-            allAlertsProp.success = false
-            allAlertsProp.info = false
-            allAlertsProp.warning = false
-            setAllAlert(allAlertsProp)
+            setAllAlert({
+                title: "Error",
+                value: 'Please, fill all fields',
+                success: false,
+                error: true,
+                info: false,
+                warning: false,
+            });
             if (nameInputRef.current) {
                 nameInputRef.current.focus();
             }
@@ -76,13 +77,14 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
 
             console.log('Email is valid');
             sendEmail();
-            allAlertsProp.title = "Email Sent"
-            allAlertsProp.value = "Thanks for your Attention!"
-            allAlertsProp.error = false
-            allAlertsProp.success = true
-            allAlertsProp.info = false
-            allAlertsProp.warning = false
-            setAllAlert(allAlertsProp);
+            setAllAlert({
+                title: "Email Sent",
+                value: "Thanks for your Attention!",
+                success: true,
+                error: false,
+                info: false,
+                warning: false,
+            });
             setName("");
             setEmail("");
             setMessage("");
@@ -90,20 +92,21 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
 
             if (emailInputRef.current) {
                 emailInputRef.current.focus();
-                
-                allAlertsProp.title = "Invalid Email"
-                allAlertsProp.value = "Please, put a correct email!"
-                allAlertsProp.error =  true
-                allAlertsProp.success = false
-                allAlertsProp.info = false
-                allAlertsProp.warning = false
-                setAllAlert(allAlertsProp);
+
+                setAllAlert({
+                    title: "Invalid Email",
+                    value: "Please, put a correct email!",
+                    success: false,
+                    error: true,
+                    info: false,
+                    warning: false,
+                });
                 setEmail('');
             }
         };
     };
 
-    useEffect(() => emailjs.init("kroFCeiLjtWjh5MW4"), []);
+    useEffect(() => emailjs.init(process.env.REACT_APP_EMAILJS_KEY || ""), []);
 
     const sendEmail = () => {
         emailjs.send('service_7smwktj', 'template_f9i5snb', {

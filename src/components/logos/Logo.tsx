@@ -12,6 +12,7 @@ export default function Logo({ size }: LogoProps) {
       <chakra.img
         height={size}
         src={Alan}
+        alt="Alan logo"
       />
     </>
   );

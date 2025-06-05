@@ -57,3 +57,11 @@ You can learn more in the
 [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Environment Variables
+
+Create a `.env` file based on the provided `.env.example` and add your API
+keys. The application expects the following variables:
+
+- `REACT_APP_ABSTRACTAPI_KEY` – API key used for email validation
+- `REACT_APP_EMAILJS_KEY` – public key used to initialise EmailJS
