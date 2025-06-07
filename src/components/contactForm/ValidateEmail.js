@@ -1,23 +1,19 @@
 //import emailConfig from '../../../email.config';
 
-const apiKey = "8a8503a08ee7496688f150bf5b42b433";
-const apiURL = 'https://emailvalidation.abstractapi.com/v1/?api_key=' + apiKey
+const apiKey = process.env.REACT_APP_ABSTRACTAPI_KEY;
+const apiURL = 'https://emailvalidation.abstractapi.com/v1/?api_key=';
 
-
-export function sendEmailValidationRequest(email) {
-    console.log("sendEmailValidationRequest");
-  
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', apiURL + '&email=' + email, false); // Configurando o terceiro parâmetro para false torna a requisição síncrona
-    xhr.send();
-  
-    if (xhr.status === 200) {
-      const data = JSON.parse(xhr.responseText);
-      const isValidSMTP = data.is_smtp_valid.value;
-      console.log("sendEmailValidationRequest - result " + isValidSMTP);
-      return isValidSMTP;
-    } else {
-      console.error("Error sending email validation request:", xhr.statusText);
-      return false;
+export async function sendEmailValidationRequest(email) {
+    try {
+        const response = await fetch(`${apiURL}${apiKey}&email=${email}`);
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        const data = await response.json();
+        const isValidSMTP = data.is_smtp_valid.value;
+        return isValidSMTP;
+    } catch (error) {
+        console.error('Error sending email validation request:', error);
+        return false;
     }
-  }
+}
