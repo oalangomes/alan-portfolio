@@ -1,92 +1,75 @@
-import { ReactNode } from 'react';
-import { ColorModeSwitcher }  from "../ColorModeSwitcher"
 import {
   Box,
-  Flex,
-  Link,
   Button,
+  Center,
+  Flex,
+  HStack,
+  Link,
   Menu,
   MenuButton,
-  MenuList,
   MenuDivider,
-  useColorModeValue,
+  MenuList,
   Stack,
-  Center,
-  HStack,
+  useColorModeValue,
 } from '@chakra-ui/react';
+import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import Logo from '../../logos/Logo';
+import MyAvatar from '../../logos/MyAvatar';
 
-import  Logo   from "../../logos/Logo"
-import  MyAvatar   from "../../logos/MyAvatar"
-
-const Links = ['AboutMe', 'Projects', 'Contact'];
-
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={children?.toString()}>
-    {children}
-  </Link>
-);
+const links = [
+  { label: 'About', href: '/AboutMe' },
+  { label: 'Work', href: '/Projects' },
+  { label: 'Contact', href: '/Contact' },
+];
 
 export default function Nav() {
   return (
-    <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>
-            <Link href={"/"}>
-            <Logo
-                size={28}
-              />
-              </Link>
-            </Box>
-            
+    <Box bg={useColorModeValue('gray.50', 'gray.900')} px={4} borderBottomWidth={'1px'}>
+      <Flex h={16} alignItems={'center'} justifyContent={'space-between'} maxW={'6xl'} mx={'auto'}>
+        <Link href={'/'} aria-label={'Home'}>
+          <Logo size={28} />
+        </Link>
 
-            <HStack
-              as={'nav'}
-              spacing={4}
-              display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </HStack>
+        <HStack as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              fontWeight={600}
+              _hover={{ textDecoration: 'none', color: 'orange.400' }}>
+              {link.label}
+            </Link>
+          ))}
+        </HStack>
 
-          <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7}>
-            <ColorModeSwitcher justifySelf="flex-end" />
-
-              <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={'full'}
-                  variant={'link'}
-                  cursor={'pointer'}
-                  minW={0}>
-                  <MyAvatar size={'md'}/>
-                </MenuButton>
-                <MenuList alignItems={'center'}>
-                  <br />
-                  <Center>
-                    <MyAvatar size={'xl'}/>
-                  </Center>
-                  <br />
-                  <Center>
-                    <p>Alan Gomes</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                </MenuList>
-              </Menu>
-            </Stack>
-          </Flex>
+        <Flex alignItems={'center'}>
+          <Stack direction={'row'} spacing={5} align={'center'}>
+            <ColorModeSwitcher justifySelf={'flex-end'} />
+            <Menu>
+              <MenuButton
+                as={Button}
+                rounded={'full'}
+                variant={'link'}
+                cursor={'pointer'}
+                minW={0}>
+                <MyAvatar size={'md'} />
+              </MenuButton>
+              <MenuList alignItems={'center'}>
+                <Center py={3}>
+                  <MyAvatar size={'xl'} />
+                </Center>
+                <Center>
+                  <Box fontWeight={700}>Alan Gomes</Box>
+                </Center>
+                <MenuDivider />
+                <Center pb={2} fontSize={'sm'}>
+                  Software Architect
+                </Center>
+              </MenuList>
+            </Menu>
+          </Stack>
         </Flex>
-      </Box>
-    </>
+      </Flex>
+    </Box>
   );
 }
