@@ -130,7 +130,10 @@ export default function AboutMe() {
   const primaryText = useColorModeValue('gray.800', 'gray.100');
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
-  const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const softBg = useColorModeValue(
+    'var(--portfolio-accent-soft)',
+    'rgba(var(--portfolio-accent-rgb),0.08)',
+  );
 
   return (
     <Box bg={pageBg}>
@@ -156,7 +159,7 @@ export default function AboutMe() {
             <GridItem minW={0} colSpan={{ base: 1, lg: 8 }}>
               <Stack spacing={4}>
                 <Text
-                  color={'orange.400'}
+                  color={'var(--portfolio-accent)'}
                   fontWeight={800}
                   fontSize={'xs'}
                   textTransform={'uppercase'}
@@ -216,7 +219,7 @@ export default function AboutMe() {
           <Stack spacing={7}>
             <Stack spacing={3} maxW={'4xl'} minW={0}>
               <Text
-                color={'orange.400'}
+                color={'var(--portfolio-accent)'}
                 fontWeight={800}
                 fontSize={'xs'}
                 textTransform={'uppercase'}
@@ -250,10 +253,10 @@ export default function AboutMe() {
                         h={2}
                         flex={'0 0 auto'}
                         borderRadius={'full'}
-                        bg={'orange.400'}
+                        bg={'var(--portfolio-accent)'}
                       />
                       <Text
-                        color={'orange.400'}
+                        color={'var(--portfolio-accent)'}
                         fontWeight={800}
                         fontSize={'sm'}
                         overflowWrap={'anywhere'}>
@@ -305,7 +308,7 @@ export default function AboutMe() {
                     display={'inline-block'}
                     borderRadius={'full'}
                     bg={softBg}
-                    color={'orange.400'}
+                    color={'var(--portfolio-accent)'}
                     fontSize={'xs'}
                     fontWeight={800}>
                     0{index + 1}
