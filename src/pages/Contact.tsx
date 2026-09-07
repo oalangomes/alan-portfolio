@@ -5,27 +5,25 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import ContactComponent from '../components/contactForm/ContactComponent';
-import { CONFETTI_LIGHT, CONFETTI_DARK } from '../assets/confetti';
 
 export default function Contact() {
+  const pageBg = useColorModeValue('gray.100', 'gray.900');
+  const subtle = useColorModeValue('gray.600', 'gray.300');
+
   return (
     <Flex
-      bg={useColorModeValue('gray.100', 'gray.900')}
+      bg={pageBg}
       align={'center'}
       justify={'center'}
       direction={'column'}
       px={4}
       py={{ base: 12, md: 16 }}
-      css={{
-        backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
-        backgroundAttachment: 'fixed',
-      }}
       id={'contact'}>
       <Box maxW={'3xl'} textAlign={'center'} mb={8}>
         <Text color={'orange.400'} fontWeight={700} textTransform={'uppercase'}>
           Contact
         </Text>
-        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+        <Text mt={2} color={subtle}>
           Architecture, engineering, product ideas or an interesting technical problem — feel free to reach out.
         </Text>
       </Box>
