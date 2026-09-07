@@ -12,7 +12,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { FiArrowUpRight, FiCpu, FiLayers, FiTool } from 'react-icons/fi';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -77,7 +77,6 @@ const copy = {
   },
 };
 
-const pillarIcons = [FiLayers, FiCpu, FiTool];
 
 export default function Home() {
   const { language } = useLanguage();
@@ -102,7 +101,7 @@ export default function Home() {
         position={'absolute'}
         inset={0}
         pointerEvents={'none'}
-        backgroundImage={glow}
+        style={{ backgroundImage: glow }}
       />
 
       <Container
@@ -218,7 +217,7 @@ export default function Home() {
                         fontSize={'xs'}
                         fontWeight={800}
                         color={muted}
-                        fontVariantNumeric={'tabular-nums'}>
+                        >
                         0{index + 1}
                       </Text>
                     </HStack>
@@ -229,10 +228,7 @@ export default function Home() {
           </Grid>
 
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
-            {content.pillars.map((pillar, index) => {
-              const PillarIcon = pillarIcons[index];
-
-              return (
+            {content.pillars.map((pillar, index) => (
                 <Box
                   key={pillar.title}
                   p={{ base: 6, md: 7 }}
@@ -254,16 +250,11 @@ export default function Home() {
                       h={11}
                       borderRadius={'xl'}
                       bg={softBg}
-                      color={'orange.400'}>
-                      <PillarIcon size={20} />
-                    </Box>
-                    <Text
-                      fontSize={'xs'}
-                      fontWeight={800}
-                      color={muted}
-                      fontVariantNumeric={'tabular-nums'}>
+                      color={'orange.400'}
+                      fontSize={'sm'}
+                      fontWeight={800}>
                       0{index + 1}
-                    </Text>
+                    </Box>
                   </HStack>
                   <Heading
                     fontSize={'xl'}
@@ -275,8 +266,7 @@ export default function Home() {
                     {pillar.text}
                   </Text>
                 </Box>
-              );
-            })}
+              ))}
           </SimpleGrid>
         </Stack>
       </Container>
