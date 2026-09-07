@@ -27,7 +27,14 @@ The project still uses Create React App. The current refresh intentionally impro
 
 ```bash
 npm install
+cp .env.example .env
 npm start
+```
+
+The contact form uses EmailJS and expects:
+
+```bash
+REACT_APP_EMAILJS_KEY=your_emailjs_public_key
 ```
 
 Then open `http://localhost:3000`.
@@ -38,6 +45,8 @@ Then open `http://localhost:3000`.
 npm test -- --watchAll=false
 npm run build
 ```
+
+The same validation runs in GitHub Actions for pull requests and pushes.
 
 ## Structure
 
@@ -63,7 +72,7 @@ src/
 - add metadata/SEO and social preview cards;
 - improve automated accessibility checks;
 - add a lightweight PT-BR / EN content strategy;
-- add deployment checks and Lighthouse budgets.
+- add Lighthouse budgets to deployment validation.
 
 ## Author
 
