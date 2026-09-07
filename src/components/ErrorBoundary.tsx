@@ -43,7 +43,7 @@ export default class ErrorBoundary extends Component<
           <Container maxW={'3xl'} py={20}>
             <Stack spacing={5} align={'flex-start'}>
               <Text
-                color={'orange.400'}
+                color={'var(--portfolio-accent)'}
                 fontWeight={800}
                 fontSize={'xs'}
                 textTransform={'uppercase'}
@@ -57,7 +57,8 @@ export default class ErrorBoundary extends Component<
                 Algo deu errado ao renderizar esta página. Você pode recarregar o
                 portfólio com segurança.
               </Text>
-              <Button colorScheme={'orange'} rounded={'full'} onClick={this.reload}>
+              <Button bg={'var(--portfolio-accent)'}
+            color={'var(--portfolio-accent-contrast)'} rounded={'full'} onClick={this.reload}>
                 Reload / Recarregar
               </Button>
             </Stack>
