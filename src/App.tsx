@@ -13,14 +13,14 @@ export const App = () => (
   <ChakraProvider theme={theme}>
     <LanguageProvider>
       <HashRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/AboutMe" element={<AboutMe />} />
-        <Route path="/ProjectDetails/:id" element={<ProjectDetails />} />
-        <Route path="/Projects" element={<Projects />} />
-      </Routes>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/AboutMe" element={<AboutMe />} />
+          <Route path="/ProjectDetails/:id" element={<ProjectDetails />} />
+          <Route path="/Projects" element={<Projects />} />
+        </Routes>
         <CenterFooter />
       </HashRouter>
     </LanguageProvider>
