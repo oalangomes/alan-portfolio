@@ -30,12 +30,15 @@ export default function ProjectCards(project: ProjectCardProps) {
   return (
     <Box
       position={'relative'}
+      w={'100%'}
+      maxW={'100%'}
+      minW={0}
       overflow={'hidden'}
       borderWidth={'1px'}
       borderColor={borderColor}
       borderRadius={'3xl'}
       bg={cardBg}
-      p={{ base: 6, md: 8 }}
+      p={{ base: 5, md: 8 }}
       minH={{ lg: '430px' }}
       boxShadow={'sm'}
       transition={'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease'}
@@ -56,20 +59,22 @@ export default function ProjectCards(project: ProjectCardProps) {
         pointerEvents={'none'}
       />
 
-      <Stack spacing={6} height={'100%'} position={'relative'}>
-        <HStack justify={'space-between'} align={'flex-start'}>
-          <Stack spacing={2}>
+      <Stack spacing={{ base: 5, md: 6 }} height={'100%'} position={'relative'} minW={0}>
+        <HStack justify={'space-between'} align={'flex-start'} gap={4} minW={0}>
+          <Stack spacing={2} flex={1} minW={0}>
             <Text
               color={'orange.400'}
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.14em'}>
+              letterSpacing={'0.12em'}
+              overflowWrap={'anywhere'}>
               {project.eyebrow}
             </Text>
             <Heading
               fontSize={{ base: '2xl', md: '3xl' }}
-              letterSpacing={'-0.03em'}>
+              letterSpacing={'-0.03em'}
+              overflowWrap={'anywhere'}>
               {project.name}
             </Heading>
           </Stack>
@@ -78,16 +83,19 @@ export default function ProjectCards(project: ProjectCardProps) {
             fontSize={'sm'}
             fontWeight={800}
             color={muted}
-            >
+            flexShrink={0}>
             {String((project.index ?? 0) + 1).padStart(2, '0')}
           </Text>
         </HStack>
 
-        <HStack flexWrap={'wrap'} gap={2}>
+        <HStack flexWrap={'wrap'} gap={2} minW={0}>
           <Badge
             px={2.5}
             py={1}
+            maxW={'100%'}
             borderRadius={'full'}
+            whiteSpace={'normal'}
+            lineHeight={1.3}
             colorScheme={project.visibility === 'Public' ? 'green' : 'purple'}>
             {project.visibility === 'Public'
               ? isPortuguese
@@ -97,12 +105,19 @@ export default function ProjectCards(project: ProjectCardProps) {
                 ? 'Privado'
                 : 'Private'}
           </Badge>
-          <Badge px={2.5} py={1} borderRadius={'full'} variant={'subtle'}>
+          <Badge
+            maxW={'100%'}
+            px={2.5}
+            py={1}
+            borderRadius={'full'}
+            variant={'subtle'}
+            whiteSpace={'normal'}
+            lineHeight={1.3}>
             {project.status}
           </Badge>
         </HStack>
 
-        <Text color={subtle} fontSize={'md'} lineHeight={1.8}>
+        <Text color={subtle} fontSize={'md'} lineHeight={1.75} overflowWrap={'anywhere'}>
           {project.summary}
         </Text>
 
@@ -114,8 +129,10 @@ export default function ProjectCards(project: ProjectCardProps) {
               py={1.5}
               borderRadius={'full'}
               bg={tagBg}
+              maxW={'100%'}
               fontSize={'xs'}
-              fontWeight={650}>
+              fontWeight={650}
+              overflowWrap={'anywhere'}>
               {tag}
             </Box>
           ))}
@@ -123,13 +140,14 @@ export default function ProjectCards(project: ProjectCardProps) {
 
         <Box flex={1} />
 
-        <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
+        <Stack direction={{ base: 'column', sm: 'row' }} spacing={3} w={'100%'}>
           <Button
             as={RouterLink}
             to={`/ProjectDetails/${project.id}`}
             colorScheme={'orange'}
             rounded={'full'}
-            rightIcon={<FiArrowUpRight />}>
+            rightIcon={<FiArrowUpRight />}
+            w={{ base: '100%', sm: 'auto' }}>
             {isPortuguese ? 'Ver estudo de caso' : 'Read case study'}
           </Button>
 
@@ -141,7 +159,8 @@ export default function ProjectCards(project: ProjectCardProps) {
               rel={'noreferrer'}
               variant={'ghost'}
               rounded={'full'}
-              leftIcon={<FiGithub />}>
+              leftIcon={<FiGithub />}
+              w={{ base: '100%', sm: 'auto' }}>
               GitHub
             </Button>
           )}
