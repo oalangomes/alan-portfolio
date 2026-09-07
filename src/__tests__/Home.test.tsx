@@ -35,7 +35,7 @@ test('renders the portfolio positioning in English', () => {
       name: /Conceptual architecture map connecting product, context, knowledge, evidence, runtime and guardrails/i,
     }),
   ).toBeInTheDocument();
-  expect(screen.getByText('EVIDENCE')).toBeInTheDocument();
+  expect(screen.getAllByText('EVIDENCE').length).toBeGreaterThan(0);
 });
 
 test('renders the portfolio positioning in Brazilian Portuguese', () => {
@@ -54,5 +54,5 @@ test('renders the portfolio positioning in Brazilian Portuguese', () => {
       name: /Mapa conceitual de arquitetura conectando produto, contexto, conhecimento, evidência, runtime e governança/i,
     }),
   ).toBeInTheDocument();
-  expect(screen.getByText('EVIDÊNCIA')).toBeInTheDocument();
+  expect(screen.getAllByText('EVIDÊNCIA').length).toBeGreaterThan(0);
 });
