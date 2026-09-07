@@ -75,7 +75,8 @@ export default function Nav() {
                 w={10}
                 h={10}
                 borderRadius={'xl'}
-                bg={logoBg}>
+                bg={logoBg}
+                overflow={'hidden'}>
                 <Logo size={25} />
               </Box>
               <Box display={{ base: 'none', sm: 'block' }}>
