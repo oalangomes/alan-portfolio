@@ -16,6 +16,17 @@ afterEach(() => {
   window.localStorage.clear();
 });
 
+test('defaults to English when there is no saved preference', () => {
+  render(
+    <LanguageProvider>
+      <LanguageProbe />
+    </LanguageProvider>,
+  );
+
+  expect(screen.getByText('en')).toBeInTheDocument();
+  expect(document.documentElement.lang).toBe('en');
+});
+
 test('toggles and persists the selected language', () => {
   window.localStorage.setItem('alan-portfolio-language', 'en');
 
