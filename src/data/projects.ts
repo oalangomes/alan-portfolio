@@ -1,8 +1,17 @@
 import { Language } from '../i18n/LanguageContext';
 
+export interface ProjectVisual {
+  label: string;
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  tone: 'orange' | 'purple' | 'green' | 'blue' | 'gray';
+}
+
 export interface Project {
   id: number;
   name: string;
+  visual: ProjectVisual;
   eyebrow: string;
   githubUrl?: string;
   hashtags: string[];
@@ -30,6 +39,46 @@ interface ProjectDefinition {
   visibility: 'Public' | 'Private';
   status: LocalizedText;
 }
+
+const projectVisuals: Record<number, ProjectVisual> = {
+  0: {
+    label: 'GOVERNED AI R&D',
+    primary: 'context → evidence',
+    secondary: 'retrieval → evaluation',
+    tertiary: 'lifecycle → execution',
+    tone: 'purple',
+  },
+  1: {
+    label: 'LOCAL CONTROL PLANE',
+    primary: 'runnerctl status',
+    secondary: 'runnerctl doctor',
+    tertiary: 'systemd • self-hosted',
+    tone: 'green',
+  },
+  2: {
+    label: 'PRODUCT ECOSYSTEM',
+    primary: 'WEB',
+    secondary: 'API',
+    tertiary: 'MOBILE • INTEGRATIONS',
+    tone: 'blue',
+  },
+  3: {
+    label: 'OFFLINE-FIRST PWA',
+    primary: 'TRAIN',
+    secondary: 'TRACK',
+    tertiary: 'RECOVER • LOCAL',
+    tone: 'orange',
+  },
+  4: {
+    label: 'MANAGER MODE DATA',
+    primary: 'SEASON • SQUAD',
+    secondary: 'MATCHES • REPORTS',
+    tertiary: 'PYTHON • ACTIONS',
+    tone: 'gray',
+  },
+};
+
+const projectOrder = [1, 0, 4, 2, 3];
 
 const projectDefinitions: ProjectDefinition[] = [
   {
@@ -227,15 +276,21 @@ const projectDefinitions: ProjectDefinition[] = [
 ];
 
 export const getProjects = (language: Language): Project[] =>
-  projectDefinitions.map((project) => ({
-    id: project.id,
-    name: project.name,
-    eyebrow: project.eyebrow[language],
-    githubUrl: project.githubUrl,
-    hashtags: project.hashtags,
-    summary: project.summary[language],
-    description: project.description[language],
-    highlights: project.highlights[language],
-    visibility: project.visibility,
-    status: project.status[language],
-  }));
+  [...projectDefinitions]
+    .sort(
+      (a, b) =>
+        projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id),
+    )
+    .map((project) => ({
+      id: project.id,
+      name: project.name,
+      visual: projectVisuals[project.id],
+      eyebrow: project.eyebrow[language],
+      githubUrl: project.githubUrl,
+      hashtags: project.hashtags,
+      summary: project.summary[language],
+      description: project.description[language],
+      highlights: project.highlights[language],
+      visibility: project.visibility,
+      status: project.status[language],
+    }));

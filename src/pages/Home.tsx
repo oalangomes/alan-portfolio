@@ -44,6 +44,9 @@ const copy = {
     currentText:
       'I like projects where architecture has to survive contact with reality: imperfect repositories, constrained context, security boundaries, operational friction and changing product needs.',
     focus: ['Coding agents', 'Retrieval benchmarks', 'Local-first infrastructure'],
+    proofLabel: 'Career context',
+    proofLead: 'Engineering across products, consulting and enterprise systems since 2012.',
+    proofItems: ['Since 2012', 'Siemens & Bematech', 'Claro & Vivo', 'Enterprise consulting'],
   },
   'pt-BR': {
     badge: 'Arquitetura de Software • Engenharia de IA • Developer Tooling',
@@ -73,6 +76,9 @@ const copy = {
     currentText:
       'Gosto de projetos em que a arquitetura precisa sobreviver ao contato com a realidade: repositórios imperfeitos, contexto limitado, fronteiras de segurança, atrito operacional e necessidades de produto em mudança.',
     focus: ['Agentes de código', 'Benchmarks de retrieval', 'Infraestrutura local-first'],
+    proofLabel: 'Contexto de carreira',
+    proofLead: 'Engenharia entre produtos, consultoria e sistemas enterprise desde 2012.',
+    proofItems: ['Desde 2012', 'Siemens & Bematech', 'Claro & Vivo', 'Consultoria enterprise'],
   },
 };
 
@@ -238,6 +244,58 @@ export default function Home() {
               </Box>
             </GridItem>
           </Grid>
+
+          <Box
+            p={{ base: 5, md: 6 }}
+            borderWidth={'1px'}
+            borderColor={borderColor}
+            borderRadius={'2xl'}
+            bg={cardBg}>
+            <Stack spacing={5}>
+              <Stack
+                direction={{ base: 'column', md: 'row' }}
+                justify={'space-between'}
+                align={{ base: 'flex-start', md: 'flex-end' }}
+                gap={4}>
+                <Box minW={0}>
+                  <Text
+                    color={'orange.400'}
+                    fontSize={'xs'}
+                    fontWeight={800}
+                    textTransform={'uppercase'}
+                    letterSpacing={'0.14em'}>
+                    {content.proofLabel}
+                  </Text>
+                  <Text
+                    mt={2}
+                    color={subtle}
+                    fontSize={{ base: 'sm', md: 'md' }}
+                    lineHeight={1.7}>
+                    {content.proofLead}
+                  </Text>
+                </Box>
+              </Stack>
+
+              <SimpleGrid columns={{ base: 2, md: 4 }} spacing={3}>
+                {content.proofItems.map((item) => (
+                  <Box
+                    key={item}
+                    minW={0}
+                    px={{ base: 3, md: 4 }}
+                    py={3}
+                    borderRadius={'xl'}
+                    bg={softBg}>
+                    <Text
+                      fontSize={{ base: 'xs', md: 'sm' }}
+                      fontWeight={750}
+                      overflowWrap={'anywhere'}>
+                      {item}
+                    </Text>
+                  </Box>
+                ))}
+              </SimpleGrid>
+            </Stack>
+          </Box>
 
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
             {content.pillars.map((pillar, index) => (

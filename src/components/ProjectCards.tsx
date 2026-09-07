@@ -11,6 +11,7 @@ import {
 import { FiArrowUpRight, FiGithub } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { Project } from '../data/projects';
+import ProjectCover from './ProjectCover';
 import { useLanguage } from '../i18n/LanguageContext';
 
 type ProjectCardProps = Project & {
@@ -60,6 +61,8 @@ export default function ProjectCards(project: ProjectCardProps) {
       />
 
       <Stack spacing={{ base: 5, md: 6 }} height={'100%'} position={'relative'} minW={0}>
+        <ProjectCover visual={project.visual} />
+
         <HStack justify={'space-between'} align={'flex-start'} gap={4} minW={0}>
           <Stack spacing={2} flex={1} minW={0}>
             <Text

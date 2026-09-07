@@ -8,10 +8,10 @@ This repository is intentionally more than a gallery of technologies. The portfo
 
 The portfolio highlights five representative fronts:
 
-- **AgentsOrchNext** — governed coding-agent and context-engineering R&D;
 - **runnerctl** — open-source local control plane for self-hosted GitHub Actions runners;
-- **NeuroTrack** — long-running multi-client product engineering ecosystem;
+- **AgentsOrchNext** — governed coding-agent and context-engineering R&D;
 - **EA FC MANAGER MODE HUB** — data-driven football-management workspace with automation, dashboards and auditability;
+- **NeuroTrack** — long-running multi-client product engineering ecosystem;
 - **Caverna BJJ** — lightweight offline-first PWA built from a real personal use case.
 
 ## Stack
@@ -23,7 +23,7 @@ The portfolio highlights five representative fronts:
 - Vite
 - Vitest / Testing Library
 
-The project uses Vite for development and production builds. Routing uses hash-based URLs so navigation remains compatible with static hosting on GitHub Pages.
+The project uses Vite for development and production builds. Routing uses hash-based URLs so navigation remains compatible with static hosting on GitHub Pages. Page routes are lazy-loaded to keep the initial bundle smaller.
 
 The UI supports **English and Brazilian Portuguese**. English is the default language, the header shows the active language, and a manual switch persists the selected preference locally.
 
@@ -85,9 +85,9 @@ src/
 
 ## Next technical improvements
 
-- add metadata/SEO and social preview cards;
 - improve automated accessibility checks;
-- add Lighthouse budgets to deployment validation.
+- add Lighthouse budgets to deployment validation;
+- replace the generic OpenGraph image with a dedicated social preview asset.
 
 ## Author
 
