@@ -38,6 +38,22 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     window.localStorage.setItem(STORAGE_KEY, language);
     document.documentElement.lang = language;
+
+    document.title =
+      language === 'pt-BR'
+        ? 'Alan Gomes — Arquiteto de Software'
+        : 'Alan Gomes — Software Architect';
+
+    const description = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    );
+
+    if (description) {
+      description.content =
+        language === 'pt-BR'
+          ? 'Alan Gomes — Arquitetura de Software, Engenharia de IA e Developer Tooling'
+          : 'Alan Gomes — Software Architecture, AI Engineering and Developer Tooling';
+    }
   }, [language]);
 
   const value = useMemo(
