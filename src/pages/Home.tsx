@@ -3,12 +3,16 @@ import {
   Box,
   Button,
   Container,
+  Grid,
+  GridItem,
   Heading,
+  HStack,
   SimpleGrid,
   Stack,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { FiArrowUpRight, FiCpu, FiLayers, FiTool } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -40,6 +44,7 @@ const copy = {
       'Governed coding agents, retrieval benchmarks and local-first developer infrastructure.',
     currentText:
       'I like projects where architecture has to survive contact with reality: imperfect repositories, constrained context, security boundaries, operational friction and changing product needs.',
+    focus: ['Coding agents', 'Retrieval benchmarks', 'Local-first infrastructure'],
   },
   'pt-BR': {
     badge: 'Arquitetura de Software • Engenharia de IA • Developer Tooling',
@@ -68,91 +73,211 @@ const copy = {
       'Agentes de código governados, benchmarks de retrieval e infraestrutura local-first para desenvolvimento.',
     currentText:
       'Gosto de projetos em que a arquitetura precisa sobreviver ao contato com a realidade: repositórios imperfeitos, contexto limitado, fronteiras de segurança, atrito operacional e necessidades de produto em mudança.',
+    focus: ['Agentes de código', 'Benchmarks de retrieval', 'Infraestrutura local-first'],
   },
 };
+
+const pillarIcons = [FiLayers, FiCpu, FiTool];
 
 export default function Home() {
   const { language } = useLanguage();
   const content = copy[language];
-  const cardBg = useColorModeValue('white', 'gray.900');
+
+  const pageBg = useColorModeValue('gray.50', 'gray.950');
   const subtle = useColorModeValue('gray.600', 'gray.300');
+  const muted = useColorModeValue('gray.500', 'gray.400');
+  const panelBg = useColorModeValue('rgba(255,255,255,0.78)', 'rgba(17,24,39,0.72)');
+  const cardBg = useColorModeValue('white', 'gray.900');
+  const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+  const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const glow =
+    useColorModeValue(
+      'radial-gradient(circle at 18% 15%, rgba(237,137,54,0.16), transparent 34%)',
+      'radial-gradient(circle at 18% 15%, rgba(237,137,54,0.13), transparent 32%)',
+    );
 
   return (
-    <Box>
-      <Container maxW={'6xl'} py={{ base: 16, md: 24 }}>
-        <Stack spacing={10}>
-          <Stack spacing={6} maxW={'4xl'}>
-            <Badge
-              alignSelf={'flex-start'}
-              px={3}
-              py={1}
-              borderRadius={'full'}
-              colorScheme={'orange'}>
-              {content.badge}
-            </Badge>
+    <Box bg={pageBg} position={'relative'} overflow={'hidden'}>
+      <Box
+        position={'absolute'}
+        inset={0}
+        pointerEvents={'none'}
+        backgroundImage={glow}
+      />
 
-            <Heading
-              fontWeight={800}
-              fontSize={{ base: '4xl', md: '6xl' }}
-              lineHeight={1.05}>
-              {content.heading}
-            </Heading>
+      <Container
+        maxW={'7xl'}
+        position={'relative'}
+        py={{ base: 16, md: 24, lg: 28 }}
+        px={{ base: 5, md: 6 }}>
+        <Stack spacing={{ base: 14, md: 20 }}>
+          <Grid
+            templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
+            gap={{ base: 10, lg: 12 }}
+            alignItems={'center'}>
+            <GridItem colSpan={{ base: 1, lg: 7 }}>
+              <Stack spacing={7}>
+                <Badge
+                  alignSelf={'flex-start'}
+                  px={3}
+                  py={1.5}
+                  borderRadius={'full'}
+                  colorScheme={'orange'}
+                  variant={'subtle'}
+                  textTransform={'none'}
+                  fontSize={'xs'}
+                  letterSpacing={'0.02em'}>
+                  {content.badge}
+                </Badge>
 
-            <Text color={subtle} fontSize={{ base: 'lg', md: 'xl' }} maxW={'3xl'}>
-              {content.intro}
-            </Text>
-
-            <Stack direction={{ base: 'column', sm: 'row' }} spacing={4}>
-              <Button
-                as={RouterLink}
-                to={'/Projects'}
-                size={'lg'}
-                colorScheme={'orange'}
-                rounded={'full'}>
-                {content.work}
-              </Button>
-              <Button
-                as={RouterLink}
-                to={'/AboutMe'}
-                size={'lg'}
-                variant={'outline'}
-                rounded={'full'}>
-                {content.about}
-              </Button>
-            </Stack>
-          </Stack>
-
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-            {content.pillars.map((pillar) => (
-              <Box
-                key={pillar.title}
-                p={6}
-                borderWidth={'1px'}
-                borderRadius={'2xl'}
-                bg={cardBg}
-                boxShadow={'sm'}>
-                <Heading fontSize={'xl'} mb={3}>
-                  {pillar.title}
+                <Heading
+                  maxW={'900px'}
+                  fontWeight={850}
+                  fontSize={{ base: '4xl', sm: '5xl', md: '6xl', xl: '7xl' }}
+                  lineHeight={{ base: 1.02, md: 0.98 }}
+                  letterSpacing={'-0.045em'}>
+                  {content.heading}
                 </Heading>
-                <Text color={subtle}>{pillar.text}</Text>
-              </Box>
-            ))}
-          </SimpleGrid>
 
-          <Box
-            p={{ base: 6, md: 8 }}
-            borderRadius={'2xl'}
-            bg={useColorModeValue('orange.50', 'whiteAlpha.100')}>
-            <Text fontSize={'sm'} fontWeight={700} textTransform={'uppercase'}>
-              {content.current}
-            </Text>
-            <Heading fontSize={{ base: '2xl', md: '3xl' }} mt={2} mb={3}>
-              {content.currentHeading}
-            </Heading>
-            <Text color={subtle} maxW={'4xl'}>
-              {content.currentText}
-            </Text>
-          </Box>
+                <Text
+                  color={subtle}
+                  fontSize={{ base: 'lg', md: 'xl' }}
+                  lineHeight={1.8}
+                  maxW={'3xl'}>
+                  {content.intro}
+                </Text>
+
+                <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
+                  <Button
+                    as={RouterLink}
+                    to={'/Projects'}
+                    size={'lg'}
+                    colorScheme={'orange'}
+                    rounded={'full'}
+                    rightIcon={<FiArrowUpRight />}
+                    px={7}>
+                    {content.work}
+                  </Button>
+                  <Button
+                    as={RouterLink}
+                    to={'/AboutMe'}
+                    size={'lg'}
+                    variant={'ghost'}
+                    rounded={'full'}
+                    px={7}>
+                    {content.about}
+                  </Button>
+                </Stack>
+              </Stack>
+            </GridItem>
+
+            <GridItem colSpan={{ base: 1, lg: 5 }}>
+              <Box
+                position={'relative'}
+                p={{ base: 6, md: 8 }}
+                borderRadius={'3xl'}
+                borderWidth={'1px'}
+                borderColor={borderColor}
+                bg={panelBg}
+                backdropFilter={'blur(16px)'}
+                boxShadow={'0 24px 80px rgba(0,0,0,0.10)'}>
+                <HStack justify={'space-between'} mb={8}>
+                  <Text
+                    fontSize={'xs'}
+                    fontWeight={800}
+                    color={'orange.400'}
+                    textTransform={'uppercase'}
+                    letterSpacing={'0.16em'}>
+                    {content.current}
+                  </Text>
+                  <Box w={2} h={2} borderRadius={'full'} bg={'orange.400'} />
+                </HStack>
+
+                <Heading
+                  fontSize={{ base: '2xl', md: '3xl' }}
+                  lineHeight={1.2}
+                  letterSpacing={'-0.03em'}>
+                  {content.currentHeading}
+                </Heading>
+
+                <Text mt={5} color={subtle} lineHeight={1.8}>
+                  {content.currentText}
+                </Text>
+
+                <Stack mt={8} spacing={3}>
+                  {content.focus.map((item, index) => (
+                    <HStack
+                      key={item}
+                      justify={'space-between'}
+                      px={4}
+                      py={3}
+                      borderRadius={'xl'}
+                      bg={softBg}>
+                      <Text fontWeight={650}>{item}</Text>
+                      <Text
+                        fontSize={'xs'}
+                        fontWeight={800}
+                        color={muted}
+                        fontVariantNumeric={'tabular-nums'}>
+                        0{index + 1}
+                      </Text>
+                    </HStack>
+                  ))}
+                </Stack>
+              </Box>
+            </GridItem>
+          </Grid>
+
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
+            {content.pillars.map((pillar, index) => {
+              const PillarIcon = pillarIcons[index];
+
+              return (
+                <Box
+                  key={pillar.title}
+                  p={{ base: 6, md: 7 }}
+                  borderWidth={'1px'}
+                  borderColor={borderColor}
+                  borderRadius={'2xl'}
+                  bg={cardBg}
+                  transition={'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease'}
+                  _hover={{
+                    transform: 'translateY(-4px)',
+                    boxShadow: 'xl',
+                    borderColor: 'orange.300',
+                  }}>
+                  <HStack justify={'space-between'} mb={7}>
+                    <Box
+                      display={'grid'}
+                      placeItems={'center'}
+                      w={11}
+                      h={11}
+                      borderRadius={'xl'}
+                      bg={softBg}
+                      color={'orange.400'}>
+                      <PillarIcon size={20} />
+                    </Box>
+                    <Text
+                      fontSize={'xs'}
+                      fontWeight={800}
+                      color={muted}
+                      fontVariantNumeric={'tabular-nums'}>
+                      0{index + 1}
+                    </Text>
+                  </HStack>
+                  <Heading
+                    fontSize={'xl'}
+                    mb={3}
+                    letterSpacing={'-0.02em'}>
+                    {pillar.title}
+                  </Heading>
+                  <Text color={subtle} lineHeight={1.75}>
+                    {pillar.text}
+                  </Text>
+                </Box>
+              );
+            })}
+          </SimpleGrid>
         </Stack>
       </Container>
     </Box>
