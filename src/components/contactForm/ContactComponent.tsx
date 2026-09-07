@@ -20,6 +20,7 @@ import emailjs from '@emailjs/browser';
 import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { MdEmail, MdPerson } from 'react-icons/md';
+import { useLanguage } from '../../i18n/LanguageContext';
 import { AllAlerts } from '../alerts/AllAlerts';
 
 interface ContactProps {
@@ -38,7 +39,50 @@ const createAlertState = () => ({
 
 const validateEmail = (email: string) => /\S+@\S+\.\S+/.test(email);
 
+const copy = {
+  en: {
+    sentTitle: 'Message sent',
+    sentText: 'Thanks! I will get back to you as soon as I can.',
+    failedTitle: 'Could not send message',
+    failedText: 'Please try again or contact me directly by email.',
+    missingTitle: 'Missing information',
+    missingText: 'Please fill in all fields.',
+    invalidTitle: 'Invalid email',
+    invalidText: 'Please enter a valid email address.',
+    copied: 'Email copied!',
+    copyEmail: 'Copy email',
+    name: 'Name',
+    namePlaceholder: 'Your name',
+    email: 'Email',
+    emailPlaceholder: 'Your email',
+    message: 'Message',
+    messagePlaceholder: 'How can I help?',
+    send: 'Send message',
+  },
+  'pt-BR': {
+    sentTitle: 'Mensagem enviada',
+    sentText: 'Obrigado! Responderei assim que puder.',
+    failedTitle: 'Não foi possível enviar a mensagem',
+    failedText: 'Tente novamente ou entre em contato diretamente por e-mail.',
+    missingTitle: 'Informações faltando',
+    missingText: 'Preencha todos os campos.',
+    invalidTitle: 'E-mail inválido',
+    invalidText: 'Informe um endereço de e-mail válido.',
+    copied: 'E-mail copiado!',
+    copyEmail: 'Copiar e-mail',
+    name: 'Nome',
+    namePlaceholder: 'Seu nome',
+    email: 'E-mail',
+    emailPlaceholder: 'Seu e-mail',
+    message: 'Mensagem',
+    messagePlaceholder: 'Como posso ajudar?',
+    send: 'Enviar mensagem',
+  },
+};
+
 export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
+  const { language } = useLanguage();
+  const content = copy[language];
   const emailInputRef = useRef<HTMLInputElement | null>(null);
   const nameInputRef = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState('');
@@ -60,8 +104,8 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
       });
 
       setAllAlert({
-        title: 'Message sent',
-        value: 'Thanks! I will get back to you as soon as I can.',
+        title: content.sentTitle,
+        value: content.sentText,
         success: true,
         error: false,
         info: false,
@@ -74,8 +118,8 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
     } catch (error) {
       console.error('Error sending contact form:', error);
       setAllAlert({
-        title: 'Could not send message',
-        value: 'Please try again or contact me directly by email.',
+        title: content.failedTitle,
+        value: content.failedText,
         success: false,
         error: true,
         info: false,
@@ -87,8 +131,8 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
   const sendContactForm = () => {
     if (!name || !email || !message) {
       setAllAlert({
-        title: 'Missing information',
-        value: 'Please fill in all fields.',
+        title: content.missingTitle,
+        value: content.missingText,
         success: false,
         error: true,
         info: false,
@@ -100,8 +144,8 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
 
     if (!validateEmail(email)) {
       setAllAlert({
-        title: 'Invalid email',
-        value: 'Please enter a valid email address.',
+        title: content.invalidTitle,
+        value: content.invalidText,
         success: false,
         error: true,
         info: false,
@@ -136,11 +180,11 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
             justify={'space-around'}
             direction={{ base: 'row', md: 'column' }}>
             <Tooltip
-              label={hasCopied ? 'Email copied!' : 'Copy email'}
+              label={hasCopied ? content.copied : content.copyEmail}
               closeOnClick={false}
               hasArrow>
               <IconButton
-                aria-label={'email'}
+                aria-label={content.copyEmail}
                 variant={'ghost'}
                 size={'lg'}
                 fontSize={'3xl'}
@@ -151,10 +195,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
               />
             </Tooltip>
 
-            <Link
-              href={'https://github.com/oalangomes'}
-              target={'_blank'}
-              rel={'noreferrer'}>
+            <Link href={'https://github.com/oalangomes'} target={'_blank'} rel={'noreferrer'}>
               <IconButton
                 aria-label={'GitHub'}
                 variant={'ghost'}
@@ -166,10 +207,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
               />
             </Link>
 
-            <Link
-              href={'https://x.com/oalangomes'}
-              target={'_blank'}
-              rel={'noreferrer'}>
+            <Link href={'https://x.com/oalangomes'} target={'_blank'} rel={'noreferrer'}>
               <IconButton
                 aria-label={'X'}
                 variant={'ghost'}
@@ -203,13 +241,13 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
             shadow={'base'}>
             <VStack spacing={5}>
               <FormControl isRequired>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{content.name}</FormLabel>
                 <InputGroup>
                   <InputLeftElement children={<MdPerson />} />
                   <Input
                     type={'text'}
                     name={'name'}
-                    placeholder={'Your name'}
+                    placeholder={content.namePlaceholder}
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     ref={nameInputRef}
@@ -218,13 +256,13 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
               </FormControl>
 
               <FormControl isRequired>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{content.email}</FormLabel>
                 <InputGroup>
                   <InputLeftElement children={<MdEmail />} />
                   <Input
                     type={'email'}
                     name={'email'}
-                    placeholder={'Your email'}
+                    placeholder={content.emailPlaceholder}
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     ref={emailInputRef}
@@ -233,10 +271,10 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
               </FormControl>
 
               <FormControl isRequired>
-                <FormLabel>Message</FormLabel>
+                <FormLabel>{content.message}</FormLabel>
                 <Textarea
                   name={'message'}
-                  placeholder={'How can I help?'}
+                  placeholder={content.messagePlaceholder}
                   rows={6}
                   resize={'none'}
                   value={message}
@@ -248,7 +286,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
                 colorScheme={'orange'}
                 width={'100%'}
                 onClick={sendContactForm}>
-                Send message
+                {content.send}
               </Button>
             </VStack>
           </Box>

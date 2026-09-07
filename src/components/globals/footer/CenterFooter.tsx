@@ -11,6 +11,7 @@ import {
 import { ReactNode } from 'react';
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
+import { useLanguage } from '../../../i18n/LanguageContext';
 import Logo from '../../logos/Logo';
 
 const SocialButton = ({
@@ -41,6 +42,9 @@ const SocialButton = ({
 );
 
 export default function CenterFooter() {
+  const { language } = useLanguage();
+  const isPortuguese = language === 'pt-BR';
+
   return (
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
@@ -50,9 +54,15 @@ export default function CenterFooter() {
       <Container as={Stack} maxW={'6xl'} py={8} spacing={5} align={'center'}>
         <Logo size={100} />
         <Stack direction={'row'} spacing={6}>
-          <Link as={RouterLink} to={'/AboutMe'}>About</Link>
-          <Link as={RouterLink} to={'/Projects'}>Work</Link>
-          <Link as={RouterLink} to={'/Contact'}>Contact</Link>
+          <Link as={RouterLink} to={'/AboutMe'}>
+            {isPortuguese ? 'Sobre' : 'About'}
+          </Link>
+          <Link as={RouterLink} to={'/Projects'}>
+            {isPortuguese ? 'Projetos' : 'Work'}
+          </Link>
+          <Link as={RouterLink} to={'/Contact'}>
+            {isPortuguese ? 'Contato' : 'Contact'}
+          </Link>
         </Stack>
 
         <Stack direction={'row'} spacing={5}>
@@ -70,7 +80,11 @@ export default function CenterFooter() {
           </SocialButton>
         </Stack>
 
-        <Text fontSize={'sm'}>© 2026 Alan Gomes. Built as an evolving engineering portfolio.</Text>
+        <Text fontSize={'sm'}>
+          {isPortuguese
+            ? '© 2026 Alan Gomes. Construído como um portfólio de engenharia em evolução.'
+            : '© 2026 Alan Gomes. Built as an evolving engineering portfolio.'}
+        </Text>
       </Container>
     </Box>
   );

@@ -13,21 +13,44 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { useLanguage } from '../../../i18n/LanguageContext';
 import Logo from '../../logos/Logo';
 import MyAvatar from '../../logos/MyAvatar';
+import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
-const links = [
-  { label: 'About', to: '/AboutMe' },
-  { label: 'Work', to: '/Projects' },
-  { label: 'Contact', to: '/Contact' },
-];
+const navigation = {
+  en: [
+    { label: 'About', to: '/AboutMe' },
+    { label: 'Work', to: '/Projects' },
+    { label: 'Contact', to: '/Contact' },
+  ],
+  'pt-BR': [
+    { label: 'Sobre', to: '/AboutMe' },
+    { label: 'Projetos', to: '/Projects' },
+    { label: 'Contato', to: '/Contact' },
+  ],
+};
 
 export default function Nav() {
+  const { language, toggleLanguage } = useLanguage();
+  const links = navigation[language];
+  const isPortuguese = language === 'pt-BR';
+
   return (
-    <Box bg={useColorModeValue('gray.50', 'gray.900')} px={4} borderBottomWidth={'1px'}>
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'} maxW={'6xl'} mx={'auto'}>
-        <Link as={RouterLink} to={'/'} aria-label={'Home'}>
+    <Box
+      bg={useColorModeValue('gray.50', 'gray.900')}
+      px={4}
+      borderBottomWidth={'1px'}>
+      <Flex
+        h={16}
+        alignItems={'center'}
+        justifyContent={'space-between'}
+        maxW={'6xl'}
+        mx={'auto'}>
+        <Link
+          as={RouterLink}
+          to={'/'}
+          aria-label={isPortuguese ? 'Início' : 'Home'}>
           <Logo size={28} />
         </Link>
 
@@ -45,7 +68,18 @@ export default function Nav() {
         </HStack>
 
         <Flex alignItems={'center'}>
-          <Stack direction={'row'} spacing={5} align={'center'}>
+          <Stack direction={'row'} spacing={{ base: 2, md: 4 }} align={'center'}>
+            <Button
+              size={'sm'}
+              variant={'ghost'}
+              onClick={toggleLanguage}
+              aria-label={
+                isPortuguese
+                  ? 'Switch site language to English'
+                  : 'Mudar idioma do site para português'
+              }>
+              {isPortuguese ? 'EN' : 'PT'}
+            </Button>
             <ColorModeSwitcher justifySelf={'flex-end'} />
             <Menu>
               <MenuButton
@@ -65,7 +99,7 @@ export default function Nav() {
                 </Center>
                 <MenuDivider />
                 <Center pb={2} fontSize={'sm'}>
-                  Software Architect
+                  {isPortuguese ? 'Arquiteto de Software' : 'Software Architect'}
                 </Center>
               </MenuList>
             </Menu>

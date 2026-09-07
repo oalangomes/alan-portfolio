@@ -11,11 +11,14 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Link as RouterLink, useParams } from 'react-router-dom';
-import { projects } from '../data/projects';
+import { getProjects } from '../data/projects';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ProjectDetails() {
+  const { language } = useLanguage();
+  const isPortuguese = language === 'pt-BR';
   const { id } = useParams<{ id: string }>();
-  const project = projects.find((item) => item.id === Number(id));
+  const project = getProjects(language).find((item) => item.id === Number(id));
   const subtle = useColorModeValue('gray.600', 'gray.300');
   const cardBg = useColorModeValue('white', 'gray.900');
 
@@ -23,9 +26,11 @@ export default function ProjectDetails() {
     return (
       <Container maxW={'4xl'} py={20}>
         <Stack spacing={4}>
-          <Heading>Project not found</Heading>
+          <Heading>
+            {isPortuguese ? 'Projeto não encontrado' : 'Project not found'}
+          </Heading>
           <Button as={RouterLink} to={'/Projects'} alignSelf={'flex-start'}>
-            Back to selected work
+            {isPortuguese ? 'Voltar aos projetos' : 'Back to selected work'}
           </Button>
         </Stack>
       </Container>
@@ -46,7 +51,13 @@ export default function ProjectDetails() {
           <Heading fontSize={{ base: '3xl', md: '5xl' }}>{project.name}</Heading>
           <Stack direction={'row'} flexWrap={'wrap'} gap={2}>
             <Badge colorScheme={project.visibility === 'Public' ? 'green' : 'purple'}>
-              {project.visibility}
+              {project.visibility === 'Public'
+                ? isPortuguese
+                  ? 'Público'
+                  : 'Public'
+                : isPortuguese
+                  ? 'Privado'
+                  : 'Private'}
             </Badge>
             <Badge>{project.status}</Badge>
             {project.hashtags.map((tag) => (
@@ -68,7 +79,7 @@ export default function ProjectDetails() {
           <Stack spacing={6}>
             <Box>
               <Heading fontSize={'2xl'} mb={3}>
-                The project
+                {isPortuguese ? 'O projeto' : 'The project'}
               </Heading>
               <Text color={subtle} fontSize={'lg'}>
                 {project.description}
@@ -77,7 +88,7 @@ export default function ProjectDetails() {
 
             <Box>
               <Heading fontSize={'2xl'} mb={3}>
-                What it demonstrates
+                {isPortuguese ? 'O que ele demonstra' : 'What it demonstrates'}
               </Heading>
               <List spacing={3}>
                 {project.highlights.map((highlight) => (
@@ -92,7 +103,7 @@ export default function ProjectDetails() {
 
         <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
           <Button as={RouterLink} to={'/Projects'} rounded={'full'}>
-            Back to selected work
+            {isPortuguese ? 'Voltar aos projetos' : 'Back to selected work'}
           </Button>
           {project.githubUrl && (
             <Button
@@ -102,7 +113,7 @@ export default function ProjectDetails() {
               rel={'noreferrer'}
               colorScheme={'orange'}
               rounded={'full'}>
-              View source on GitHub
+              {isPortuguese ? 'Ver código no GitHub' : 'View source on GitHub'}
             </Button>
           )}
         </Stack>

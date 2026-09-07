@@ -9,9 +9,12 @@ import {
 } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Project } from '../data/projects';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export default function ProjectCards(project: Project) {
+  const { language } = useLanguage();
   const subtle = useColorModeValue('gray.600', 'gray.300');
+  const isPortuguese = language === 'pt-BR';
 
   return (
     <Box
@@ -34,7 +37,13 @@ export default function ProjectCards(project: Project) {
           <Heading fontSize={'2xl'}>{project.name}</Heading>
           <Stack direction={'row'} flexWrap={'wrap'} gap={2}>
             <Badge colorScheme={project.visibility === 'Public' ? 'green' : 'purple'}>
-              {project.visibility}
+              {project.visibility === 'Public'
+                ? isPortuguese
+                  ? 'Público'
+                  : 'Public'
+                : isPortuguese
+                  ? 'Privado'
+                  : 'Private'}
             </Badge>
             <Badge>{project.status}</Badge>
           </Stack>
@@ -58,7 +67,7 @@ export default function ProjectCards(project: Project) {
             to={`/ProjectDetails/${project.id}`}
             colorScheme={'orange'}
             rounded={'full'}>
-            Read case study
+            {isPortuguese ? 'Ver estudo de caso' : 'Read case study'}
           </Button>
           {project.githubUrl && (
             <Button
