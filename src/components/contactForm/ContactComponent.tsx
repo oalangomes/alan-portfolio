@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import emailjs from '@emailjs/browser';
 import { useEffect, useRef, useState } from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FiSend } from 'react-icons/fi';
 import { MdEmail, MdPerson } from 'react-icons/md';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -239,18 +239,6 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
                   <IconButton
                     aria-label={'GitHub'}
                     icon={<FaGithub />}
-                    variant={'ghost'}
-                    bg={socialBg}
-                    borderRadius={'full'}
-                  />
-                </Link>
-                <Link
-                  href={'https://x.com/oalangomes'}
-                  target={'_blank'}
-                  rel={'noreferrer'}>
-                  <IconButton
-                    aria-label={'X'}
-                    icon={<FaTwitter />}
                     variant={'ghost'}
                     bg={socialBg}
                     borderRadius={'full'}
