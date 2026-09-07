@@ -2,6 +2,8 @@ import {
   Box,
   chakra,
   Container,
+  Flex,
+  HStack,
   Link,
   Stack,
   Text,
@@ -22,68 +24,112 @@ const SocialButton = ({
   children: ReactNode;
   label: string;
   href: string;
-}) => (
-  <chakra.a
-    bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
-    rounded={'full'}
-    w={8}
-    h={8}
-    href={href}
-    target={'_blank'}
-    rel={'noreferrer'}
-    display={'inline-flex'}
-    alignItems={'center'}
-    justifyContent={'center'}
-    transition={'background 0.2s ease'}
-    _hover={{ bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200') }}>
-    <VisuallyHidden>{label}</VisuallyHidden>
-    {children}
-  </chakra.a>
-);
+}) => {
+  const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+  const hoverBg = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+
+  return (
+    <chakra.a
+      bg={bg}
+      rounded={'full'}
+      w={9}
+      h={9}
+      href={href}
+      target={'_blank'}
+      rel={'noreferrer'}
+      display={'inline-flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      transition={'transform 160ms ease, background 160ms ease'}
+      _hover={{ bg: hoverBg, transform: 'translateY(-2px)' }}>
+      <VisuallyHidden>{label}</VisuallyHidden>
+      {children}
+    </chakra.a>
+  );
+};
 
 export default function CenterFooter() {
   const { language } = useLanguage();
   const isPortuguese = language === 'pt-BR';
 
+  const bg = useColorModeValue('white', 'gray.900');
+  const text = useColorModeValue('gray.700', 'gray.200');
+  const subtle = useColorModeValue('gray.500', 'gray.400');
+  const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}
+      as={'footer'}
+      bg={bg}
+      color={text}
       borderTopWidth={'1px'}
-      mt={12}>
-      <Container as={Stack} maxW={'6xl'} py={8} spacing={5} align={'center'}>
-        <Logo size={100} />
-        <Stack direction={'row'} spacing={6}>
-          <Link as={RouterLink} to={'/AboutMe'}>
-            {isPortuguese ? 'Sobre' : 'About'}
-          </Link>
-          <Link as={RouterLink} to={'/Projects'}>
-            {isPortuguese ? 'Projetos' : 'Work'}
-          </Link>
-          <Link as={RouterLink} to={'/Contact'}>
-            {isPortuguese ? 'Contato' : 'Contact'}
-          </Link>
-        </Stack>
+      borderColor={borderColor}>
+      <Container maxW={'7xl'} py={{ base: 8, md: 10 }} px={{ base: 5, md: 6 }}>
+        <Flex
+          direction={{ base: 'column', md: 'row' }}
+          align={{ base: 'flex-start', md: 'center' }}
+          justify={'space-between'}
+          gap={8}>
+          <HStack spacing={3}>
+            <Box
+              display={'grid'}
+              placeItems={'center'}
+              w={10}
+              h={10}
+              borderRadius={'xl'}
+              borderWidth={'1px'}
+              borderColor={borderColor}>
+              <Logo size={24} />
+            </Box>
+            <Box>
+              <Text fontWeight={800}>Alan Gomes</Text>
+              <Text fontSize={'sm'} color={subtle}>
+                {isPortuguese ? 'Arquiteto de Software' : 'Software Architect'}
+              </Text>
+            </Box>
+          </HStack>
 
-        <Stack direction={'row'} spacing={5}>
-          <SocialButton label={'X'} href={'https://x.com/oalangomes'}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={'LinkedIn'} href={'https://linkedin.com/in/oalangomes'}>
-            <FaLinkedin />
-          </SocialButton>
-          <SocialButton label={'Instagram'} href={'https://instagram.com/oalangomes'}>
-            <FaInstagram />
-          </SocialButton>
-          <SocialButton label={'GitHub'} href={'https://github.com/oalangomes'}>
-            <FaGithub />
-          </SocialButton>
-        </Stack>
+          <Stack
+            direction={{ base: 'column', sm: 'row' }}
+            align={{ base: 'flex-start', sm: 'center' }}
+            spacing={{ base: 4, sm: 6 }}>
+            <HStack spacing={5}>
+              <Link as={RouterLink} to={'/AboutMe'} fontWeight={600}>
+                {isPortuguese ? 'Sobre' : 'About'}
+              </Link>
+              <Link as={RouterLink} to={'/Projects'} fontWeight={600}>
+                {isPortuguese ? 'Projetos' : 'Work'}
+              </Link>
+              <Link as={RouterLink} to={'/Contact'} fontWeight={600}>
+                {isPortuguese ? 'Contato' : 'Contact'}
+              </Link>
+            </HStack>
 
-        <Text fontSize={'sm'}>
+            <HStack spacing={2}>
+              <SocialButton label={'X'} href={'https://x.com/oalangomes'}>
+                <FaTwitter />
+              </SocialButton>
+              <SocialButton
+                label={'LinkedIn'}
+                href={'https://linkedin.com/in/oalangomes'}>
+                <FaLinkedin />
+              </SocialButton>
+              <SocialButton
+                label={'Instagram'}
+                href={'https://instagram.com/oalangomes'}>
+                <FaInstagram />
+              </SocialButton>
+              <SocialButton label={'GitHub'} href={'https://github.com/oalangomes'}>
+                <FaGithub />
+              </SocialButton>
+            </HStack>
+          </Stack>
+        </Flex>
+
+        <Text mt={8} pt={6} borderTopWidth={'1px'} borderColor={borderColor} fontSize={'xs'} color={subtle}>
           {isPortuguese
-            ? '© 2026 Alan Gomes. Construído como um portfólio de engenharia em evolução.'
-            : '© 2026 Alan Gomes. Built as an evolving engineering portfolio.'}
+            ? '© 2026 Alan Gomes. Portfólio de engenharia em evolução contínua.'
+            : '© 2026 Alan Gomes. An engineering portfolio in continuous evolution.'}
         </Text>
       </Container>
     </Box>
