@@ -1,7 +1,10 @@
 import {
   Box,
   Container,
+  Grid,
+  GridItem,
   Heading,
+  HStack,
   SimpleGrid,
   Stack,
   Text,
@@ -120,102 +123,200 @@ const copy = {
 export default function AboutMe() {
   const { language } = useLanguage();
   const content = copy[language];
+
+  const pageBg = useColorModeValue('gray.50', 'gray.900');
   const subtle = useColorModeValue('gray.600', 'gray.300');
+  const muted = useColorModeValue('gray.500', 'gray.400');
+  const primaryText = useColorModeValue('gray.800', 'gray.100');
   const cardBg = useColorModeValue('white', 'gray.900');
+  const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+  const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
 
   return (
-    <Container maxW={'5xl'} py={{ base: 14, md: 20 }}>
-      <Stack spacing={12}>
-        <Stack
-          direction={{ base: 'column', md: 'row' }}
-          spacing={8}
-          align={{ base: 'flex-start', md: 'center' }}>
-          <MyAvatar size={'xl'} />
-          <Box>
-            <Text
-              color={'orange.400'}
-              fontWeight={700}
-              textTransform={'uppercase'}
-              letterSpacing={'wide'}>
-              {content.eyebrow}
-            </Text>
-            <Heading fontSize={{ base: '3xl', md: '5xl' }} mt={2}>
-              Alan Gomes
-            </Heading>
-            <Text fontSize={'xl'} color={subtle} mt={2}>
-              {content.role}
-            </Text>
-          </Box>
-        </Stack>
+    <Box bg={pageBg}>
+      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 5, md: 6 }}>
+        <Stack spacing={{ base: 14, md: 18 }}>
+          <Grid
+            templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
+            gap={{ base: 8, lg: 12 }}
+            alignItems={'center'}>
+            <GridItem colSpan={{ base: 1, lg: 4 }}>
+              <Box
+                p={3}
+                display={'inline-block'}
+                borderRadius={'3xl'}
+                borderWidth={'1px'}
+                borderColor={borderColor}
+                bg={cardBg}
+                boxShadow={'xl'}>
+                <MyAvatar size={'xl'} />
+              </Box>
+            </GridItem>
 
-        <Stack spacing={5} fontSize={{ base: 'md', md: 'lg' }} color={subtle}>
-          {content.intro.map((paragraph) => (
-            <Text key={paragraph}>{paragraph}</Text>
-          ))}
-        </Stack>
+            <GridItem colSpan={{ base: 1, lg: 8 }}>
+              <Stack spacing={4}>
+                <Text
+                  color={'orange.400'}
+                  fontWeight={800}
+                  fontSize={'xs'}
+                  textTransform={'uppercase'}
+                  letterSpacing={'0.16em'}>
+                  {content.eyebrow}
+                </Text>
+                <Heading
+                  fontSize={{ base: '4xl', md: '6xl' }}
+                  lineHeight={1}
+                  letterSpacing={'-0.04em'}>
+                  Alan Gomes
+                </Heading>
+                <Text
+                  fontSize={{ base: 'lg', md: 'xl' }}
+                  color={subtle}
+                  maxW={'3xl'}>
+                  {content.role}
+                </Text>
+              </Stack>
+            </GridItem>
+          </Grid>
 
-        <Box>
-          <Text
-            color={'orange.400'}
-            fontWeight={700}
-            textTransform={'uppercase'}
-            letterSpacing={'wide'}
-            mb={2}>
-            {content.journeyLabel}
-          </Text>
-          <Heading fontSize={{ base: '2xl', md: '3xl' }} mb={3}>
-            {content.journeyHeading}
-          </Heading>
-          <Text color={subtle} fontSize={{ base: 'md', md: 'lg' }} maxW={'3xl'}>
-            {content.journeyText}
-          </Text>
-        </Box>
+          <Grid
+            templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
+            gap={{ base: 8, lg: 12 }}>
+            <GridItem colSpan={{ base: 1, lg: 4 }}>
+              <Text
+                fontSize={'xs'}
+                fontWeight={800}
+                textTransform={'uppercase'}
+                letterSpacing={'0.14em'}
+                color={muted}>
+                2012 → {language === 'pt-BR' ? 'Hoje' : 'Today'}
+              </Text>
+            </GridItem>
+            <GridItem colSpan={{ base: 1, lg: 8 }}>
+              <Stack
+                spacing={5}
+                fontSize={{ base: 'md', md: 'lg' }}
+                lineHeight={1.9}
+                color={subtle}>
+                {content.intro.map((paragraph, index) => (
+                  <Text
+                    key={paragraph}
+                    fontSize={index === 0 ? { base: 'lg', md: 'xl' } : undefined}
+                    color={index === 0 ? primaryText : subtle}
+                    fontWeight={index === 0 ? 550 : 400}>
+                    {paragraph}
+                  </Text>
+                ))}
+              </Stack>
+            </GridItem>
+          </Grid>
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
-          {content.journey.map((item) => (
-            <Box
-              key={item.period}
-              p={6}
-              borderWidth={'1px'}
-              borderRadius={'2xl'}
-              bg={cardBg}>
+          <Stack spacing={7}>
+            <Stack spacing={3} maxW={'4xl'}>
               <Text
                 color={'orange.400'}
-                fontWeight={700}
-                fontSize={'sm'}
+                fontWeight={800}
+                fontSize={'xs'}
                 textTransform={'uppercase'}
-                letterSpacing={'wide'}>
-                {item.period}
+                letterSpacing={'0.16em'}>
+                {content.journeyLabel}
               </Text>
-              <Heading fontSize={'xl'} mt={2} mb={3}>
-                {item.title}
+              <Heading
+                fontSize={{ base: '3xl', md: '5xl' }}
+                lineHeight={1.05}
+                letterSpacing={'-0.035em'}>
+                {content.journeyHeading}
               </Heading>
-              <Text color={subtle}>{item.text}</Text>
-            </Box>
-          ))}
-        </SimpleGrid>
+              <Text color={subtle} fontSize={'lg'} lineHeight={1.8}>
+                {content.journeyText}
+              </Text>
+            </Stack>
 
-        <Box>
-          <Heading fontSize={{ base: '2xl', md: '3xl' }} mb={6}>
-            {content.workOn}
-          </Heading>
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-            {content.areas.map((area) => (
-              <Box
-                key={area.title}
-                p={6}
-                borderWidth={'1px'}
-                borderRadius={'2xl'}
-                bg={cardBg}>
-                <Heading fontSize={'xl'} mb={3}>
-                  {area.title}
-                </Heading>
-                <Text color={subtle}>{area.text}</Text>
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box>
-      </Stack>
-    </Container>
+            <Stack spacing={0}>
+              {content.journey.map((item, index) => (
+                <Grid
+                  key={item.period}
+                  templateColumns={{ base: '1fr', md: '180px 1fr' }}
+                  gap={{ base: 3, md: 8 }}
+                  py={{ base: 6, md: 8 }}
+                  borderTopWidth={'1px'}
+                  borderColor={borderColor}>
+                  <Box>
+                    <HStack spacing={3}>
+                      <Box
+                        w={2}
+                        h={2}
+                        flex={'0 0 auto'}
+                        borderRadius={'full'}
+                        bg={'orange.400'}
+                      />
+                      <Text
+                        color={'orange.400'}
+                        fontWeight={800}
+                        fontSize={'sm'}>
+                        {item.period}
+                      </Text>
+                    </HStack>
+                  </Box>
+                  <Box>
+                    <HStack justify={'space-between'} align={'start'} gap={5}>
+                      <Heading
+                        fontSize={{ base: 'xl', md: '2xl' }}
+                        letterSpacing={'-0.02em'}>
+                        {item.title}
+                      </Heading>
+                      <Text fontSize={'xs'} fontWeight={800} color={muted}>
+                        0{index + 1}
+                      </Text>
+                    </HStack>
+                    <Text mt={3} color={subtle} lineHeight={1.8}>
+                      {item.text}
+                    </Text>
+                  </Box>
+                </Grid>
+              ))}
+            </Stack>
+          </Stack>
+
+          <Stack spacing={7}>
+            <Heading
+              fontSize={{ base: '3xl', md: '4xl' }}
+              letterSpacing={'-0.03em'}>
+              {content.workOn}
+            </Heading>
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
+              {content.areas.map((area, index) => (
+                <Box
+                  key={area.title}
+                  p={{ base: 6, md: 7 }}
+                  borderWidth={'1px'}
+                  borderColor={borderColor}
+                  borderRadius={'2xl'}
+                  bg={cardBg}>
+                  <Box
+                    mb={6}
+                    px={2.5}
+                    py={1}
+                    display={'inline-block'}
+                    borderRadius={'full'}
+                    bg={softBg}
+                    color={'orange.400'}
+                    fontSize={'xs'}
+                    fontWeight={800}>
+                    0{index + 1}
+                  </Box>
+                  <Heading fontSize={'xl'} mb={3}>
+                    {area.title}
+                  </Heading>
+                  <Text color={subtle} lineHeight={1.75}>
+                    {area.text}
+                  </Text>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Stack>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
