@@ -30,12 +30,11 @@ test('renders the portfolio positioning in English', () => {
   expect(
     screen.getByText(/Software Architecture • AI Engineering/i),
   ).toBeInTheDocument();
+  expect(screen.getByText('Coding agents')).toBeInTheDocument();
+  expect(screen.getByText('Retrieval benchmarks')).toBeInTheDocument();
   expect(
-    screen.getByRole('img', {
-      name: /Conceptual architecture map connecting product, context, knowledge, evidence, runtime and guardrails/i,
-    }),
-  ).toBeInTheDocument();
-  expect(screen.getAllByText('EVIDENCE').length).toBeGreaterThan(0);
+    screen.queryByRole('img', { name: /conceptual architecture map/i }),
+  ).not.toBeInTheDocument();
 });
 
 test('renders the portfolio positioning in Brazilian Portuguese', () => {
@@ -49,10 +48,9 @@ test('renders the portfolio positioning in Brazilian Portuguese', () => {
   expect(
     screen.getByText(/Arquitetura de Software • Engenharia de IA/i),
   ).toBeInTheDocument();
+  expect(screen.getByText('Agentes de código')).toBeInTheDocument();
+  expect(screen.getByText('Benchmarks de retrieval')).toBeInTheDocument();
   expect(
-    screen.getByRole('img', {
-      name: /Mapa conceitual de arquitetura conectando produto, contexto, conhecimento, evidência, runtime e governança/i,
-    }),
-  ).toBeInTheDocument();
-  expect(screen.getAllByText('EVIDÊNCIA').length).toBeGreaterThan(0);
+    screen.queryByRole('img', { name: /mapa conceitual de arquitetura/i }),
+  ).not.toBeInTheDocument();
 });
