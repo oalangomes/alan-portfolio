@@ -61,11 +61,16 @@ export default function Nav() {
       backdropFilter={'blur(18px)'}
       borderBottomWidth={'1px'}
       borderColor={borderColor}>
-      <Container maxW={'7xl'} px={{ base: 3, sm: 4, md: 6 }}>
-        <Flex h={{ base: 16, md: 18 }} align={'center'} justify={'space-between'}>
+      <Container maxW={'7xl'} px={{ base: 3, sm: 4, lg: 6 }}>
+        <Flex
+          h={{ base: 16, lg: 18 }}
+          align={'center'}
+          justify={'space-between'}
+          gap={3}>
           <Link
             as={RouterLink}
             to={'/'}
+            flexShrink={0}
             aria-label={isPortuguese ? 'Início' : 'Home'}
             _hover={{ textDecoration: 'none' }}>
             <HStack spacing={3}>
@@ -79,7 +84,7 @@ export default function Nav() {
                 overflow={'hidden'}>
                 <Logo size={25} />
               </Box>
-              <Box display={{ base: 'none', sm: 'block' }}>
+              <Box display={{ base: 'none', xl: 'block' }}>
                 <Text fontWeight={800} lineHeight={1}>
                   Alan Gomes
                 </Text>
@@ -96,12 +101,13 @@ export default function Nav() {
           <HStack
             as={'nav'}
             spacing={1}
-            display={{ base: 'none', md: 'flex' }}
+            display={{ base: 'none', lg: 'flex' }}
             p={1}
             borderRadius={'full'}
             bg={navBg}
             borderWidth={'1px'}
-            borderColor={borderColor}>
+            borderColor={borderColor}
+            flexShrink={0}>
             {links.map((link) => {
               const active = location.pathname === link.to;
 
@@ -158,7 +164,7 @@ export default function Nav() {
             <Menu>
               <MenuButton
                 as={IconButton}
-                display={{ base: 'inline-flex', md: 'none' }}
+                display={{ base: 'inline-flex', lg: 'none' }}
                 aria-label={isPortuguese ? 'Abrir menu' : 'Open menu'}
                 icon={<FiMenu />}
                 variant={'ghost'}
