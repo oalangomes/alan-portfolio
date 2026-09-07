@@ -61,7 +61,7 @@ export default function Nav() {
       backdropFilter={'blur(18px)'}
       borderBottomWidth={'1px'}
       borderColor={borderColor}>
-      <Container maxW={'7xl'} px={{ base: 4, md: 6 }}>
+      <Container maxW={'7xl'} px={{ base: 3, sm: 4, md: 6 }}>
         <Flex h={{ base: 16, md: 18 }} align={'center'} justify={'space-between'}>
           <Link
             as={RouterLink}
@@ -127,7 +127,7 @@ export default function Nav() {
             })}
           </HStack>
 
-          <HStack spacing={{ base: 1, sm: 2 }}>
+          <HStack spacing={{ base: 0, sm: 2 }} flexShrink={0}>
             <Tooltip
               label={
                 isPortuguese
@@ -145,7 +145,8 @@ export default function Nav() {
                     : 'Mudar idioma do site para português'
                 }
                 borderRadius={'full'}
-                px={{ base: 2, sm: 3 }}>
+                px={{ base: 2, sm: 3 }}
+                minW={{ base: 'auto', sm: 10 }}>
                 {isPortuguese ? 'PT-BR' : 'EN'}
               </Button>
             </Tooltip>
