@@ -6,11 +6,12 @@ This repository is intentionally more than a gallery of technologies. The portfo
 
 ## Current positioning
 
-The portfolio highlights four representative fronts:
+The portfolio highlights five representative fronts:
 
 - **AgentsOrchNext** — governed coding-agent and context-engineering R&D;
 - **runnerctl** — open-source local control plane for self-hosted GitHub Actions runners;
 - **NeuroTrack** — long-running multi-client product engineering ecosystem;
+- **EA FC MANAGER MODE HUB** — data-driven football-management workspace with automation, dashboards and auditability;
 - **Caverna BJJ** — lightweight offline-first PWA built from a real personal use case.
 
 ## Stack
