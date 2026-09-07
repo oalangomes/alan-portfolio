@@ -21,7 +21,7 @@ export default function Contact() {
         <Stack spacing={{ base: 10, md: 12 }}>
           <Stack spacing={4} maxW={'4xl'}>
             <Text
-              color={'orange.400'}
+              color={'var(--portfolio-accent)'}
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
