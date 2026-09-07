@@ -16,11 +16,11 @@ import {
   useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
+import emailjs from '@emailjs/browser';
+import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { MdEmail, MdPerson } from 'react-icons/md';
-import { useEffect, useRef, useState } from 'react';
 import { AllAlerts } from '../alerts/AllAlerts';
-import emailjs from '@emailjs/browser';
 
 interface ContactProps {
   title: string;
@@ -48,7 +48,7 @@ export default function ContactComponent({ title, emailOnCopy }: ContactProps) {
   const [allAlert, setAllAlert] = useState(createAlertState());
 
   useEffect(() => {
-    emailjs.init(process.env.REACT_APP_EMAILJS_KEY || '');
+    emailjs.init(import.meta.env.VITE_EMAILJS_KEY || '');
   }, []);
 
   const sendEmail = async () => {
