@@ -1,21 +1,23 @@
 import {
   Box,
   Button,
-  Center,
+  Container,
   Flex,
   HStack,
+  IconButton,
   Link,
   Menu,
   MenuButton,
-  MenuDivider,
+  MenuItem,
   MenuList,
-  Stack,
+  Text,
+  Tooltip,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+import { FiGlobe, FiMenu } from 'react-icons/fi';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import Logo from '../../logos/Logo';
-import MyAvatar from '../../logos/MyAvatar';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 const navigation = {
@@ -33,79 +35,152 @@ const navigation = {
 
 export default function Nav() {
   const { language, toggleLanguage } = useLanguage();
+  const location = useLocation();
   const links = navigation[language];
   const isPortuguese = language === 'pt-BR';
 
+  const headerBg = useColorModeValue(
+    'rgba(255,255,255,0.84)',
+    'rgba(17,24,39,0.84)',
+  );
+  const navBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+  const activeBg = useColorModeValue('white', 'whiteAlpha.200');
+  const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+  const activeText = useColorModeValue('gray.900', 'white');
+  const inactiveText = useColorModeValue('gray.600', 'gray.300');
+  const brandSubtle = useColorModeValue('gray.500', 'gray.400');
+  const logoBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+
   return (
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      px={4}
-      borderBottomWidth={'1px'}>
-      <Flex
-        h={16}
-        alignItems={'center'}
-        justifyContent={'space-between'}
-        maxW={'6xl'}
-        mx={'auto'}>
-        <Link
-          as={RouterLink}
-          to={'/'}
-          aria-label={isPortuguese ? 'Início' : 'Home'}>
-          <Logo size={28} />
-        </Link>
+      as={'header'}
+      position={'sticky'}
+      top={0}
+      zIndex={20}
+      bg={headerBg}
+      backdropFilter={'blur(18px)'}
+      borderBottomWidth={'1px'}
+      borderColor={borderColor}>
+      <Container maxW={'7xl'} px={{ base: 4, md: 6 }}>
+        <Flex h={{ base: 16, md: 18 }} align={'center'} justify={'space-between'}>
+          <Link
+            as={RouterLink}
+            to={'/'}
+            aria-label={isPortuguese ? 'Início' : 'Home'}
+            _hover={{ textDecoration: 'none' }}>
+            <HStack spacing={3}>
+              <Box
+                display={'grid'}
+                placeItems={'center'}
+                w={10}
+                h={10}
+                borderRadius={'xl'}
+                bg={logoBg}>
+                <Logo size={25} />
+              </Box>
+              <Box display={{ base: 'none', sm: 'block' }}>
+                <Text fontWeight={800} lineHeight={1}>
+                  Alan Gomes
+                </Text>
+                <Text
+                  mt={1}
+                  fontSize={'xs'}
+                  color={brandSubtle}>
+                  {isPortuguese ? 'Arquiteto de Software' : 'Software Architect'}
+                </Text>
+              </Box>
+            </HStack>
+          </Link>
 
-        <HStack as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
-          {links.map((link) => (
-            <Link
-              as={RouterLink}
-              key={link.to}
-              to={link.to}
-              fontWeight={600}
-              _hover={{ textDecoration: 'none', color: 'orange.400' }}>
-              {link.label}
-            </Link>
-          ))}
-        </HStack>
+          <HStack
+            as={'nav'}
+            spacing={1}
+            display={{ base: 'none', md: 'flex' }}
+            p={1}
+            borderRadius={'full'}
+            bg={navBg}
+            borderWidth={'1px'}
+            borderColor={borderColor}>
+            {links.map((link) => {
+              const active = location.pathname === link.to;
 
-        <Flex alignItems={'center'}>
-          <Stack direction={'row'} spacing={{ base: 2, md: 4 }} align={'center'}>
-            <Button
-              size={'sm'}
-              variant={'ghost'}
-              onClick={toggleLanguage}
-              aria-label={
+              return (
+                <Link
+                  as={RouterLink}
+                  key={link.to}
+                  to={link.to}
+                  px={4}
+                  py={2}
+                  borderRadius={'full'}
+                  bg={active ? activeBg : 'transparent'}
+                  boxShadow={active ? 'sm' : 'none'}
+                  fontSize={'sm'}
+                  fontWeight={active ? 700 : 600}
+                  color={active ? activeText : inactiveText}
+                  _hover={{
+                    textDecoration: 'none',
+                    color: activeText,
+                  }}>
+                  {link.label}
+                </Link>
+              );
+            })}
+          </HStack>
+
+          <HStack spacing={{ base: 1, sm: 2 }}>
+            <Tooltip
+              label={
                 isPortuguese
-                  ? 'Switch site language to English'
-                  : 'Mudar idioma do site para português'
+                  ? 'Switch to English'
+                  : 'Mudar para português'
               }>
-              {isPortuguese ? 'EN' : 'PT'}
-            </Button>
+              <Button
+                size={'sm'}
+                variant={'ghost'}
+                leftIcon={<FiGlobe />}
+                onClick={toggleLanguage}
+                aria-label={
+                  isPortuguese
+                    ? 'Switch site language to English'
+                    : 'Mudar idioma do site para português'
+                }
+                borderRadius={'full'}
+                px={{ base: 2, sm: 3 }}>
+                {isPortuguese ? 'PT-BR' : 'EN'}
+              </Button>
+            </Tooltip>
+
             <ColorModeSwitcher justifySelf={'flex-end'} />
+
             <Menu>
               <MenuButton
-                as={Button}
-                rounded={'full'}
-                variant={'link'}
-                cursor={'pointer'}
-                minW={0}>
-                <MyAvatar size={'md'} />
-              </MenuButton>
-              <MenuList alignItems={'center'}>
-                <Center py={3}>
-                  <MyAvatar size={'xl'} />
-                </Center>
-                <Center>
-                  <Box fontWeight={700}>Alan Gomes</Box>
-                </Center>
-                <MenuDivider />
-                <Center pb={2} fontSize={'sm'}>
-                  {isPortuguese ? 'Arquiteto de Software' : 'Software Architect'}
-                </Center>
+                as={IconButton}
+                display={{ base: 'inline-flex', md: 'none' }}
+                aria-label={isPortuguese ? 'Abrir menu' : 'Open menu'}
+                icon={<FiMenu />}
+                variant={'ghost'}
+                borderRadius={'full'}
+              />
+              <MenuList
+                minW={'180px'}
+                borderRadius={'xl'}
+                p={2}
+                boxShadow={'xl'}>
+                {links.map((link) => (
+                  <MenuItem
+                    as={RouterLink}
+                    key={link.to}
+                    to={link.to}
+                    borderRadius={'lg'}
+                    fontWeight={location.pathname === link.to ? 700 : 500}>
+                    {link.label}
+                  </MenuItem>
+                ))}
               </MenuList>
             </Menu>
-          </Stack>
+          </HStack>
         </Flex>
-      </Flex>
+      </Container>
     </Box>
   );
 }

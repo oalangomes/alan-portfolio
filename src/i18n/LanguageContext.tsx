@@ -29,7 +29,7 @@ const getInitialLanguage = (): Language => {
     return saved;
   }
 
-  return window.navigator.language.toLowerCase().startsWith('pt') ? 'pt-BR' : 'en';
+  return 'en';
 };
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
