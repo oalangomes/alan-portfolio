@@ -55,6 +55,13 @@ npm run build
 
 The same test and production-build validation runs in GitHub Actions for pull requests and pushes to `master`.
 
+
+## Deployment
+
+Production is built by Vite and published from `dist/` through the GitHub Pages workflow in `.github/workflows/pages.yml`.
+
+The repository's GitHub Pages publishing source must be set to **GitHub Actions** under **Settings → Pages → Build and deployment → Source**. This is a one-time repository setting; publishing directly from the `master` branch would send the Vite source files through the legacy Jekyll pipeline instead of deploying the compiled application.
+
 ## Structure
 
 ```text
