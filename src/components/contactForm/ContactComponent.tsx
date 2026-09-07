@@ -216,7 +216,7 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
             <Stack spacing={6} height={'100%'}>
               <Box>
                 <Text
-                  color={'orange.400'}
+                  color={'var(--portfolio-accent)'}
                   fontWeight={800}
                   fontSize={'xs'}
                   textTransform={'uppercase'}
@@ -356,7 +356,8 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
               </FormControl>
 
               <Button
-                colorScheme={'orange'}
+                bg={'var(--portfolio-accent)'}
+            color={'var(--portfolio-accent-contrast)'}
                 size={'lg'}
                 alignSelf={'flex-start'}
                 rounded={'full'}

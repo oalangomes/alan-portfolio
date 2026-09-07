@@ -38,22 +38,25 @@ export default function ProjectDetails() {
   const muted = useColorModeValue('gray.500', 'gray.400');
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
-  const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const softBg = useColorModeValue(
+    'var(--portfolio-accent-soft)',
+    'rgba(var(--portfolio-accent-rgb),0.08)',
+  );
   const ambientGlow = useColorModeValue(
-    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.08), transparent 28%), radial-gradient(circle at 12% 48%, rgba(251,146,60,0.05), transparent 30%)`,
-    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.14), transparent 30%), radial-gradient(circle at 12% 48%, rgba(251,146,60,0.08), transparent 32%)`,
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.08), transparent 28%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.05), transparent 30%)`,
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.14), transparent 30%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.08), transparent 32%)`,
   );
   const detailShadow = useColorModeValue(
     `0 14px 36px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.025)`,
     `0 16px 44px rgba(0,0,0,0.24), 0 0 30px rgba(${rgb},0.055)`,
   );
   const buttonGlow = useColorModeValue(
-    '0 8px 22px rgba(237,137,54,0.16)',
-    '0 10px 26px rgba(0,0,0,0.22), 0 0 24px rgba(251,146,60,0.18)',
+    '0 8px 22px rgba(var(--portfolio-accent-rgb),0.16)',
+    '0 10px 26px rgba(0,0,0,0.22), 0 0 24px rgba(var(--portfolio-accent-rgb),0.18)',
   );
   const buttonHoverGlow = useColorModeValue(
-    '0 12px 28px rgba(237,137,54,0.22), 0 0 22px rgba(251,146,60,0.10)',
-    '0 14px 34px rgba(0,0,0,0.28), 0 0 34px rgba(251,146,60,0.26)',
+    '0 12px 28px rgba(var(--portfolio-accent-rgb),0.22), 0 0 22px rgba(var(--portfolio-accent-rgb),0.10)',
+    '0 14px 34px rgba(0,0,0,0.28), 0 0 34px rgba(var(--portfolio-accent-rgb),0.26)',
   );
 
   if (!project) {
@@ -62,7 +65,7 @@ export default function ProjectDetails() {
         <Container maxW={'5xl'} py={24}>
           <Stack spacing={5} align={'flex-start'}>
             <Text
-              color={'orange.400'}
+              color={'var(--portfolio-accent)'}
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
@@ -112,7 +115,7 @@ export default function ProjectDetails() {
             </Button>
 
             <Text
-              color={'orange.400'}
+              color={'var(--portfolio-accent)'}
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
@@ -240,7 +243,7 @@ export default function ProjectDetails() {
                         flex={'0 0 auto'}
                         borderRadius={'full'}
                         bg={softBg}
-                        color={'orange.400'}>
+                        color={'var(--portfolio-accent)'}>
                         <FiCheck size={14} />
                       </Box>
                       <Text color={subtle} lineHeight={1.7}>
@@ -268,7 +271,8 @@ export default function ProjectDetails() {
                 href={project.githubUrl}
                 target={'_blank'}
                 rel={'noreferrer'}
-                colorScheme={'orange'}
+                bg={'var(--portfolio-accent)'}
+                color={'var(--portfolio-accent-contrast)'}
                 rounded={'full'}
                 leftIcon={<FiGithub />}
                 boxShadow={buttonGlow}
@@ -276,6 +280,7 @@ export default function ProjectDetails() {
                 _hover={{
                   transform: 'translateY(-1px)',
                   boxShadow: buttonHoverGlow,
+                  bg: 'var(--portfolio-accent-strong)',
                 }}>
                 {isPortuguese ? 'Ver código no GitHub' : 'View source on GitHub'}
               </Button>

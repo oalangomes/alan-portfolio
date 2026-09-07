@@ -18,6 +18,7 @@ import { FiGlobe, FiMenu } from 'react-icons/fi';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import Logo from '../../logos/Logo';
+import AccentThemeSwitcher from '../AccentThemeSwitcher';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 const navigation = {
@@ -60,7 +61,8 @@ export default function Nav() {
       bg={headerBg}
       backdropFilter={'blur(18px)'}
       borderBottomWidth={'1px'}
-      borderColor={borderColor}>
+      borderColor={borderColor}
+      boxShadow={'0 1px 0 rgba(var(--portfolio-accent-rgb),0.10), 0 8px 30px rgba(var(--portfolio-accent-rgb),0.035)'}>
       <Container maxW={'7xl'} px={{ base: 3, sm: 4, lg: 6 }}>
         <Flex
           h={{ base: 16, lg: 18 }}
@@ -121,7 +123,11 @@ export default function Nav() {
                   py={2}
                   borderRadius={'full'}
                   bg={active ? activeBg : 'transparent'}
-                  boxShadow={active ? 'sm' : 'none'}
+                  boxShadow={
+                    active
+                      ? '0 4px 16px rgba(15,23,42,0.08), 0 0 16px rgba(var(--portfolio-accent-rgb),0.08)'
+                      : 'none'
+                  }
                   fontSize={'sm'}
                   fontWeight={active ? 700 : 600}
                   color={active ? activeText : inactiveText}
@@ -159,6 +165,7 @@ export default function Nav() {
               </Button>
             </Tooltip>
 
+            <AccentThemeSwitcher />
             <ColorModeSwitcher justifySelf={'flex-end'} />
 
             <Menu>

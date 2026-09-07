@@ -1,6 +1,7 @@
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import { lazy, Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import { AccentThemeProvider } from './appearance/AccentThemeContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import SkipToContent from './components/SkipToContent';
 import CenterFooter from './components/globals/footer/CenterFooter';
@@ -19,8 +20,9 @@ const RouteFallback = () => <Box minH={'55vh'} aria-hidden={'true'} />;
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <LanguageProvider>
-      <HashRouter>
+    <AccentThemeProvider>
+      <LanguageProvider>
+        <HashRouter>
         <Box w={'100%'} maxW={'100vw'} overflowX={'hidden'}>
           <SkipToContent />
 
@@ -43,7 +45,8 @@ export const App = () => (
 
           <CenterFooter />
         </Box>
-      </HashRouter>
-    </LanguageProvider>
+        </HashRouter>
+      </LanguageProvider>
+    </AccentThemeProvider>
   </ChakraProvider>
 );

@@ -22,7 +22,7 @@ export default function NotFound() {
       <Container maxW={'5xl'} py={{ base: 20, md: 28 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={5} align={'flex-start'}>
           <Text
-            color={'orange.400'}
+            color={'var(--portfolio-accent)'}
             fontWeight={800}
             fontSize={'xs'}
             textTransform={'uppercase'}
@@ -42,7 +42,8 @@ export default function NotFound() {
           <Button
             as={RouterLink}
             to={'/'}
-            colorScheme={'orange'}
+            bg={'var(--portfolio-accent)'}
+            color={'var(--portfolio-accent-contrast)'}
             rounded={'full'}
             leftIcon={<FiArrowLeft />}>
             {isPortuguese ? 'Voltar ao início' : 'Back home'}

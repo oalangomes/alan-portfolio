@@ -36,6 +36,10 @@ export default function ProjectCards(project: ProjectCardProps) {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const tagBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+  const accentSurface = useColorModeValue(
+    'var(--portfolio-accent-soft)',
+    'rgba(var(--portfolio-accent-rgb),0.06)',
+  );
   const rgb = toneRgb[project.visual.tone];
   const cardShadow = useColorModeValue(
     `0 12px 32px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.03), 0 0 28px rgba(${rgb},0.04)`,
@@ -46,12 +50,12 @@ export default function ProjectCards(project: ProjectCardProps) {
     `0 22px 56px rgba(0,0,0,0.34), 0 0 0 1px rgba(${rgb},0.14), 0 0 48px rgba(${rgb},0.16)`,
   );
   const actionGlow = useColorModeValue(
-    '0 7px 20px rgba(237,137,54,0.14)',
-    '0 8px 24px rgba(0,0,0,0.20), 0 0 22px rgba(251,146,60,0.16)',
+    '0 7px 20px rgba(var(--portfolio-accent-rgb),0.14)',
+    '0 8px 24px rgba(0,0,0,0.20), 0 0 22px rgba(var(--portfolio-accent-rgb),0.16)',
   );
   const actionHoverGlow = useColorModeValue(
-    '0 10px 26px rgba(237,137,54,0.20), 0 0 20px rgba(251,146,60,0.10)',
-    '0 12px 30px rgba(0,0,0,0.26), 0 0 30px rgba(251,146,60,0.24)',
+    '0 10px 26px rgba(var(--portfolio-accent-rgb),0.20), 0 0 20px rgba(var(--portfolio-accent-rgb),0.10)',
+    '0 12px 30px rgba(0,0,0,0.26), 0 0 30px rgba(var(--portfolio-accent-rgb),0.24)',
   );
 
   return (
@@ -81,7 +85,7 @@ export default function ProjectCards(project: ProjectCardProps) {
         w={'140px'}
         h={'140px'}
         borderBottomLeftRadius={'full'}
-        bg={useColorModeValue('orange.50', 'whiteAlpha.50')}
+        bg={accentSurface}
         opacity={0.55}
         pointerEvents={'none'}
       />
@@ -92,7 +96,7 @@ export default function ProjectCards(project: ProjectCardProps) {
         <HStack justify={'space-between'} align={'flex-start'} gap={4} minW={0}>
           <Stack spacing={2} flex={1} minW={0}>
             <Text
-              color={'orange.400'}
+              color={'var(--portfolio-accent)'}
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
@@ -173,7 +177,8 @@ export default function ProjectCards(project: ProjectCardProps) {
           <Button
             as={RouterLink}
             to={`/ProjectDetails/${project.id}`}
-            colorScheme={'orange'}
+            bg={'var(--portfolio-accent)'}
+            color={'var(--portfolio-accent-contrast)'}
             rounded={'full'}
             rightIcon={<FiArrowUpRight />}
             boxShadow={actionGlow}
@@ -181,6 +186,7 @@ export default function ProjectCards(project: ProjectCardProps) {
             _hover={{
               transform: 'translateY(-1px)',
               boxShadow: actionHoverGlow,
+              bg: 'var(--portfolio-accent-strong)',
             }}
             w={{ base: '100%', sm: 'auto' }}>
             {isPortuguese ? 'Ver estudo de caso' : 'Read case study'}

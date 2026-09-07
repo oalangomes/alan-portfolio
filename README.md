@@ -28,6 +28,8 @@ The project uses Vite for development and production builds. Routing uses hash-b
 
 The UI supports **English and Brazilian Portuguese**. English is the default language, the header shows the active language, and a manual switch persists the selected preference locally.
 
+The visual system also separates **light/dark mode** from the portfolio accent identity. Two persisted accent themes are available: **Ember** (warm orange/copper, default) and **Aurora** (cyan with a subtle violet counterpoint). Global accent surfaces, CTA states, header lighting and ambient glows use semantic CSS design tokens, while project-specific colors remain independent.
+
 The Home uses only a subtle, unlabeled architecture motif as visual texture. Conceptual diagrams live with the **project case studies**, where each selected project gets its own high-level system view without exposing private implementation topology.
 
 ## Requirements

@@ -16,8 +16,8 @@ export default function SkipToContent() {
       zIndex={100}
       size={'sm'}
       borderRadius={'lg'}
-      colorScheme={'orange'}
-      color={'gray.900'}
+      bg={'var(--portfolio-accent)'}
+      color={'var(--portfolio-accent-contrast)'}
       fontWeight={800}
       transform={'translateY(-160%)'}
       transition={'transform 120ms ease'}

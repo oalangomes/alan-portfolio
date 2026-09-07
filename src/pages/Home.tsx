@@ -94,35 +94,38 @@ export default function Home() {
   const panelBg = useColorModeValue('rgba(255,255,255,0.78)', 'rgba(17,24,39,0.72)');
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
-  const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const softBg = useColorModeValue(
+    'var(--portfolio-accent-soft)',
+    'rgba(var(--portfolio-accent-rgb),0.08)',
+  );
   const canvasOpacity = useColorModeValue(0.1, 0.06);
   const glow = useColorModeValue(
-    'radial-gradient(circle at 14% 16%, rgba(251,146,60,0.18), transparent 32%), radial-gradient(circle at 88% 12%, rgba(59,130,246,0.09), transparent 26%), radial-gradient(circle at 55% 84%, rgba(251,146,60,0.07), transparent 30%)',
-    'radial-gradient(circle at 14% 16%, rgba(251,146,60,0.24), transparent 34%), radial-gradient(circle at 88% 12%, rgba(96,165,250,0.12), transparent 28%), radial-gradient(circle at 55% 84%, rgba(251,146,60,0.10), transparent 32%)',
+    'radial-gradient(circle at 14% 16%, rgba(var(--portfolio-accent-rgb),0.18), transparent 32%), radial-gradient(circle at 88% 12%, rgba(var(--portfolio-accent-secondary-rgb),0.09), transparent 26%), radial-gradient(circle at 55% 84%, rgba(var(--portfolio-accent-rgb),0.07), transparent 30%)',
+    'radial-gradient(circle at 14% 16%, rgba(var(--portfolio-accent-rgb),0.24), transparent 34%), radial-gradient(circle at 88% 12%, rgba(var(--portfolio-accent-secondary-rgb),0.13), transparent 28%), radial-gradient(circle at 55% 84%, rgba(var(--portfolio-accent-rgb),0.10), transparent 32%)',
   );
   const panelShadow = useColorModeValue(
-    '0 24px 70px rgba(15,23,42,0.10), 0 0 0 1px rgba(251,146,60,0.05), 0 0 42px rgba(251,146,60,0.06)',
-    '0 28px 90px rgba(0,0,0,0.38), 0 0 0 1px rgba(251,146,60,0.10), 0 0 54px rgba(251,146,60,0.13)',
+    '0 24px 70px rgba(15,23,42,0.10), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.05), 0 0 42px rgba(var(--portfolio-accent-rgb),0.06)',
+    '0 28px 90px rgba(0,0,0,0.38), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.10), 0 0 54px rgba(var(--portfolio-accent-rgb),0.13)',
   );
   const cardShadow = useColorModeValue(
-    '0 10px 30px rgba(15,23,42,0.06), 0 0 0 1px rgba(251,146,60,0.025)',
-    '0 14px 38px rgba(0,0,0,0.22), 0 0 28px rgba(251,146,60,0.045)',
+    '0 10px 30px rgba(15,23,42,0.06), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.025)',
+    '0 14px 38px rgba(0,0,0,0.22), 0 0 28px rgba(var(--portfolio-accent-rgb),0.045)',
   );
   const cardHoverShadow = useColorModeValue(
-    '0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(251,146,60,0.08), 0 0 32px rgba(251,146,60,0.08)',
-    '0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(251,146,60,0.12), 0 0 42px rgba(251,146,60,0.13)',
+    '0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.08), 0 0 32px rgba(var(--portfolio-accent-rgb),0.08)',
+    '0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.12), 0 0 42px rgba(var(--portfolio-accent-rgb),0.13)',
   );
   const badgeGlow = useColorModeValue(
-    '0 0 0 1px rgba(251,146,60,0.05)',
-    '0 0 22px rgba(251,146,60,0.08)',
+    '0 0 0 1px rgba(var(--portfolio-accent-rgb),0.05)',
+    '0 0 22px rgba(var(--portfolio-accent-rgb),0.08)',
   );
   const primaryGlow = useColorModeValue(
-    '0 8px 24px rgba(237,137,54,0.18), 0 0 20px rgba(251,146,60,0.10)',
-    '0 10px 28px rgba(0,0,0,0.24), 0 0 28px rgba(251,146,60,0.22)',
+    '0 8px 24px rgba(var(--portfolio-accent-rgb),0.18), 0 0 20px rgba(var(--portfolio-accent-rgb),0.10)',
+    '0 10px 28px rgba(0,0,0,0.24), 0 0 28px rgba(var(--portfolio-accent-rgb),0.22)',
   );
   const primaryHoverGlow = useColorModeValue(
-    '0 12px 30px rgba(237,137,54,0.24), 0 0 28px rgba(251,146,60,0.14)',
-    '0 14px 34px rgba(0,0,0,0.30), 0 0 36px rgba(251,146,60,0.30)',
+    '0 12px 30px rgba(var(--portfolio-accent-rgb),0.24), 0 0 28px rgba(var(--portfolio-accent-rgb),0.14)',
+    '0 14px 34px rgba(0,0,0,0.30), 0 0 36px rgba(var(--portfolio-accent-rgb),0.30)',
   );
 
   return (
@@ -165,7 +168,7 @@ export default function Home() {
                   borderRadius={{ base: 'xl', md: 'full' }}
                   bg={softBg}
                   boxShadow={badgeGlow}
-                  color={'orange.300'}
+                  color={'var(--portfolio-accent)'}
                   fontSize={'xs'}
                   fontWeight={750}
                   lineHeight={1.45}
@@ -196,7 +199,8 @@ export default function Home() {
                     as={RouterLink}
                     to={'/Projects'}
                     size={'lg'}
-                    colorScheme={'orange'}
+                    bg={'var(--portfolio-accent)'}
+                    color={'var(--portfolio-accent-contrast)'}
                     rounded={'full'}
                     rightIcon={<FiArrowUpRight />}
                     px={7}
@@ -205,6 +209,7 @@ export default function Home() {
                     _hover={{
                       transform: 'translateY(-1px)',
                       boxShadow: primaryHoverGlow,
+                      bg: 'var(--portfolio-accent-strong)',
                     }}
                     w={{ base: '100%', sm: 'auto' }}>
                     {content.work}
@@ -240,7 +245,7 @@ export default function Home() {
                   <Text
                     fontSize={'xs'}
                     fontWeight={800}
-                    color={'orange.400'}
+                    color={'var(--portfolio-accent)'}
                     textTransform={'uppercase'}
                     letterSpacing={'0.12em'}
                     minW={0}>
@@ -250,8 +255,8 @@ export default function Home() {
                     w={2}
                     h={2}
                     borderRadius={'full'}
-                    bg={'orange.400'}
-                    boxShadow={'0 0 16px rgba(251,146,60,0.85)'}
+                    bg={'var(--portfolio-accent)'}
+                    boxShadow={'0 0 16px rgba(var(--portfolio-accent-rgb),0.85)'}
                   />
                 </HStack>
 
@@ -311,7 +316,7 @@ export default function Home() {
                 gap={4}>
                 <Box minW={0}>
                   <Text
-                    color={'orange.400'}
+                    color={'var(--portfolio-accent)'}
                     fontSize={'xs'}
                     fontWeight={800}
                     textTransform={'uppercase'}
@@ -364,7 +369,7 @@ export default function Home() {
                   _hover={{
                     transform: 'translateY(-4px)',
                     boxShadow: cardHoverShadow,
-                    borderColor: 'orange.300',
+                    borderColor: 'var(--portfolio-accent)',
                   }}>
                   <HStack justify={'space-between'} mb={7}>
                     <Box
@@ -374,7 +379,7 @@ export default function Home() {
                       h={11}
                       borderRadius={'xl'}
                       bg={softBg}
-                      color={'orange.400'}
+                      color={'var(--portfolio-accent)'}
                       fontSize={'sm'}
                       fontWeight={800}>
                       0{index + 1}
