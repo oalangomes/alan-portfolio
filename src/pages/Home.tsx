@@ -83,7 +83,7 @@ export default function Home() {
   const { language } = useLanguage();
   const content = copy[language];
 
-  const pageBg = useColorModeValue('gray.50', 'gray.950');
+  const pageBg = useColorModeValue('gray.50', 'gray.900');
   const subtle = useColorModeValue('gray.600', 'gray.300');
   const muted = useColorModeValue('gray.500', 'gray.400');
   const panelBg = useColorModeValue('rgba(255,255,255,0.78)', 'rgba(17,24,39,0.72)');
