@@ -1,5 +1,4 @@
 import {
-  Badge,
   Box,
   Button,
   Container,
@@ -108,31 +107,34 @@ export default function Home() {
         maxW={'7xl'}
         position={'relative'}
         py={{ base: 16, md: 24, lg: 28 }}
-        px={{ base: 5, md: 6 }}>
+        px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 14, md: 20 }}>
           <Grid
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
             gap={{ base: 10, lg: 12 }}
             alignItems={'center'}>
-            <GridItem colSpan={{ base: 1, lg: 7 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 7 }}>
               <Stack spacing={7}>
-                <Badge
+                <Box
                   alignSelf={'flex-start'}
+                  maxW={'100%'}
                   px={3}
-                  py={1.5}
-                  borderRadius={'full'}
-                  colorScheme={'orange'}
-                  variant={'subtle'}
-                  textTransform={'none'}
+                  py={2}
+                  borderRadius={{ base: 'xl', md: 'full' }}
+                  bg={softBg}
+                  color={'orange.300'}
                   fontSize={'xs'}
-                  letterSpacing={'0.02em'}>
+                  fontWeight={750}
+                  lineHeight={1.45}
+                  whiteSpace={'normal'}
+                  wordBreak={'break-word'}>
                   {content.badge}
-                </Badge>
+                </Box>
 
                 <Heading
                   maxW={'900px'}
                   fontWeight={850}
-                  fontSize={{ base: '4xl', sm: '5xl', md: '6xl', xl: '7xl' }}
+                  fontSize={{ base: '3xl', sm: '4xl', md: '6xl', xl: '7xl' }}
                   lineHeight={{ base: 1.02, md: 0.98 }}
                   letterSpacing={'-0.045em'}>
                   {content.heading}
@@ -140,13 +142,13 @@ export default function Home() {
 
                 <Text
                   color={subtle}
-                  fontSize={{ base: 'lg', md: 'xl' }}
-                  lineHeight={1.8}
+                  fontSize={{ base: 'md', md: 'xl' }}
+                  lineHeight={{ base: 1.7, md: 1.8 }}
                   maxW={'3xl'}>
                   {content.intro}
                 </Text>
 
-                <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
+                <Stack direction={{ base: 'column', sm: 'row' }} spacing={3} w={'100%'}>
                   <Button
                     as={RouterLink}
                     to={'/Projects'}
@@ -154,7 +156,8 @@ export default function Home() {
                     colorScheme={'orange'}
                     rounded={'full'}
                     rightIcon={<FiArrowUpRight />}
-                    px={7}>
+                    px={7}
+                    w={{ base: '100%', sm: 'auto' }}>
                     {content.work}
                   </Button>
                   <Button
@@ -163,64 +166,73 @@ export default function Home() {
                     size={'lg'}
                     variant={'ghost'}
                     rounded={'full'}
-                    px={7}>
+                    px={7}
+                    w={{ base: '100%', sm: 'auto' }}>
                     {content.about}
                   </Button>
                 </Stack>
               </Stack>
             </GridItem>
 
-            <GridItem colSpan={{ base: 1, lg: 5 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 5 }}>
               <Box
                 position={'relative'}
-                p={{ base: 6, md: 8 }}
+                w={'100%'}
+                maxW={'100%'}
+                minW={0}
+                p={{ base: 5, md: 8 }}
                 borderRadius={'3xl'}
                 borderWidth={'1px'}
                 borderColor={borderColor}
                 bg={panelBg}
                 backdropFilter={'blur(16px)'}
                 boxShadow={'0 24px 80px rgba(0,0,0,0.10)'}>
-                <HStack justify={'space-between'} mb={8}>
+                <HStack justify={'space-between'} align={'flex-start'} gap={4} mb={{ base: 6, md: 8 }}>
                   <Text
                     fontSize={'xs'}
                     fontWeight={800}
                     color={'orange.400'}
                     textTransform={'uppercase'}
-                    letterSpacing={'0.16em'}>
+                    letterSpacing={'0.12em'}
+                    minW={0}>
                     {content.current}
                   </Text>
                   <Box w={2} h={2} borderRadius={'full'} bg={'orange.400'} />
                 </HStack>
 
                 <Heading
-                  fontSize={{ base: '2xl', md: '3xl' }}
+                  fontSize={{ base: 'xl', sm: '2xl', md: '3xl' }}
                   lineHeight={1.2}
                   letterSpacing={'-0.03em'}>
                   {content.currentHeading}
                 </Heading>
 
-                <Text mt={5} color={subtle} lineHeight={1.8}>
+                <Text mt={5} color={subtle} lineHeight={1.75} overflowWrap={'anywhere'}>
                   {content.currentText}
                 </Text>
 
                 <Stack mt={8} spacing={3}>
                   {content.focus.map((item, index) => (
-                    <HStack
+                    <Grid
                       key={item}
-                      justify={'space-between'}
-                      px={4}
+                      templateColumns={'minmax(0, 1fr) auto'}
+                      gap={3}
+                      alignItems={'center'}
+                      px={{ base: 3, sm: 4 }}
                       py={3}
                       borderRadius={'xl'}
                       bg={softBg}>
-                      <Text fontWeight={650}>{item}</Text>
+                      <Text minW={0} fontWeight={650} overflowWrap={'anywhere'}>
+                        {item}
+                      </Text>
                       <Text
+                        flexShrink={0}
                         fontSize={'xs'}
                         fontWeight={800}
-                        color={muted}
-                        >
+                        color={muted}>
                         0{index + 1}
                       </Text>
-                    </HStack>
+                    </Grid>
                   ))}
                 </Stack>
               </Box>
@@ -231,7 +243,8 @@ export default function Home() {
             {content.pillars.map((pillar, index) => (
                 <Box
                   key={pillar.title}
-                  p={{ base: 6, md: 7 }}
+                  minW={0}
+                  p={{ base: 5, md: 7 }}
                   borderWidth={'1px'}
                   borderColor={borderColor}
                   borderRadius={'2xl'}
@@ -262,7 +275,7 @@ export default function Home() {
                     letterSpacing={'-0.02em'}>
                     {pillar.title}
                   </Heading>
-                  <Text color={subtle} lineHeight={1.75}>
+                  <Text color={subtle} lineHeight={1.75} overflowWrap={'anywhere'}>
                     {pillar.text}
                   </Text>
                 </Box>

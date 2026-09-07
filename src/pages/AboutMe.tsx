@@ -134,15 +134,15 @@ export default function AboutMe() {
 
   return (
     <Box bg={pageBg}>
-      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 5, md: 6 }}>
-        <Stack spacing={{ base: 14, md: 18 }}>
+      <Container maxW={'7xl'} py={{ base: 12, md: 22 }} px={{ base: 4, md: 6 }}>
+        <Stack spacing={{ base: 10, md: 18 }}>
           <Grid
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
-            gap={{ base: 8, lg: 12 }}
+            gap={{ base: 6, lg: 12 }}
             alignItems={'center'}>
-            <GridItem colSpan={{ base: 1, lg: 4 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 4 }}>
               <Box
-                p={3}
+                p={{ base: 2, md: 3 }}
                 display={'inline-block'}
                 borderRadius={'3xl'}
                 borderWidth={'1px'}
@@ -153,7 +153,7 @@ export default function AboutMe() {
               </Box>
             </GridItem>
 
-            <GridItem colSpan={{ base: 1, lg: 8 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 8 }}>
               <Stack spacing={4}>
                 <Text
                   color={'orange.400'}
@@ -172,7 +172,8 @@ export default function AboutMe() {
                 <Text
                   fontSize={{ base: 'lg', md: 'xl' }}
                   color={subtle}
-                  maxW={'3xl'}>
+                  maxW={'3xl'}
+                  overflowWrap={'anywhere'}>
                   {content.role}
                 </Text>
               </Stack>
@@ -181,8 +182,8 @@ export default function AboutMe() {
 
           <Grid
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
-            gap={{ base: 8, lg: 12 }}>
-            <GridItem colSpan={{ base: 1, lg: 4 }}>
+            gap={{ base: 5, lg: 12 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 4 }}>
               <Text
                 fontSize={'xs'}
                 fontWeight={800}
@@ -192,18 +193,19 @@ export default function AboutMe() {
                 2012 → {language === 'pt-BR' ? 'Hoje' : 'Today'}
               </Text>
             </GridItem>
-            <GridItem colSpan={{ base: 1, lg: 8 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 8 }}>
               <Stack
-                spacing={5}
+                spacing={{ base: 4, md: 5 }}
                 fontSize={{ base: 'md', md: 'lg' }}
-                lineHeight={1.9}
+                lineHeight={{ base: 1.75, md: 1.9 }}
                 color={subtle}>
                 {content.intro.map((paragraph, index) => (
                   <Text
                     key={paragraph}
-                    fontSize={index === 0 ? { base: 'lg', md: 'xl' } : undefined}
+                    fontSize={index === 0 ? { base: 'md', md: 'xl' } : undefined}
                     color={index === 0 ? primaryText : subtle}
-                    fontWeight={index === 0 ? 550 : 400}>
+                    fontWeight={index === 0 ? 600 : 400}
+                    overflowWrap={'anywhere'}>
                     {paragraph}
                   </Text>
                 ))}
@@ -212,7 +214,7 @@ export default function AboutMe() {
           </Grid>
 
           <Stack spacing={7}>
-            <Stack spacing={3} maxW={'4xl'}>
+            <Stack spacing={3} maxW={'4xl'} minW={0}>
               <Text
                 color={'orange.400'}
                 fontWeight={800}
@@ -227,7 +229,7 @@ export default function AboutMe() {
                 letterSpacing={'-0.035em'}>
                 {content.journeyHeading}
               </Heading>
-              <Text color={subtle} fontSize={'lg'} lineHeight={1.8}>
+              <Text color={subtle} fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8} overflowWrap={'anywhere'}>
                 {content.journeyText}
               </Text>
             </Stack>
@@ -241,8 +243,8 @@ export default function AboutMe() {
                   py={{ base: 6, md: 8 }}
                   borderTopWidth={'1px'}
                   borderColor={borderColor}>
-                  <Box>
-                    <HStack spacing={3}>
+                  <Box minW={0}>
+                    <HStack spacing={3} align={'flex-start'}>
                       <Box
                         w={2}
                         h={2}
@@ -253,23 +255,25 @@ export default function AboutMe() {
                       <Text
                         color={'orange.400'}
                         fontWeight={800}
-                        fontSize={'sm'}>
+                        fontSize={'sm'}
+                        overflowWrap={'anywhere'}>
                         {item.period}
                       </Text>
                     </HStack>
                   </Box>
-                  <Box>
-                    <HStack justify={'space-between'} align={'start'} gap={5}>
+                  <Box minW={0}>
+                    <HStack justify={'space-between'} align={'start'} gap={4} minW={0}>
                       <Heading
                         fontSize={{ base: 'xl', md: '2xl' }}
-                        letterSpacing={'-0.02em'}>
+                        letterSpacing={'-0.02em'}
+                        overflowWrap={'anywhere'}>
                         {item.title}
                       </Heading>
                       <Text fontSize={'xs'} fontWeight={800} color={muted}>
                         0{index + 1}
                       </Text>
                     </HStack>
-                    <Text mt={3} color={subtle} lineHeight={1.8}>
+                    <Text mt={3} color={subtle} lineHeight={1.8} overflowWrap={'anywhere'}>
                       {item.text}
                     </Text>
                   </Box>
@@ -288,7 +292,8 @@ export default function AboutMe() {
               {content.areas.map((area, index) => (
                 <Box
                   key={area.title}
-                  p={{ base: 6, md: 7 }}
+                  minW={0}
+                  p={{ base: 5, md: 7 }}
                   borderWidth={'1px'}
                   borderColor={borderColor}
                   borderRadius={'2xl'}
@@ -308,7 +313,7 @@ export default function AboutMe() {
                   <Heading fontSize={'xl'} mb={3}>
                     {area.title}
                   </Heading>
-                  <Text color={subtle} lineHeight={1.75}>
+                  <Text color={subtle} lineHeight={1.75} overflowWrap={'anywhere'}>
                     {area.text}
                   </Text>
                 </Box>
