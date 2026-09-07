@@ -24,7 +24,7 @@ The portfolio highlights four representative fronts:
 
 The project uses Vite for development and production builds. Routing uses hash-based URLs so navigation remains compatible with static hosting on GitHub Pages.
 
-The UI supports **English and Brazilian Portuguese**, detects the browser language on the first visit, allows manual switching from the header and persists the selected language locally.
+The UI supports **English and Brazilian Portuguese**. English is the default language, the header shows the active language, and a manual switch persists the selected preference locally.
 
 ## Requirements
 
