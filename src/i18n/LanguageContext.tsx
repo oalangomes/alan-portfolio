@@ -39,15 +39,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, language);
     document.documentElement.lang = language;
 
-    document.title =
-      language === 'pt-BR'
-        ? 'Alan Gomes — Arquiteto de Software'
-        : 'Alan Gomes — Software Architect';
-
     const title =
       language === 'pt-BR'
         ? 'Alan Gomes — Arquiteto de Software'
         : 'Alan Gomes — Software Architect';
+    document.title = title;
+
     const descriptionText =
       language === 'pt-BR'
         ? 'Alan Gomes — Arquitetura de Software, Engenharia de IA, Developer Tooling e Engenharia de Produto.'
