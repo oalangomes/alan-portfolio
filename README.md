@@ -54,9 +54,10 @@ Vite serves the local app on the URL printed in the terminal, normally `http://l
 npm test
 npm run typecheck
 npm run build
+npm run check:bundle-budget
 ```
 
-The same test and production-build validation runs in GitHub Actions for pull requests and pushes to `master`.
+The same test and production-build validation runs in GitHub Actions for pull requests and pushes to `master`. CI also enforces a 450 KB budget for the initial JavaScript bundle.
 
 ## Deployment
 
@@ -83,10 +84,19 @@ src/
 - Keep the public portfolio professional without turning it into a copy of a résumé.
 - Evolve the site incrementally and keep deployment simple.
 
+## Production safeguards
+
+- hash-router-safe skip navigation;
+- active-route semantics with `aria-current`;
+- reduced-motion support;
+- global 404 page and React error recovery boundary;
+- guarded contact submission with a direct-email fallback;
+- initial JavaScript bundle budget enforced in CI.
+
 ## Next technical improvements
 
-- improve automated accessibility checks;
-- add Lighthouse budgets to deployment validation;
+- add automated axe accessibility scans;
+- add full Lighthouse score budgets to deployment validation;
 - replace the generic OpenGraph image with a dedicated social preview asset.
 
 ## Author
