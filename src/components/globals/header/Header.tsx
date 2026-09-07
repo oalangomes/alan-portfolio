@@ -110,6 +110,7 @@ export default function Nav() {
                   as={RouterLink}
                   key={link.to}
                   to={link.to}
+                  aria-current={active ? 'page' : undefined}
                   px={4}
                   py={2}
                   borderRadius={'full'}
@@ -173,6 +174,7 @@ export default function Nav() {
                     as={RouterLink}
                     key={link.to}
                     to={link.to}
+                    aria-current={location.pathname === link.to ? 'page' : undefined}
                     borderRadius={'lg'}
                     fontWeight={location.pathname === link.to ? 700 : 500}>
                     {link.label}
