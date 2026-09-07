@@ -1,44 +1,40 @@
 import {
   Box,
   Flex,
-  useColorModeValue
+  Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
-
 import ContactComponent from '../components/contactForm/ContactComponent';
-
 import { CONFETTI_LIGHT, CONFETTI_DARK } from '../assets/confetti';
-const confetti = {
-  light: {
-    primary: '4299E1', // blue.400
-    secondary: 'BEE3F8', // blue.100
-  },
 
-  dark: {
-    primary: '1A365D', // blue.900
-    secondary: '2A4365', // blue.800
-  },
-};
-
-
-export default function ContactFormWithSocialButtons() {
-  
+export default function Contact() {
   return (
     <Flex
       bg={useColorModeValue('gray.100', 'gray.900')}
-      align="center"
-      justify="center"
+      align={'center'}
+      justify={'center'}
+      direction={'column'}
+      px={4}
+      py={{ base: 12, md: 16 }}
       css={{
         backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
         backgroundAttachment: 'fixed',
       }}
-      id="contact">
-      <Box
-        borderRadius="lg"
-        m={{ base: 2, md: 16, lg: 4 }}
-        p={{ base: 2, lg: 8 }}>
-        <Box>
-                <ContactComponent title='Send Me a Message!' emailOnCopy='alangssilva@gmail.com' ></ContactComponent>
-        </Box>
+      id={'contact'}>
+      <Box maxW={'3xl'} textAlign={'center'} mb={8}>
+        <Text color={'orange.400'} fontWeight={700} textTransform={'uppercase'}>
+          Contact
+        </Text>
+        <Text mt={2} color={useColorModeValue('gray.600', 'gray.300')}>
+          Architecture, engineering, product ideas or an interesting technical problem — feel free to reach out.
+        </Text>
+      </Box>
+
+      <Box borderRadius={'lg'} p={{ base: 2, lg: 8 }}>
+        <ContactComponent
+          title={'Let\'s talk'}
+          emailOnCopy={'alangssilva@gmail.com'}
+        />
       </Box>
     </Flex>
   );
