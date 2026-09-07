@@ -26,7 +26,7 @@ The project uses Vite for development and production builds. Routing uses hash-b
 
 ## Requirements
 
-- Node.js 22.12 or newer
+- Node.js 22.13 or newer
 - npm
 
 ## Run locally
