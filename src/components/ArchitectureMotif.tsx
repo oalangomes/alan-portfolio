@@ -1,8 +1,11 @@
 import { Box, useColorModeValue } from '@chakra-ui/react';
 
 export default function ArchitectureMotif() {
-  const line = useColorModeValue('rgba(221,107,32,0.22)', 'rgba(251,146,60,0.18)');
-  const dot = useColorModeValue('orange.300', 'orange.300');
+  const line = useColorModeValue(
+    'rgba(var(--portfolio-accent-rgb),0.22)',
+    'rgba(var(--portfolio-accent-rgb),0.18)',
+  );
+  const dot = 'var(--portfolio-accent)';
 
   return (
     <Box
