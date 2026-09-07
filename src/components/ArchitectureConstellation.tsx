@@ -20,17 +20,24 @@ const pulse = keyframes`
   }
 `;
 
-const signal = keyframes`
+const travel = keyframes`
   0% {
-    stroke-dashoffset: 42;
-    opacity: 0.2;
+    top: 10%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
   }
   50% {
-    opacity: 0.7;
+    top: 40%;
+    opacity: 1;
+  }
+  82% {
+    opacity: 0.8;
   }
   100% {
-    stroke-dashoffset: 0;
-    opacity: 0.2;
+    top: 91%;
+    opacity: 0;
   }
 `;
 
@@ -149,8 +156,6 @@ export default function ArchitectureConstellation() {
   const mobileNodeBg = useColorModeValue('whiteAlpha.800', 'whiteAlpha.50');
   const muted = useColorModeValue('gray.500', 'gray.400');
 
-  const byId = Object.fromEntries(content.nodes.map((node) => [node.id, node]));
-
   return (
     <Box
       role={'img'}
@@ -222,31 +227,37 @@ export default function ArchitectureConstellation() {
         position={'relative'}
         h={{ md: '320px', lg: '350px' }}
         minW={0}>
-        <Box
-          as={'svg'}
-          position={'absolute'}
-          inset={0}
-          w={'100%'}
-          h={'100%'}
-          viewBox={'0 0 600 420'}
-          preserveAspectRatio={'none'}
-          aria-hidden={'true'}>
+        <svg
+          viewBox="0 0 600 420"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+          }}>
           <line x1="300" y1="42" x2="300" y2="168" stroke={line} strokeWidth="1.5" />
           <line x1="114" y1="168" x2="300" y2="168" stroke={softLine} strokeWidth="1.5" />
           <line x1="300" y1="168" x2="486" y2="168" stroke={softLine} strokeWidth="1.5" />
           <line x1="300" y1="168" x2="300" y2="290" stroke={line} strokeWidth="1.5" />
           <line x1="300" y1="290" x2="300" y2="382" stroke={line} strokeWidth="1.5" />
+        </svg>
 
-          <g
-            style={{
-              animation: reducedMotion ? undefined : `${signal} 5.5s linear infinite`,
-              strokeDasharray: '7 8',
-            }}>
-            <line x1="300" y1="42" x2="300" y2="168" stroke={line} strokeWidth="2.5" />
-            <line x1="114" y1="168" x2="486" y2="168" stroke={line} strokeWidth="2.5" />
-            <line x1="300" y1="168" x2="300" y2="382" stroke={line} strokeWidth="2.5" />
-          </g>
-        </Box>
+        <Box
+          position={'absolute'}
+          left={'50%'}
+          top={'10%'}
+          w={2}
+          h={2}
+          borderRadius={'full'}
+          bg={'orange.300'}
+          boxShadow={'0 0 18px rgba(251,146,60,0.85)'}
+          transform={'translate(-50%, -50%)'}
+          zIndex={1}
+          animation={reducedMotion ? undefined : `${travel} 6.5s ease-in-out infinite`}
+          pointerEvents={'none'}
+        />
 
         <Box
           position={'absolute'}
