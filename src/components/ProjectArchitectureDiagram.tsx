@@ -18,6 +18,7 @@ const toneRgb: Record<ProjectVisual['tone'], string> = {
   purple: '168,85,247',
   green: '74,222,128',
   blue: '96,165,250',
+  cyan: '34,211,238',
   gray: '148,163,184',
 };
 
@@ -233,6 +234,31 @@ export default function ProjectArchitectureDiagram({
                 ↑
               </Text>
             </HStack>
+          </Stack>
+        );
+
+      case 'predictive-system':
+        return (
+          <Stack spacing={2.5}>
+            <Grid
+              templateColumns={'minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)'}
+              gap={2}
+              alignItems={'center'}>
+              {node(a)}
+              <Arrow />
+              {node(b)}
+              <Arrow />
+              {node(c, true)}
+            </Grid>
+            <DownArrow />
+            <Grid
+              templateColumns={'minmax(0,1fr) auto minmax(0,1fr)'}
+              gap={2}
+              alignItems={'center'}>
+              {node(d, true)}
+              <Arrow />
+              {node(e)}
+            </Grid>
           </Stack>
         );
     }
