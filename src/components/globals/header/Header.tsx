@@ -46,6 +46,10 @@ export default function Nav() {
   const navBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
   const activeBg = useColorModeValue('white', 'whiteAlpha.200');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+  const activeText = useColorModeValue('gray.900', 'white');
+  const inactiveText = useColorModeValue('gray.600', 'gray.300');
+  const brandSubtle = useColorModeValue('gray.500', 'gray.400');
+  const logoBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
 
   return (
     <Box
@@ -71,7 +75,7 @@ export default function Nav() {
                 w={10}
                 h={10}
                 borderRadius={'xl'}
-                bg={useColorModeValue('blackAlpha.50', 'whiteAlpha.100')}>
+                bg={logoBg}>
                 <Logo size={25} />
               </Box>
               <Box display={{ base: 'none', sm: 'block' }}>
@@ -81,7 +85,7 @@ export default function Nav() {
                 <Text
                   mt={1}
                   fontSize={'xs'}
-                  color={useColorModeValue('gray.500', 'gray.400')}>
+                  color={brandSubtle}>
                   {isPortuguese ? 'Arquiteto de Software' : 'Software Architect'}
                 </Text>
               </Box>
@@ -112,14 +116,10 @@ export default function Nav() {
                   boxShadow={active ? 'sm' : 'none'}
                   fontSize={'sm'}
                   fontWeight={active ? 700 : 600}
-                  color={
-                    active
-                      ? useColorModeValue('gray.900', 'white')
-                      : useColorModeValue('gray.600', 'gray.300')
-                  }
+                  color={active ? activeText : inactiveText}
                   _hover={{
                     textDecoration: 'none',
-                    color: useColorModeValue('gray.900', 'white'),
+                    color: activeText,
                   }}>
                   {link.label}
                 </Link>
