@@ -4,7 +4,6 @@ import {
   Stack,
   Text,
   useColorModeValue,
-  usePrefersReducedMotion,
 } from '@chakra-ui/react';
 import { keyframes } from '@emotion/react';
 import { useLanguage } from '../i18n/LanguageContext';
@@ -85,7 +84,6 @@ interface NodeProps {
   emphasis?: boolean;
   left: string;
   top: string;
-  reducedMotion: boolean;
 }
 
 function DesktopNode({
@@ -94,7 +92,6 @@ function DesktopNode({
   emphasis,
   left,
   top,
-  reducedMotion,
 }: NodeProps) {
   const nodeBg = useColorModeValue('rgba(255,255,255,0.94)', 'rgba(17,24,39,0.94)');
   const border = useColorModeValue('blackAlpha.200', 'whiteAlpha.200');
@@ -119,9 +116,7 @@ function DesktopNode({
       bg={emphasis ? emphasisBg : nodeBg}
       boxShadow={emphasis ? 'lg' : 'sm'}
       zIndex={2}
-      animation={
-        emphasis && !reducedMotion ? `${pulse} 4.8s ease-in-out infinite` : undefined
-      }
+      animation={emphasis ? `${pulse} 4.8s ease-in-out infinite` : undefined}
       transition={'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease'}
       _hover={{
         transform: 'translate(-50%, -50%) scale(1.035)',
@@ -147,8 +142,6 @@ function DesktopNode({
 export default function ArchitectureConstellation() {
   const { language } = useLanguage();
   const content = copy[language];
-  const reducedMotion = usePrefersReducedMotion();
-
   const panelBg = useColorModeValue('rgba(255,255,255,0.58)', 'rgba(17,24,39,0.42)');
   const border = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const line = useColorModeValue('rgba(221,107,32,0.34)', 'rgba(251,146,60,0.34)');
@@ -255,7 +248,7 @@ export default function ArchitectureConstellation() {
           boxShadow={'0 0 18px rgba(251,146,60,0.85)'}
           transform={'translate(-50%, -50%)'}
           zIndex={1}
-          animation={reducedMotion ? undefined : `${travel} 6.5s ease-in-out infinite`}
+          animation={`${travel} 6.5s ease-in-out infinite`}
           pointerEvents={'none'}
         />
 
@@ -281,7 +274,6 @@ export default function ArchitectureConstellation() {
             emphasis={node.id === 'evidence'}
             left={desktopPositions[node.id].left}
             top={desktopPositions[node.id].top}
-            reducedMotion={reducedMotion}
           />
         ))}
 
