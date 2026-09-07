@@ -78,7 +78,8 @@ export default function CenterFooter() {
               h={10}
               borderRadius={'xl'}
               borderWidth={'1px'}
-              borderColor={borderColor}>
+              borderColor={borderColor}
+              overflow={'hidden'}>
               <Logo size={24} />
             </Box>
             <Box>
