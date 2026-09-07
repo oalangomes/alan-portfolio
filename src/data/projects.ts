@@ -1,10 +1,28 @@
 import { Language } from '../i18n/LanguageContext';
 
+export type ProjectVisualKind =
+  | 'control-plane'
+  | 'governed-context'
+  | 'product-ecosystem'
+  | 'offline-loop'
+  | 'data-pipeline';
+
+interface LocalizedText {
+  en: string;
+  'pt-BR': string;
+}
+
+interface ProjectVisualDefinition {
+  kind: ProjectVisualKind;
+  label: LocalizedText;
+  nodes: Record<Language, string[]>;
+  tone: 'orange' | 'purple' | 'green' | 'blue' | 'gray';
+}
+
 export interface ProjectVisual {
+  kind: ProjectVisualKind;
   label: string;
-  primary: string;
-  secondary: string;
-  tertiary: string;
+  nodes: string[];
   tone: 'orange' | 'purple' | 'green' | 'blue' | 'gray';
 }
 
@@ -22,11 +40,6 @@ export interface Project {
   status: string;
 }
 
-interface LocalizedText {
-  en: string;
-  'pt-BR': string;
-}
-
 interface ProjectDefinition {
   id: number;
   name: string;
@@ -40,40 +53,65 @@ interface ProjectDefinition {
   status: LocalizedText;
 }
 
-const projectVisuals: Record<number, ProjectVisual> = {
+const projectVisualDefinitions: Record<number, ProjectVisualDefinition> = {
   0: {
-    label: 'GOVERNED AI R&D',
-    primary: 'context → evidence',
-    secondary: 'retrieval → evaluation',
-    tertiary: 'lifecycle → execution',
+    kind: 'governed-context',
+    label: {
+      en: 'Conceptual system view',
+      'pt-BR': 'Visão conceitual do sistema',
+    },
+    nodes: {
+      en: ['Request', 'Context', 'Evidence', 'Action'],
+      'pt-BR': ['Demanda', 'Contexto', 'Evidência', 'Ação'],
+    },
     tone: 'purple',
   },
   1: {
-    label: 'LOCAL CONTROL PLANE',
-    primary: 'runnerctl status',
-    secondary: 'runnerctl doctor',
-    tertiary: 'systemd • self-hosted',
+    kind: 'control-plane',
+    label: {
+      en: 'Conceptual control plane',
+      'pt-BR': 'Control plane conceitual',
+    },
+    nodes: {
+      en: ['CLI', 'Control', 'systemd', 'Runner A', 'Runner B'],
+      'pt-BR': ['CLI', 'Controle', 'systemd', 'Runner A', 'Runner B'],
+    },
     tone: 'green',
   },
   2: {
-    label: 'PRODUCT ECOSYSTEM',
-    primary: 'WEB',
-    secondary: 'API',
-    tertiary: 'MOBILE • INTEGRATIONS',
+    kind: 'product-ecosystem',
+    label: {
+      en: 'Product ecosystem',
+      'pt-BR': 'Ecossistema de produto',
+    },
+    nodes: {
+      en: ['Web', 'Mobile', 'API', 'Domain', 'Integrations'],
+      'pt-BR': ['Web', 'Mobile', 'API', 'Domínio', 'Integrações'],
+    },
     tone: 'blue',
   },
   3: {
-    label: 'OFFLINE-FIRST PWA',
-    primary: 'TRAIN',
-    secondary: 'TRACK',
-    tertiary: 'RECOVER • LOCAL',
+    kind: 'offline-loop',
+    label: {
+      en: 'Offline-first product loop',
+      'pt-BR': 'Fluxo de produto offline-first',
+    },
+    nodes: {
+      en: ['Profile', 'Equipment', 'Generator', 'Workout', 'Local history'],
+      'pt-BR': ['Perfil', 'Equipamentos', 'Gerador', 'Treino', 'Histórico local'],
+    },
     tone: 'orange',
   },
   4: {
-    label: 'MANAGER MODE DATA',
-    primary: 'SEASON • SQUAD',
-    secondary: 'MATCHES • REPORTS',
-    tertiary: 'PYTHON • ACTIONS',
+    kind: 'data-pipeline',
+    label: {
+      en: 'Data-to-decision flow',
+      'pt-BR': 'Fluxo de dados para decisão',
+    },
+    nodes: {
+      en: ['Match data', 'Pipeline', 'Reports', 'Squad', 'History'],
+      'pt-BR': ['Dados de jogo', 'Pipeline', 'Relatórios', 'Elenco', 'Histórico'],
+    },
     tone: 'gray',
   },
 };
@@ -284,7 +322,12 @@ export const getProjects = (language: Language): Project[] =>
     .map((project) => ({
       id: project.id,
       name: project.name,
-      visual: projectVisuals[project.id],
+      visual: {
+        kind: projectVisualDefinitions[project.id].kind,
+        label: projectVisualDefinitions[project.id].label[language],
+        nodes: projectVisualDefinitions[project.id].nodes[language],
+        tone: projectVisualDefinitions[project.id].tone,
+      },
       eyebrow: project.eyebrow[language],
       githubUrl: project.githubUrl,
       hashtags: project.hashtags,
