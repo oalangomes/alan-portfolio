@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { Link as RouterLink } from 'react-router-dom';
-import ArchitectureConstellation from '../components/ArchitectureConstellation';
+import ArchitectureMotif from '../components/ArchitectureMotif';
 import { useLanguage } from '../i18n/LanguageContext';
 
 const copy = {
@@ -44,6 +44,7 @@ const copy = {
       'Governed coding agents, retrieval benchmarks and local-first developer infrastructure.',
     currentText:
       'I like projects where architecture has to survive contact with reality: imperfect repositories, constrained context, security boundaries, operational friction and changing product needs.',
+    focus: ['Coding agents', 'Retrieval benchmarks', 'Local-first infrastructure'],
     proofLabel: 'Career context',
     proofLead: 'Engineering across products, consulting and enterprise systems since 2012.',
     proofItems: ['Since 2012', 'Siemens & Bematech', 'Claro & Vivo', 'Enterprise consulting'],
@@ -75,6 +76,7 @@ const copy = {
       'Agentes de código governados, benchmarks de retrieval e infraestrutura local-first para desenvolvimento.',
     currentText:
       'Gosto de projetos em que a arquitetura precisa sobreviver ao contato com a realidade: repositórios imperfeitos, contexto limitado, fronteiras de segurança, atrito operacional e necessidades de produto em mudança.',
+    focus: ['Agentes de código', 'Benchmarks de retrieval', 'Infraestrutura local-first'],
     proofLabel: 'Contexto de carreira',
     proofLead: 'Engenharia entre produtos, consultoria e sistemas enterprise desde 2012.',
     proofItems: ['Desde 2012', 'Siemens & Bematech', 'Claro & Vivo', 'Consultoria enterprise'],
@@ -228,9 +230,32 @@ export default function Home() {
                   {content.currentText}
                 </Text>
 
-                <Box mt={8}>
-                  <ArchitectureConstellation />
-                </Box>
+                <Stack mt={8} spacing={3} position={'relative'} zIndex={1}>
+                  {content.focus.map((item, index) => (
+                    <Grid
+                      key={item}
+                      templateColumns={'minmax(0, 1fr) auto'}
+                      gap={3}
+                      alignItems={'center'}
+                      px={{ base: 3, sm: 4 }}
+                      py={3}
+                      borderRadius={'xl'}
+                      bg={softBg}>
+                      <Text minW={0} fontWeight={650} overflowWrap={'anywhere'}>
+                        {item}
+                      </Text>
+                      <Text
+                        flexShrink={0}
+                        fontSize={'xs'}
+                        fontWeight={800}
+                        color={muted}>
+                        0{index + 1}
+                      </Text>
+                    </Grid>
+                  ))}
+                </Stack>
+
+                <ArchitectureMotif />
               </Box>
             </GridItem>
           </Grid>

@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { FiArrowLeft, FiCheck, FiGithub } from 'react-icons/fi';
 import { Link as RouterLink, useParams } from 'react-router-dom';
+import ProjectArchitectureDiagram from '../components/ProjectArchitectureDiagram';
 import { getProjects } from '../data/projects';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -143,6 +144,8 @@ export default function ProjectDetails() {
               {project.summary}
             </Text>
           </Stack>
+
+          <ProjectArchitectureDiagram visual={project.visual} />
 
           <Grid
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
