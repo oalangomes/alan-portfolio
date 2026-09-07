@@ -1,17 +1,26 @@
-import { Avatar } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
+import AlanBrand from '../../images/header/Alan.png';
 
 interface MyAvatarProps {
   size: 'sm' | 'md' | 'lg' | 'xl';
 }
 
+const dimensions = {
+  sm: 8,
+  md: 10,
+  lg: 12,
+  xl: 28,
+};
+
 export default function MyAvatar({ size }: MyAvatarProps) {
   return (
-    <>
-      <Avatar
-        size={size}
-        src={'https://media.licdn.com/dms/image/D4D03AQEyMoNOTkOUug/profile-displayphoto-shrink_200_200/0/1688024264692?e=1694044800&v=beta&t=Ijs05eQurw6H4gi1BGvy8pL-1tN6bY1uoeXW4tFLIOk'}
-        name="Alan avatar"
-      />
-    </>
+    <Image
+      src={AlanBrand}
+      alt={'Alan Gomes'}
+      boxSize={dimensions[size]}
+      objectFit={'contain'}
+      borderRadius={'2xl'}
+      flexShrink={0}
+    />
   );
 }
