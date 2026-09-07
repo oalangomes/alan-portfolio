@@ -24,6 +24,8 @@ The portfolio highlights four representative fronts:
 
 The project uses Vite for development and production builds. Routing uses hash-based URLs so navigation remains compatible with static hosting on GitHub Pages.
 
+The UI supports **English and Brazilian Portuguese**, detects the browser language on the first visit, allows manual switching from the header and persists the selected language locally.
+
 ## Requirements
 
 - Node.js 22.13 or newer
@@ -55,7 +57,6 @@ npm run build
 
 The same test and production-build validation runs in GitHub Actions for pull requests and pushes to `master`.
 
-
 ## Deployment
 
 Production is built by Vite and published from `dist/` through the GitHub Pages workflow in `.github/workflows/pages.yml`.
@@ -68,6 +69,7 @@ The repository's GitHub Pages publishing source must be set to **GitHub Actions*
 src/
 ├── components/       # reusable UI
 ├── data/             # portfolio project catalog
+├── i18n/             # language state and persistence
 ├── pages/            # home, about, work, details and contact
 └── __tests__/        # focused UI tests
 ```
@@ -84,7 +86,6 @@ src/
 
 - add metadata/SEO and social preview cards;
 - improve automated accessibility checks;
-- add a lightweight PT-BR / EN content strategy;
 - add Lighthouse budgets to deployment validation.
 
 ## Author
