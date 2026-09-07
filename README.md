@@ -1,67 +1,74 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Alan Gomes — Portfolio
 
-## Available Scripts
+Personal engineering portfolio focused on **software architecture, AI engineering, developer tooling and product engineering**.
 
-In the project directory, you can run:
+This repository is intentionally more than a gallery of technologies. The portfolio is organized around selected projects and short case studies that explain the problem, the engineering decisions and what each project demonstrates.
 
-### `npm start`
+## Current positioning
 
-Runs the app in the development mode.<br /> Open
-[http://localhost:3000](http://localhost:3000) to view it in the browser.
+The portfolio highlights four representative fronts:
 
-The page will reload if you make edits.<br /> You will also see any lint errors
-in the console.
+- **AgentsOrchNext** — governed coding-agent and context-engineering R&D;
+- **runnerctl** — open-source local control plane for self-hosted GitHub Actions runners;
+- **NeuroTrack** — long-running multi-client product engineering ecosystem;
+- **Caverna BJJ** — lightweight offline-first PWA built from a real personal use case.
 
-### `npm test`
+## Stack
 
-Launches the test runner in the interactive watch mode.<br /> See the section
-about
-[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
-for more information.
+- React 18
+- TypeScript
+- Chakra UI
+- React Router
+- Jest / Testing Library
 
-### `npm run build`
+The project still uses Create React App. The current refresh intentionally improves content, positioning and information architecture before introducing a framework migration.
 
-Builds the app for production to the `build` folder.<br /> It correctly bundles
-React in production mode and optimizes the build for the best performance.
+## Run locally
 
-The build is minified and the filenames include the hashes.<br /> Your app is
-ready to be deployed!
+```bash
+npm install
+npm start
+```
 
-See the section about
-[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
-more information.
+Then open `http://localhost:3000`.
 
-### `npm run eject`
+## Validation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm test -- --watchAll=false
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can
-`eject` at any time. This command will remove the single build dependency from
-your project.
+## Structure
 
-Instead, it will copy all the configuration files and the transitive
-dependencies (webpack, Babel, ESLint, etc) right into your project so you have
-full control over them. All of the commands except `eject` will still work, but
-they will point to the copied scripts so you can tweak them. At this point
-you’re on your own.
+```text
+src/
+├── components/       # reusable UI
+├── data/             # portfolio project catalog
+├── pages/            # home, about, work, details and contact
+└── __tests__/        # focused UI tests
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for
-small and middle deployments, and you shouldn’t feel obligated to use this
-feature. However we understand that this tool wouldn’t be useful if you couldn’t
-customize it when you are ready for it.
+## Content principles
 
-## Learn More
+- Prefer a few strong projects over a long list of unfinished demos.
+- Explain architecture and trade-offs, not only technology names.
+- Mark private work clearly instead of linking to inaccessible repositories.
+- Keep the public portfolio professional without turning it into a copy of a résumé.
+- Evolve the site incrementally and keep deployment simple.
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Next technical improvements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- migrate from Create React App to a maintained build stack;
+- add metadata/SEO and social preview cards;
+- improve automated accessibility checks;
+- add a lightweight PT-BR / EN content strategy;
+- add deployment checks and Lighthouse budgets.
 
-## Environment Variables
+## Author
 
-Create a `.env` file based on the provided `.env.example` and add your API
-keys. The application expects the following variables:
+**Alan Gomes**  
+Software Architect • Hands-on Engineer • Digital Innovation
 
-- `REACT_APP_ABSTRACTAPI_KEY` – API key used for email validation
-- `REACT_APP_EMAILJS_KEY` – public key used to initialise EmailJS
+- GitHub: https://github.com/oalangomes
+- LinkedIn: https://linkedin.com/in/oalangomes
