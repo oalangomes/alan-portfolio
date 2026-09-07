@@ -78,7 +78,7 @@ export default function ProjectCards(project: ProjectCardProps) {
             fontSize={'sm'}
             fontWeight={800}
             color={muted}
-            fontVariantNumeric={'tabular-nums'}>
+            >
             {String((project.index ?? 0) + 1).padStart(2, '0')}
           </Text>
         </HStack>
