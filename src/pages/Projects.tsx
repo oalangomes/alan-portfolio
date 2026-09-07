@@ -43,10 +43,40 @@ export default function Projects() {
   const subtle = useColorModeValue('gray.600', 'gray.300');
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
+  const ambientGlow = useColorModeValue(
+    'radial-gradient(circle at 82% 10%, rgba(96,165,250,0.08), transparent 26%), radial-gradient(circle at 18% 42%, rgba(251,146,60,0.07), transparent 30%)',
+    'radial-gradient(circle at 82% 10%, rgba(96,165,250,0.12), transparent 28%), radial-gradient(circle at 18% 42%, rgba(251,146,60,0.10), transparent 32%)',
+  );
+  const ctaShadow = useColorModeValue(
+    '0 16px 42px rgba(15,23,42,0.08), 0 0 0 1px rgba(251,146,60,0.04), 0 0 34px rgba(251,146,60,0.05)',
+    '0 18px 50px rgba(0,0,0,0.28), 0 0 0 1px rgba(251,146,60,0.08), 0 0 40px rgba(251,146,60,0.10)',
+  );
+  const buttonGlow = useColorModeValue(
+    '0 8px 22px rgba(237,137,54,0.16)',
+    '0 10px 26px rgba(0,0,0,0.22), 0 0 24px rgba(251,146,60,0.18)',
+  );
+  const buttonHoverGlow = useColorModeValue(
+    '0 12px 28px rgba(237,137,54,0.22), 0 0 22px rgba(251,146,60,0.10)',
+    '0 14px 34px rgba(0,0,0,0.28), 0 0 34px rgba(251,146,60,0.26)',
+  );
 
   return (
-    <Box bg={pageBg} minH={'calc(100vh - 72px)'}>
-      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 4, md: 6 }}>
+    <Box
+      bg={pageBg}
+      minH={'calc(100vh - 72px)'}
+      position={'relative'}
+      overflow={'hidden'}>
+      <Box
+        position={'absolute'}
+        inset={0}
+        pointerEvents={'none'}
+        style={{ backgroundImage: ambientGlow }}
+      />
+      <Container
+        maxW={'7xl'}
+        position={'relative'}
+        py={{ base: 16, md: 22 }}
+        px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 14 }}>
           <Stack spacing={4} maxW={'4xl'} minW={0}>
             <Text
@@ -80,7 +110,8 @@ export default function Projects() {
             borderWidth={'1px'}
             borderColor={borderColor}
             borderRadius={'3xl'}
-            bg={cardBg}>
+            bg={cardBg}
+            boxShadow={ctaShadow}>
             <Stack
               direction={{ base: 'column', lg: 'row' }}
               justify={'space-between'}
@@ -114,6 +145,12 @@ export default function Projects() {
                 rounded={'full'}
                 rightIcon={<FiArrowUpRight />}
                 flexShrink={0}
+                boxShadow={buttonGlow}
+                transition={'transform 180ms ease, box-shadow 180ms ease'}
+                _hover={{
+                  transform: 'translateY(-1px)',
+                  boxShadow: buttonHoverGlow,
+                }}
                 w={{ base: '100%', sm: 'auto' }}>
                 {content.ctaButton}
               </Button>
