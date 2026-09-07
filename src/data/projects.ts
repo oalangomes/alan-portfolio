@@ -5,7 +5,8 @@ export type ProjectVisualKind =
   | 'governed-context'
   | 'product-ecosystem'
   | 'offline-loop'
-  | 'data-pipeline';
+  | 'data-pipeline'
+  | 'predictive-system';
 
 interface LocalizedText {
   en: string;
@@ -16,14 +17,14 @@ interface ProjectVisualDefinition {
   kind: ProjectVisualKind;
   label: LocalizedText;
   nodes: Record<Language, string[]>;
-  tone: 'orange' | 'purple' | 'green' | 'blue' | 'gray';
+  tone: 'orange' | 'purple' | 'green' | 'blue' | 'cyan' | 'gray';
 }
 
 export interface ProjectVisual {
   kind: ProjectVisualKind;
   label: string;
   nodes: string[];
-  tone: 'orange' | 'purple' | 'green' | 'blue' | 'gray';
+  tone: 'orange' | 'purple' | 'green' | 'blue' | 'cyan' | 'gray';
 }
 
 export interface Project {
@@ -114,9 +115,21 @@ const projectVisualDefinitions: Record<number, ProjectVisualDefinition> = {
     },
     tone: 'gray',
   },
+  5: {
+    kind: 'predictive-system',
+    label: {
+      en: 'Predictive system loop',
+      'pt-BR': 'Fluxo de sistema preditivo',
+    },
+    nodes: {
+      en: ['Sports data', 'Features', 'Model', 'Evaluation', 'Insights'],
+      'pt-BR': ['Dados esportivos', 'Features', 'Modelo', 'Avaliação', 'Insights'],
+    },
+    tone: 'cyan',
+  },
 };
 
-const projectOrder = [1, 0, 4, 2, 3];
+const projectOrder = [1, 0, 5, 4, 2, 3];
 
 const projectDefinitions: ProjectDefinition[] = [
   {
@@ -232,6 +245,44 @@ const projectDefinitions: ProjectDefinition[] = [
     status: {
       en: 'Active product R&D',
       'pt-BR': 'P&D ativo de produto',
+    },
+  },
+  {
+    id: 5,
+    name: 'Sports Intelligence Lab',
+    eyebrow: {
+      en: 'Predictive Analytics / AI Engineering',
+      'pt-BR': 'Analytics Preditivo / Engenharia de IA',
+    },
+    hashtags: ['Predictive Analytics', 'Sports Data', 'Backtesting', 'AI Engineering'],
+    summary: {
+      en: 'An evolving sports-intelligence experiment exploring predictive modelling, backtesting and evidence-based decision support.',
+      'pt-BR':
+        'Um experimento em evolução de inteligência esportiva que explora modelagem preditiva, backtesting e suporte à decisão orientado por evidências.',
+    },
+    description: {
+      en: 'Sports Intelligence Lab is the new direction of an earlier betting-automation experiment. The project is evolving toward a broader sports-intelligence system where structured data and predictive models produce measurable signals, evaluation and calibration come before interpretation, and an LLM can eventually act as an analytical layer for explanations, anomalies and scenarios rather than as the source of the prediction itself.',
+      'pt-BR':
+        'Sports Intelligence Lab é a nova direção de um experimento anterior de automação de apostas. O projeto está evoluindo para um sistema mais amplo de inteligência esportiva, no qual dados estruturados e modelos preditivos produzem sinais mensuráveis, avaliação e calibração vêm antes da interpretação, e uma LLM pode futuramente atuar como camada analítica para explicações, anomalias e cenários — não como fonte da previsão em si.',
+    },
+    highlights: {
+      en: [
+        'Reframes betting automation as a broader predictive-systems and sports-intelligence problem.',
+        'Separates prediction from explanation: models produce signals; an LLM is reserved for analysis and interpretation.',
+        'Prioritizes backtesting, calibration and benchmarkable evaluation before adding more automation.',
+        'Creates a path for comparing baselines, features and model variants with reproducible evidence.',
+      ],
+      'pt-BR': [
+        'Reposiciona a automação de apostas como um problema mais amplo de sistemas preditivos e inteligência esportiva.',
+        'Separa previsão de explicação: modelos produzem sinais; a LLM fica reservada para análise e interpretação.',
+        'Prioriza backtesting, calibração e avaliação mensurável antes de ampliar a automação.',
+        'Cria um caminho para comparar baselines, features e variantes de modelo com evidências reproduzíveis.',
+      ],
+    },
+    visibility: 'Private',
+    status: {
+      en: 'Active experiment',
+      'pt-BR': 'Experimento ativo',
     },
   },
   {
