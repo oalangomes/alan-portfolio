@@ -17,7 +17,6 @@ export default function SkipToContent() {
       size={'sm'}
       borderRadius={'lg'}
       bg={'var(--portfolio-accent)'}
-            color={'var(--portfolio-accent-contrast)'}
       color={'var(--portfolio-accent-contrast)'}
       fontWeight={800}
       transform={'translateY(-160%)'}
