@@ -27,7 +27,7 @@ The project uses Vite for development and production builds. Routing uses hash-b
 
 The UI supports **English and Brazilian Portuguese**. English is the default language, the header shows the active language, and a manual switch persists the selected preference locally.
 
-The Home hero includes a deliberately abstract **conceptual architecture constellation**. It communicates the portfolio themes — product, context, knowledge, evidence, runtime and guardrails — without representing or exposing any private project topology.
+The Home uses only a subtle, unlabeled architecture motif as visual texture. Conceptual diagrams live with the **project case studies**, where each selected project gets its own high-level system view without exposing private implementation topology.
 
 ## Requirements
 
