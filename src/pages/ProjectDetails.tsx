@@ -17,6 +17,7 @@ export default function ProjectDetails() {
   const { id } = useParams<{ id: string }>();
   const project = projects.find((item) => item.id === Number(id));
   const subtle = useColorModeValue('gray.600', 'gray.300');
+  const cardBg = useColorModeValue('white', 'gray.900');
 
   if (!project) {
     return (
@@ -63,7 +64,7 @@ export default function ProjectDetails() {
           borderWidth={'1px'}
           borderRadius={'2xl'}
           p={{ base: 6, md: 8 }}
-          bg={useColorModeValue('white', 'gray.900')}>
+          bg={cardBg}>
           <Stack spacing={6}>
             <Box>
               <Heading fontSize={'2xl'} mb={3}>
