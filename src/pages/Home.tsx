@@ -93,6 +93,7 @@ export default function Home() {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const canvasOpacity = useColorModeValue(0.12, 0.08);
   const glow =
     useColorModeValue(
       'radial-gradient(circle at 18% 15%, rgba(237,137,54,0.16), transparent 34%)',
@@ -111,7 +112,7 @@ export default function Home() {
         position={'absolute'}
         inset={0}
         pointerEvents={'none'}
-        opacity={useColorModeValue(0.12, 0.08)}
+        opacity={canvasOpacity}
         style={{
           backgroundImage:
             'linear-gradient(rgba(148,163,184,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.18) 1px, transparent 1px)',
