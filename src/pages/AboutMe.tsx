@@ -35,7 +35,7 @@ export default function AboutMe() {
           direction={{ base: 'column', md: 'row' }}
           spacing={8}
           align={{ base: 'flex-start', md: 'center' }}>
-          <MyAvatar size={'2xl'} />
+          <MyAvatar size={'xl'} />
           <Box>
             <Text
               color={'orange.400'}
