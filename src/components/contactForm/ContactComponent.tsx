@@ -101,6 +101,7 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isSending, setIsSending] = useState(false);
+  const sendingRef = useRef(false);
   const { hasCopied, onCopy } = useClipboard(emailOnCopy);
   const [allAlert, setAllAlert] = useState(createAlertState());
 
@@ -116,10 +117,11 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
   }, []);
 
   const sendEmail = async () => {
-    if (isSending) {
+    if (sendingRef.current) {
       return;
     }
 
+    sendingRef.current = true;
     setIsSending(true);
 
     try {
@@ -152,6 +154,7 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
         warning: false,
       });
     } finally {
+      sendingRef.current = false;
       setIsSending(false);
     }
   };
