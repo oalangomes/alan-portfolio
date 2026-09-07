@@ -35,3 +35,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Check initial bundle budget
+        run: npm run check:bundle-budget
