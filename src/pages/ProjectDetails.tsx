@@ -17,11 +17,20 @@ import ProjectArchitectureDiagram from '../components/ProjectArchitectureDiagram
 import { getProjects } from '../data/projects';
 import { useLanguage } from '../i18n/LanguageContext';
 
+const toneRgb = {
+  orange: '251,146,60',
+  purple: '168,85,247',
+  green: '74,222,128',
+  blue: '96,165,250',
+  gray: '148,163,184',
+} as const;
+
 export default function ProjectDetails() {
   const { language } = useLanguage();
   const isPortuguese = language === 'pt-BR';
   const { id } = useParams<{ id: string }>();
   const project = getProjects(language).find((item) => item.id === Number(id));
+  const rgb = project ? toneRgb[project.visual.tone] : toneRgb.orange;
 
   const pageBg = useColorModeValue('gray.50', 'gray.900');
   const subtle = useColorModeValue('gray.600', 'gray.300');
@@ -29,6 +38,22 @@ export default function ProjectDetails() {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
+  const ambientGlow = useColorModeValue(
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.08), transparent 28%), radial-gradient(circle at 12% 48%, rgba(251,146,60,0.05), transparent 30%)`,
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.14), transparent 30%), radial-gradient(circle at 12% 48%, rgba(251,146,60,0.08), transparent 32%)`,
+  );
+  const detailShadow = useColorModeValue(
+    `0 14px 36px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.025)`,
+    `0 16px 44px rgba(0,0,0,0.24), 0 0 30px rgba(${rgb},0.055)`,
+  );
+  const buttonGlow = useColorModeValue(
+    '0 8px 22px rgba(237,137,54,0.16)',
+    '0 10px 26px rgba(0,0,0,0.22), 0 0 24px rgba(251,146,60,0.18)',
+  );
+  const buttonHoverGlow = useColorModeValue(
+    '0 12px 28px rgba(237,137,54,0.22), 0 0 22px rgba(251,146,60,0.10)',
+    '0 14px 34px rgba(0,0,0,0.28), 0 0 34px rgba(251,146,60,0.26)',
+  );
 
   if (!project) {
     return (
@@ -60,8 +85,18 @@ export default function ProjectDetails() {
   }
 
   return (
-    <Box bg={pageBg}>
-      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 4, md: 6 }}>
+    <Box bg={pageBg} position={'relative'} overflow={'hidden'}>
+      <Box
+        position={'absolute'}
+        inset={0}
+        pointerEvents={'none'}
+        style={{ backgroundImage: ambientGlow }}
+      />
+      <Container
+        maxW={'7xl'}
+        position={'relative'}
+        py={{ base: 16, md: 22 }}
+        px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 14 }}>
           <Stack spacing={5} maxW={'5xl'} minW={0}>
             <Button
@@ -158,7 +193,7 @@ export default function ProjectDetails() {
                 borderColor={borderColor}
                 borderRadius={'3xl'}
                 bg={cardBg}
-                boxShadow={'sm'}>
+                boxShadow={detailShadow}>
                 <Text
                   fontSize={'xs'}
                   fontWeight={800}
@@ -181,7 +216,7 @@ export default function ProjectDetails() {
                 borderColor={borderColor}
                 borderRadius={'3xl'}
                 bg={cardBg}
-                boxShadow={'sm'}>
+                boxShadow={detailShadow}>
                 <Text
                   fontSize={'xs'}
                   fontWeight={800}
@@ -234,7 +269,13 @@ export default function ProjectDetails() {
                 rel={'noreferrer'}
                 colorScheme={'orange'}
                 rounded={'full'}
-                leftIcon={<FiGithub />}>
+                leftIcon={<FiGithub />}
+                boxShadow={buttonGlow}
+                transition={'transform 180ms ease, box-shadow 180ms ease'}
+                _hover={{
+                  transform: 'translateY(-1px)',
+                  boxShadow: buttonHoverGlow,
+                }}>
                 {isPortuguese ? 'Ver código no GitHub' : 'View source on GitHub'}
               </Button>
             )}
