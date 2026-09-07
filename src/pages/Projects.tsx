@@ -1,4 +1,5 @@
 import {
+  Box,
   Container,
   Heading,
   SimpleGrid,
@@ -27,34 +28,40 @@ export default function Projects() {
   const { language } = useLanguage();
   const content = copy[language];
   const projects = getProjects(language);
+  const pageBg = useColorModeValue('gray.50', 'gray.900');
+  const subtle = useColorModeValue('gray.600', 'gray.300');
 
   return (
-    <Container maxW={'6xl'} py={{ base: 14, md: 20 }}>
-      <Stack spacing={10}>
-        <Stack spacing={3} maxW={'3xl'}>
-          <Text
-            color={'orange.400'}
-            fontWeight={700}
-            textTransform={'uppercase'}
-            letterSpacing={'wide'}>
-            {content.eyebrow}
-          </Text>
-          <Heading fontSize={{ base: '3xl', md: '5xl' }}>
-            {content.heading}
-          </Heading>
-          <Text
-            fontSize={'lg'}
-            color={useColorModeValue('gray.600', 'gray.300')}>
-            {content.text}
-          </Text>
-        </Stack>
+    <Box bg={pageBg} minH={'calc(100vh - 72px)'}>
+      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 5, md: 6 }}>
+        <Stack spacing={{ base: 10, md: 14 }}>
+          <Stack spacing={4} maxW={'4xl'}>
+            <Text
+              color={'orange.400'}
+              fontWeight={800}
+              fontSize={'xs'}
+              textTransform={'uppercase'}
+              letterSpacing={'0.16em'}>
+              {content.eyebrow}
+            </Text>
+            <Heading
+              fontSize={{ base: '4xl', md: '6xl' }}
+              lineHeight={1}
+              letterSpacing={'-0.04em'}>
+              {content.heading}
+            </Heading>
+            <Text fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8} color={subtle}>
+              {content.text}
+            </Text>
+          </Stack>
 
-        <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={8}>
-          {projects.map((project) => (
-            <ProjectCards key={project.id} {...project} />
-          ))}
-        </SimpleGrid>
-      </Stack>
-    </Container>
+          <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={6}>
+            {projects.map((project, index) => (
+              <ProjectCards key={project.id} {...project} index={index} />
+            ))}
+          </SimpleGrid>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
