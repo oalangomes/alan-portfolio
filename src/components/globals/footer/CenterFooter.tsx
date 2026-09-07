@@ -8,8 +8,9 @@ import {
   useColorModeValue,
   VisuallyHidden,
 } from '@chakra-ui/react';
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { ReactNode } from 'react';
+import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { Link as RouterLink } from 'react-router-dom';
 import Logo from '../../logos/Logo';
 
 const SocialButton = ({
@@ -49,9 +50,9 @@ export default function CenterFooter() {
       <Container as={Stack} maxW={'6xl'} py={8} spacing={5} align={'center'}>
         <Logo size={100} />
         <Stack direction={'row'} spacing={6}>
-          <Link href={'/AboutMe'}>About</Link>
-          <Link href={'/Projects'}>Work</Link>
-          <Link href={'/Contact'}>Contact</Link>
+          <Link as={RouterLink} to={'/AboutMe'}>About</Link>
+          <Link as={RouterLink} to={'/Projects'}>Work</Link>
+          <Link as={RouterLink} to={'/Contact'}>Contact</Link>
         </Stack>
 
         <Stack direction={'row'} spacing={5}>

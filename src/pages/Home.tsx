@@ -9,6 +9,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 const pillars = [
   {
@@ -60,16 +61,16 @@ export default function Home() {
 
             <Stack direction={{ base: 'column', sm: 'row' }} spacing={4}>
               <Button
-                as={'a'}
-                href={'/Projects'}
+                as={RouterLink}
+                to={'/Projects'}
                 size={'lg'}
                 colorScheme={'orange'}
                 rounded={'full'}>
                 View selected work
               </Button>
               <Button
-                as={'a'}
-                href={'/AboutMe'}
+                as={RouterLink}
+                to={'/AboutMe'}
                 size={'lg'}
                 variant={'outline'}
                 rounded={'full'}>

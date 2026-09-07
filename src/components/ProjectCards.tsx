@@ -7,6 +7,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Project } from '../data/projects';
 
 export default function ProjectCards(project: Project) {
@@ -53,8 +54,8 @@ export default function ProjectCards(project: Project) {
 
         <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
           <Button
-            as={'a'}
-            href={`/ProjectDetails/${project.id}`}
+            as={RouterLink}
+            to={`/ProjectDetails/${project.id}`}
             colorScheme={'orange'}
             rounded={'full'}>
             Read case study

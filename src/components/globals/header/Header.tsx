@@ -12,29 +12,31 @@ import {
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import Logo from '../../logos/Logo';
 import MyAvatar from '../../logos/MyAvatar';
 
 const links = [
-  { label: 'About', href: '/AboutMe' },
-  { label: 'Work', href: '/Projects' },
-  { label: 'Contact', href: '/Contact' },
+  { label: 'About', to: '/AboutMe' },
+  { label: 'Work', to: '/Projects' },
+  { label: 'Contact', to: '/Contact' },
 ];
 
 export default function Nav() {
   return (
     <Box bg={useColorModeValue('gray.50', 'gray.900')} px={4} borderBottomWidth={'1px'}>
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'} maxW={'6xl'} mx={'auto'}>
-        <Link href={'/'} aria-label={'Home'}>
+        <Link as={RouterLink} to={'/'} aria-label={'Home'}>
           <Logo size={28} />
         </Link>
 
         <HStack as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
           {links.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
+              as={RouterLink}
+              key={link.to}
+              to={link.to}
               fontWeight={600}
               _hover={{ textDecoration: 'none', color: 'orange.400' }}>
               {link.label}

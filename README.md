@@ -19,34 +19,41 @@ The portfolio highlights four representative fronts:
 - TypeScript
 - Chakra UI
 - React Router
-- Jest / Testing Library
+- Vite
+- Vitest / Testing Library
 
-The project still uses Create React App. The current refresh intentionally improves content, positioning and information architecture before introducing a framework migration.
+The project uses Vite for development and production builds. Routing uses hash-based URLs so navigation remains compatible with static hosting on GitHub Pages.
+
+## Requirements
+
+- Node.js 22.13 or newer
+- npm
 
 ## Run locally
 
 ```bash
 npm install
 cp .env.example .env
-npm start
+npm run dev
 ```
 
 The contact form uses EmailJS and expects:
 
 ```bash
-REACT_APP_EMAILJS_KEY=your_emailjs_public_key
+VITE_EMAILJS_KEY=your_emailjs_public_key
 ```
 
-Then open `http://localhost:3000`.
+Vite serves the local app on the URL printed in the terminal, normally `http://localhost:5173`.
 
 ## Validation
 
 ```bash
-npm test -- --watchAll=false
+npm test
+npm run typecheck
 npm run build
 ```
 
-The same validation runs in GitHub Actions for pull requests and pushes.
+The same test and production-build validation runs in GitHub Actions for pull requests and pushes to `master`.
 
 ## Structure
 
@@ -68,7 +75,6 @@ src/
 
 ## Next technical improvements
 
-- migrate from Create React App to a maintained build stack;
 - add metadata/SEO and social preview cards;
 - improve automated accessibility checks;
 - add a lightweight PT-BR / EN content strategy;
