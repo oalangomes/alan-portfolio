@@ -112,6 +112,10 @@ export default function Home() {
     '0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(251,146,60,0.08), 0 0 32px rgba(251,146,60,0.08)',
     '0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(251,146,60,0.12), 0 0 42px rgba(251,146,60,0.13)',
   );
+  const badgeGlow = useColorModeValue(
+    '0 0 0 1px rgba(251,146,60,0.05)',
+    '0 0 22px rgba(251,146,60,0.08)',
+  );
   const primaryGlow = useColorModeValue(
     '0 8px 24px rgba(237,137,54,0.18), 0 0 20px rgba(251,146,60,0.10)',
     '0 10px 28px rgba(0,0,0,0.24), 0 0 28px rgba(251,146,60,0.22)',
@@ -160,10 +164,7 @@ export default function Home() {
                   py={2}
                   borderRadius={{ base: 'xl', md: 'full' }}
                   bg={softBg}
-                  boxShadow={useColorModeValue(
-                    '0 0 0 1px rgba(251,146,60,0.05)',
-                    '0 0 22px rgba(251,146,60,0.08)',
-                  )}
+                  boxShadow={badgeGlow}
                   color={'orange.300'}
                   fontSize={'xs'}
                   fontWeight={750}
