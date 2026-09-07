@@ -11,7 +11,7 @@ import {
   VisuallyHidden,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
 import { useLanguage } from '../../../i18n/LanguageContext';
 import Logo from '../../logos/Logo';
@@ -106,9 +106,6 @@ export default function CenterFooter() {
             </HStack>
 
             <HStack spacing={2}>
-              <SocialButton label={'X'} href={'https://x.com/oalangomes'}>
-                <FaTwitter />
-              </SocialButton>
               <SocialButton
                 label={'LinkedIn'}
                 href={'https://linkedin.com/in/oalangomes'}>

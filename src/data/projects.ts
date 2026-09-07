@@ -148,6 +148,44 @@ const projectDefinitions: ProjectDefinition[] = [
     },
   },
   {
+    id: 4,
+    name: 'EA FC MANAGER MODE HUB',
+    eyebrow: {
+      en: 'Personal Product / Data Automation',
+      'pt-BR': 'Produto Pessoal / Automação de Dados',
+    },
+    hashtags: ['Python', 'GitHub Actions', 'Data', 'Automation'],
+    summary: {
+      en: 'A data-driven companion for EA FC Manager Mode that turns a long-running save into an auditable football-management system.',
+      'pt-BR':
+        'Um companion orientado a dados para o Modo Manager do EA FC que transforma um save de longa duração em um sistema auditável de gestão de futebol.',
+    },
+    description: {
+      en: 'EA FC MANAGER MODE HUB evolved from a realistic Sheffield United save into a structured management workspace for seasons, matches, squads, player history, tactical decisions, youth development and transfer-market context. Python automations and GitHub Actions process imported match data, regenerate reports and dashboards, validate coverage and preserve an auditable history instead of relying on scattered notes.',
+      'pt-BR':
+        'EA FC MANAGER MODE HUB evoluiu de um save realista com o Sheffield United para um workspace estruturado de gestão de temporadas, partidas, elenco, histórico de jogadores, decisões táticas, desenvolvimento da base e contexto de mercado. Automações em Python e GitHub Actions processam dados importados das partidas, regeneram relatórios e painéis, validam cobertura e preservam um histórico auditável em vez de depender de anotações espalhadas.',
+    },
+    highlights: {
+      en: [
+        'Structured match, squad, youth, market and historical datasets around a long-running Manager Mode save.',
+        'Automated ingestion and processing pipeline with Python and GitHub Actions.',
+        'Generated decision dashboards for performance, tactics, minutes, roles and squad planning.',
+        'Validation and auditability rules that keep derived reports aligned with canonical data.',
+      ],
+      'pt-BR': [
+        'Dados estruturados de partidas, elenco, base, mercado e histórico em torno de um save de longa duração no Modo Manager.',
+        'Pipeline automatizado de ingestão e processamento com Python e GitHub Actions.',
+        'Painéis de decisão gerados para desempenho, tática, minutos, funções e planejamento de elenco.',
+        'Regras de validação e auditabilidade que mantêm os relatórios derivados alinhados aos dados canônicos.',
+      ],
+    },
+    visibility: 'Private',
+    status: {
+      en: 'Active',
+      'pt-BR': 'Ativo',
+    },
+  },
+  {
     id: 3,
     name: 'Caverna BJJ',
     eyebrow: {
