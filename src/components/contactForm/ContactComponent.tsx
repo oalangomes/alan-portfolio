@@ -63,6 +63,8 @@ const copy = {
     message: 'Message',
     messagePlaceholder: 'Tell me what you are working on...',
     send: 'Send message',
+    sending: 'Sending...',
+    emailDirect: 'Email me directly',
   },
   'pt-BR': {
     sentTitle: 'Mensagem enviada',
@@ -84,6 +86,8 @@ const copy = {
     message: 'Mensagem',
     messagePlaceholder: 'Conte no que você está trabalhando...',
     send: 'Enviar mensagem',
+    sending: 'Enviando...',
+    emailDirect: 'Enviar e-mail diretamente',
   },
 };
 
@@ -96,6 +100,7 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSending, setIsSending] = useState(false);
   const { hasCopied, onCopy } = useClipboard(emailOnCopy);
   const [allAlert, setAllAlert] = useState(createAlertState());
 
@@ -111,6 +116,12 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
   }, []);
 
   const sendEmail = async () => {
+    if (isSending) {
+      return;
+    }
+
+    setIsSending(true);
+
     try {
       await emailjs.send('service_7smwktj', 'template_f9i5snb', {
         name,
@@ -140,6 +151,8 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
         info: false,
         warning: false,
       });
+    } finally {
+      setIsSending(false);
     }
   };
 
@@ -215,19 +228,31 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
                 </Text>
               </Box>
 
-              <Tooltip
-                label={hasCopied ? content.copied : content.copyEmail}
-                closeOnClick={false}
-                hasArrow>
+              <Stack spacing={3}>
+                <Tooltip
+                  label={hasCopied ? content.copied : content.copyEmail}
+                  closeOnClick={false}
+                  hasArrow>
+                  <Button
+                    onClick={onCopy}
+                    leftIcon={<MdEmail />}
+                    variant={'outline'}
+                    rounded={'full'}
+                    justifyContent={'flex-start'}>
+                    {hasCopied ? content.copied : content.copyEmail}
+                  </Button>
+                </Tooltip>
+
                 <Button
-                  onClick={onCopy}
+                  as={'a'}
+                  href={`mailto:${emailOnCopy}`}
                   leftIcon={<MdEmail />}
-                  variant={'outline'}
+                  variant={'ghost'}
                   rounded={'full'}
                   justifyContent={'flex-start'}>
-                  {hasCopied ? content.copied : content.copyEmail}
+                  {content.emailDirect}
                 </Button>
-              </Tooltip>
+              </Stack>
 
               <Box flex={1} />
 
@@ -333,7 +358,10 @@ export default function ContactComponent({ emailOnCopy }: ContactProps) {
                 alignSelf={'flex-start'}
                 rounded={'full'}
                 rightIcon={<FiSend />}
-                onClick={sendContactForm}>
+                onClick={sendContactForm}
+                isLoading={isSending}
+                loadingText={content.sending}
+                isDisabled={isSending}>
                 {content.send}
               </Button>
             </Stack>
