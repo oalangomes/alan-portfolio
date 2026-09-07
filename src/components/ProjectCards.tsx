@@ -48,6 +48,10 @@ export default function ProjectCards(project: ProjectCardProps) {
     '0 7px 20px rgba(237,137,54,0.14)',
     '0 8px 24px rgba(0,0,0,0.20), 0 0 22px rgba(251,146,60,0.16)',
   );
+  const actionHoverGlow = useColorModeValue(
+    '0 10px 26px rgba(237,137,54,0.20), 0 0 20px rgba(251,146,60,0.10)',
+    '0 12px 30px rgba(0,0,0,0.26), 0 0 30px rgba(251,146,60,0.24)',
+  );
 
   return (
     <Box
@@ -175,10 +179,7 @@ export default function ProjectCards(project: ProjectCardProps) {
             transition={'transform 180ms ease, box-shadow 180ms ease'}
             _hover={{
               transform: 'translateY(-1px)',
-              boxShadow: useColorModeValue(
-                '0 10px 26px rgba(237,137,54,0.20), 0 0 20px rgba(251,146,60,0.10)',
-                '0 12px 30px rgba(0,0,0,0.26), 0 0 30px rgba(251,146,60,0.24)',
-              ),
+              boxShadow: actionHoverGlow,
             }}
             w={{ base: '100%', sm: 'auto' }}>
             {isPortuguese ? 'Ver estudo de caso' : 'Read case study'}
