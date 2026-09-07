@@ -24,13 +24,36 @@ const areas = [
   },
 ];
 
+const journey = [
+  {
+    period: '2012 — Foundations',
+    title: 'Learning by building',
+    text: 'I started my career around software automation and application development, with early experiences at Siemens and Bematech before moving deeper into software engineering.',
+  },
+  {
+    period: '2016 — Enterprise systems',
+    title: 'Commerce, integration and scale',
+    text: 'SAP Commerce became an important part of my path. Across direct roles and consulting engagements, I worked on enterprise initiatives connected to companies such as Carrefour, Editora Abril, Suzano, Whirlpool, Marisa and Hering.',
+  },
+  {
+    period: '2020 — Architecture',
+    title: 'From implementation to system design',
+    text: 'At Claro, engineering responsibilities increasingly became architecture responsibilities: understanding wider system impacts, solution boundaries, integrations and how technical decisions survive real operational constraints.',
+  },
+  {
+    period: 'Today',
+    title: 'Architecture, innovation and applied AI',
+    text: 'At Vivo, my work has expanded across software architecture, technical discovery and digital innovation while I continue exploring developer tooling and AI-assisted engineering through hands-on research and product experiments.',
+  },
+];
+
 export default function AboutMe() {
   const subtle = useColorModeValue('gray.600', 'gray.300');
   const cardBg = useColorModeValue('white', 'gray.900');
 
   return (
     <Container maxW={'5xl'} py={{ base: 14, md: 20 }}>
-      <Stack spacing={10}>
+      <Stack spacing={12}>
         <Stack
           direction={{ base: 'column', md: 'row' }}
           spacing={8}
@@ -68,6 +91,13 @@ export default function AboutMe() {
             feedback loops can reduce that difficulty.
           </Text>
           <Text>
+            That path has taken me through products and projects in organizations
+            with very different scales and constraints — from Siemens and
+            Bematech to enterprise engagements involving Carrefour, Editora
+            Abril, Suzano, Whirlpool, Marisa and Hering, followed by major
+            architecture chapters at Claro and Vivo.
+          </Text>
+          <Text>
             Today I spend a lot of energy at the intersection of software
             architecture and AI-assisted engineering. I&apos;m especially
             interested in coding agents, context engineering, retrieval and
@@ -81,21 +111,71 @@ export default function AboutMe() {
           </Text>
         </Stack>
 
-        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
-          {areas.map((area) => (
+        <Box>
+          <Text
+            color={'orange.400'}
+            fontWeight={700}
+            textTransform={'uppercase'}
+            letterSpacing={'wide'}
+            mb={2}>
+            Journey
+          </Text>
+          <Heading fontSize={{ base: '2xl', md: '3xl' }} mb={3}>
+            More than a decade of engineering across different scales
+          </Heading>
+          <Text color={subtle} fontSize={{ base: 'md', md: 'lg' }} maxW={'3xl'}>
+            Some names below were direct employers and others were clients or
+            organizations I worked with through consulting engagements. What
+            matters to me is the progression of the problems: from building
+            software to designing systems and improving how engineering itself
+            gets done.
+          </Text>
+        </Box>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+          {journey.map((item) => (
             <Box
-              key={area.title}
+              key={item.period}
               p={6}
               borderWidth={'1px'}
               borderRadius={'2xl'}
               bg={cardBg}>
-              <Heading fontSize={'xl'} mb={3}>
-                {area.title}
+              <Text
+                color={'orange.400'}
+                fontWeight={700}
+                fontSize={'sm'}
+                textTransform={'uppercase'}
+                letterSpacing={'wide'}>
+                {item.period}
+              </Text>
+              <Heading fontSize={'xl'} mt={2} mb={3}>
+                {item.title}
               </Heading>
-              <Text color={subtle}>{area.text}</Text>
+              <Text color={subtle}>{item.text}</Text>
             </Box>
           ))}
         </SimpleGrid>
+
+        <Box>
+          <Heading fontSize={{ base: '2xl', md: '3xl' }} mb={6}>
+            What I work on
+          </Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+            {areas.map((area) => (
+              <Box
+                key={area.title}
+                p={6}
+                borderWidth={'1px'}
+                borderRadius={'2xl'}
+                bg={cardBg}>
+                <Heading fontSize={'xl'} mb={3}>
+                  {area.title}
+                </Heading>
+                <Text color={subtle}>{area.text}</Text>
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Box>
       </Stack>
     </Container>
   );
