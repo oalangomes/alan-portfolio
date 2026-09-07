@@ -282,15 +282,15 @@ export const getProjects = (language: Language): Project[] =>
         projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id),
     )
     .map((project) => ({
-    id: project.id,
-    name: project.name,
-    visual: projectVisuals[project.id],
-    eyebrow: project.eyebrow[language],
-    githubUrl: project.githubUrl,
-    hashtags: project.hashtags,
-    summary: project.summary[language],
-    description: project.description[language],
-    highlights: project.highlights[language],
-    visibility: project.visibility,
-    status: project.status[language],
-  }));
+      id: project.id,
+      name: project.name,
+      visual: projectVisuals[project.id],
+      eyebrow: project.eyebrow[language],
+      githubUrl: project.githubUrl,
+      hashtags: project.hashtags,
+      summary: project.summary[language],
+      description: project.description[language],
+      highlights: project.highlights[language],
+      visibility: project.visibility,
+      status: project.status[language],
+    }));
