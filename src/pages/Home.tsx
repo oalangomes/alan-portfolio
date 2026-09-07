@@ -95,12 +95,31 @@ export default function Home() {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const softBg = useColorModeValue('orange.50', 'whiteAlpha.100');
-  const canvasOpacity = useColorModeValue(0.12, 0.08);
-  const glow =
-    useColorModeValue(
-      'radial-gradient(circle at 18% 15%, rgba(237,137,54,0.16), transparent 34%)',
-      'radial-gradient(circle at 18% 15%, rgba(237,137,54,0.13), transparent 32%)',
-    );
+  const canvasOpacity = useColorModeValue(0.1, 0.06);
+  const glow = useColorModeValue(
+    'radial-gradient(circle at 14% 16%, rgba(251,146,60,0.18), transparent 32%), radial-gradient(circle at 88% 12%, rgba(59,130,246,0.09), transparent 26%), radial-gradient(circle at 55% 84%, rgba(251,146,60,0.07), transparent 30%)',
+    'radial-gradient(circle at 14% 16%, rgba(251,146,60,0.24), transparent 34%), radial-gradient(circle at 88% 12%, rgba(96,165,250,0.12), transparent 28%), radial-gradient(circle at 55% 84%, rgba(251,146,60,0.10), transparent 32%)',
+  );
+  const panelShadow = useColorModeValue(
+    '0 24px 70px rgba(15,23,42,0.10), 0 0 0 1px rgba(251,146,60,0.05), 0 0 42px rgba(251,146,60,0.06)',
+    '0 28px 90px rgba(0,0,0,0.38), 0 0 0 1px rgba(251,146,60,0.10), 0 0 54px rgba(251,146,60,0.13)',
+  );
+  const cardShadow = useColorModeValue(
+    '0 10px 30px rgba(15,23,42,0.06), 0 0 0 1px rgba(251,146,60,0.025)',
+    '0 14px 38px rgba(0,0,0,0.22), 0 0 28px rgba(251,146,60,0.045)',
+  );
+  const cardHoverShadow = useColorModeValue(
+    '0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(251,146,60,0.08), 0 0 32px rgba(251,146,60,0.08)',
+    '0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(251,146,60,0.12), 0 0 42px rgba(251,146,60,0.13)',
+  );
+  const primaryGlow = useColorModeValue(
+    '0 8px 24px rgba(237,137,54,0.18), 0 0 20px rgba(251,146,60,0.10)',
+    '0 10px 28px rgba(0,0,0,0.24), 0 0 28px rgba(251,146,60,0.22)',
+  );
+  const primaryHoverGlow = useColorModeValue(
+    '0 12px 30px rgba(237,137,54,0.24), 0 0 28px rgba(251,146,60,0.14)',
+    '0 14px 34px rgba(0,0,0,0.30), 0 0 36px rgba(251,146,60,0.30)',
+  );
 
   return (
     <Box bg={pageBg} position={'relative'} overflow={'hidden'}>
@@ -141,6 +160,10 @@ export default function Home() {
                   py={2}
                   borderRadius={{ base: 'xl', md: 'full' }}
                   bg={softBg}
+                  boxShadow={useColorModeValue(
+                    '0 0 0 1px rgba(251,146,60,0.05)',
+                    '0 0 22px rgba(251,146,60,0.08)',
+                  )}
                   color={'orange.300'}
                   fontSize={'xs'}
                   fontWeight={750}
@@ -176,6 +199,12 @@ export default function Home() {
                     rounded={'full'}
                     rightIcon={<FiArrowUpRight />}
                     px={7}
+                    boxShadow={primaryGlow}
+                    transition={'transform 180ms ease, box-shadow 180ms ease'}
+                    _hover={{
+                      transform: 'translateY(-1px)',
+                      boxShadow: primaryHoverGlow,
+                    }}
                     w={{ base: '100%', sm: 'auto' }}>
                     {content.work}
                   </Button>
@@ -205,7 +234,7 @@ export default function Home() {
                 borderColor={borderColor}
                 bg={panelBg}
                 backdropFilter={'blur(16px)'}
-                boxShadow={'0 24px 80px rgba(0,0,0,0.10)'}>
+                boxShadow={panelShadow}>
                 <HStack justify={'space-between'} align={'flex-start'} gap={4} mb={{ base: 6, md: 8 }}>
                   <Text
                     fontSize={'xs'}
@@ -216,7 +245,13 @@ export default function Home() {
                     minW={0}>
                     {content.current}
                   </Text>
-                  <Box w={2} h={2} borderRadius={'full'} bg={'orange.400'} />
+                  <Box
+                    w={2}
+                    h={2}
+                    borderRadius={'full'}
+                    bg={'orange.400'}
+                    boxShadow={'0 0 16px rgba(251,146,60,0.85)'}
+                  />
                 </HStack>
 
                 <Heading
@@ -265,7 +300,8 @@ export default function Home() {
             borderWidth={'1px'}
             borderColor={borderColor}
             borderRadius={'2xl'}
-            bg={cardBg}>
+            bg={cardBg}
+            boxShadow={cardShadow}>
             <Stack spacing={5}>
               <Stack
                 direction={{ base: 'column', md: 'row' }}
@@ -322,10 +358,11 @@ export default function Home() {
                   borderColor={borderColor}
                   borderRadius={'2xl'}
                   bg={cardBg}
+                  boxShadow={cardShadow}
                   transition={'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease'}
                   _hover={{
                     transform: 'translateY(-4px)',
-                    boxShadow: 'xl',
+                    boxShadow: cardHoverShadow,
                     borderColor: 'orange.300',
                   }}>
                   <HStack justify={'space-between'} mb={7}>
