@@ -1,7 +1,8 @@
-import { Box, ChakraProvider, Link } from '@chakra-ui/react';
+import { Box, ChakraProvider } from '@chakra-ui/react';
 import { lazy, Suspense } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
+import SkipToContent from './components/SkipToContent';
 import CenterFooter from './components/globals/footer/CenterFooter';
 import Header from './components/globals/header/Header';
 import { LanguageProvider } from './i18n/LanguageContext';
@@ -21,26 +22,7 @@ export const App = () => (
     <LanguageProvider>
       <HashRouter>
         <Box w={'100%'} maxW={'100vw'} overflowX={'hidden'}>
-          <Link
-            href={'#main-content'}
-            position={'fixed'}
-            top={2}
-            left={2}
-            zIndex={100}
-            px={4}
-            py={2}
-            borderRadius={'lg'}
-            bg={'orange.400'}
-            color={'gray.900'}
-            fontWeight={800}
-            transform={'translateY(-140%)'}
-            transition={'transform 120ms ease'}
-            _focusVisible={{
-              transform: 'translateY(0)',
-              boxShadow: 'outline',
-            }}>
-            Skip to content
-          </Link>
+          <SkipToContent />
 
           <Header />
 
