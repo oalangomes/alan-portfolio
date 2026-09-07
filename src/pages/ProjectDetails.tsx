@@ -10,7 +10,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 import { projects } from '../data/projects';
 
 export default function ProjectDetails() {
@@ -24,7 +24,7 @@ export default function ProjectDetails() {
       <Container maxW={'4xl'} py={20}>
         <Stack spacing={4}>
           <Heading>Project not found</Heading>
-          <Button as={'a'} href={'/Projects'} alignSelf={'flex-start'}>
+          <Button as={RouterLink} to={'/Projects'} alignSelf={'flex-start'}>
             Back to selected work
           </Button>
         </Stack>
@@ -91,7 +91,7 @@ export default function ProjectDetails() {
         </Box>
 
         <Stack direction={{ base: 'column', sm: 'row' }} spacing={3}>
-          <Button as={'a'} href={'/Projects'} rounded={'full'}>
+          <Button as={RouterLink} to={'/Projects'} rounded={'full'}>
             Back to selected work
           </Button>
           {project.githubUrl && (
