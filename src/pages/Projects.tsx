@@ -33,9 +33,9 @@ export default function Projects() {
 
   return (
     <Box bg={pageBg} minH={'calc(100vh - 72px)'}>
-      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 5, md: 6 }}>
+      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 14 }}>
-          <Stack spacing={4} maxW={'4xl'}>
+          <Stack spacing={4} maxW={'4xl'} minW={0}>
             <Text
               color={'orange.400'}
               fontWeight={800}
@@ -47,10 +47,11 @@ export default function Projects() {
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
               lineHeight={1}
-              letterSpacing={'-0.04em'}>
+              letterSpacing={'-0.04em'}
+              overflowWrap={'anywhere'}>
               {content.heading}
             </Heading>
-            <Text fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8} color={subtle}>
+            <Text fontSize={{ base: 'md', md: 'lg' }} lineHeight={1.8} color={subtle} overflowWrap={'anywhere'}>
               {content.text}
             </Text>
           </Stack>
