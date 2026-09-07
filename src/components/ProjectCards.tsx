@@ -18,6 +18,14 @@ type ProjectCardProps = Project & {
   index?: number;
 };
 
+const toneRgb: Record<Project['visual']['tone'], string> = {
+  orange: '251,146,60',
+  purple: '168,85,247',
+  green: '74,222,128',
+  blue: '96,165,250',
+  gray: '148,163,184',
+};
+
 export default function ProjectCards(project: ProjectCardProps) {
   const { language } = useLanguage();
   const isPortuguese = language === 'pt-BR';
@@ -27,6 +35,19 @@ export default function ProjectCards(project: ProjectCardProps) {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const tagBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+  const rgb = toneRgb[project.visual.tone];
+  const cardShadow = useColorModeValue(
+    `0 12px 32px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.03), 0 0 28px rgba(${rgb},0.04)`,
+    `0 16px 42px rgba(0,0,0,0.24), 0 0 0 1px rgba(${rgb},0.06), 0 0 32px rgba(${rgb},0.08)`,
+  );
+  const cardHoverShadow = useColorModeValue(
+    `0 18px 44px rgba(15,23,42,0.12), 0 0 0 1px rgba(${rgb},0.10), 0 0 36px rgba(${rgb},0.10)`,
+    `0 22px 56px rgba(0,0,0,0.34), 0 0 0 1px rgba(${rgb},0.14), 0 0 48px rgba(${rgb},0.16)`,
+  );
+  const actionGlow = useColorModeValue(
+    '0 7px 20px rgba(237,137,54,0.14)',
+    '0 8px 24px rgba(0,0,0,0.20), 0 0 22px rgba(251,146,60,0.16)',
+  );
 
   return (
     <Box
@@ -41,12 +62,12 @@ export default function ProjectCards(project: ProjectCardProps) {
       bg={cardBg}
       p={{ base: 5, md: 8 }}
       minH={{ lg: '430px' }}
-      boxShadow={'sm'}
+      boxShadow={cardShadow}
       transition={'transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease'}
       _hover={{
         transform: 'translateY(-5px)',
-        boxShadow: '2xl',
-        borderColor: 'orange.300',
+        boxShadow: cardHoverShadow,
+        borderColor: `${project.visual.tone}.300`,
       }}>
       <Box
         position={'absolute'}
@@ -150,6 +171,15 @@ export default function ProjectCards(project: ProjectCardProps) {
             colorScheme={'orange'}
             rounded={'full'}
             rightIcon={<FiArrowUpRight />}
+            boxShadow={actionGlow}
+            transition={'transform 180ms ease, box-shadow 180ms ease'}
+            _hover={{
+              transform: 'translateY(-1px)',
+              boxShadow: useColorModeValue(
+                '0 10px 26px rgba(237,137,54,0.20), 0 0 20px rgba(251,146,60,0.10)',
+                '0 12px 30px rgba(0,0,0,0.26), 0 0 30px rgba(251,146,60,0.24)',
+              ),
+            }}
             w={{ base: '100%', sm: 'auto' }}>
             {isPortuguese ? 'Ver estudo de caso' : 'Read case study'}
           </Button>
