@@ -60,9 +60,9 @@ export default function ProjectDetails() {
 
   return (
     <Box bg={pageBg}>
-      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 5, md: 6 }}>
+      <Container maxW={'7xl'} py={{ base: 16, md: 22 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 14 }}>
-          <Stack spacing={5} maxW={'5xl'}>
+          <Stack spacing={5} maxW={'5xl'} minW={0}>
             <Button
               as={RouterLink}
               to={'/Projects'}
@@ -86,15 +86,19 @@ export default function ProjectDetails() {
             <Heading
               fontSize={{ base: '4xl', md: '6xl' }}
               lineHeight={1}
-              letterSpacing={'-0.04em'}>
+              letterSpacing={'-0.04em'}
+              overflowWrap={'anywhere'}>
               {project.name}
             </Heading>
 
-            <HStack flexWrap={'wrap'} gap={2}>
+            <HStack flexWrap={'wrap'} gap={2} minW={0}>
               <Badge
                 px={2.5}
                 py={1}
+                maxW={'100%'}
                 borderRadius={'full'}
+                whiteSpace={'normal'}
+                lineHeight={1.3}
                 colorScheme={project.visibility === 'Public' ? 'green' : 'purple'}>
                 {project.visibility === 'Public'
                   ? isPortuguese
@@ -104,7 +108,14 @@ export default function ProjectDetails() {
                     ? 'Privado'
                     : 'Private'}
               </Badge>
-              <Badge px={2.5} py={1} borderRadius={'full'} variant={'subtle'}>
+              <Badge
+                maxW={'100%'}
+                px={2.5}
+                py={1}
+                borderRadius={'full'}
+                variant={'subtle'}
+                whiteSpace={'normal'}
+                lineHeight={1.3}>
                 {project.status}
               </Badge>
               {project.hashtags.map((tag) => (
@@ -114,8 +125,10 @@ export default function ProjectDetails() {
                   py={1.5}
                   borderRadius={'full'}
                   bg={softBg}
+                  maxW={'100%'}
                   fontSize={'xs'}
-                  fontWeight={650}>
+                  fontWeight={650}
+                  overflowWrap={'anywhere'}>
                   {tag}
                 </Box>
               ))}
@@ -125,7 +138,8 @@ export default function ProjectDetails() {
               fontSize={{ base: 'lg', md: 'xl' }}
               color={subtle}
               lineHeight={1.8}
-              maxW={'4xl'}>
+              maxW={'4xl'}
+              overflowWrap={'anywhere'}>
               {project.summary}
             </Text>
           </Stack>
@@ -134,7 +148,7 @@ export default function ProjectDetails() {
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
             gap={6}
             alignItems={'start'}>
-            <GridItem colSpan={{ base: 1, lg: 7 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 7 }}>
               <Box
                 p={{ base: 6, md: 8 }}
                 borderWidth={'1px'}
@@ -157,7 +171,7 @@ export default function ProjectDetails() {
               </Box>
             </GridItem>
 
-            <GridItem colSpan={{ base: 1, lg: 5 }}>
+            <GridItem minW={0} colSpan={{ base: 1, lg: 5 }}>
               <Box
                 p={{ base: 6, md: 8 }}
                 borderWidth={'1px'}
