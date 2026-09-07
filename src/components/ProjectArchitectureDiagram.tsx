@@ -108,6 +108,7 @@ export default function ProjectArchitectureDiagram({
     `${visual.tone}.300`,
   );
   const muted = useColorModeValue('gray.500', 'gray.400');
+  const ambientOpacity = useColorModeValue(0.45, 0.75);
   const diagramShadow = useColorModeValue(
     compact
       ? `0 8px 24px rgba(${rgb},0.05)`
@@ -260,7 +261,7 @@ export default function ProjectArchitectureDiagram({
         borderRadius={'full'}
         bg={`rgba(${rgb},0.12)`}
         filter={'blur(46px)'}
-        opacity={useColorModeValue(0.45, 0.75)}
+        opacity={ambientOpacity}
         pointerEvents={'none'}
       />
 
