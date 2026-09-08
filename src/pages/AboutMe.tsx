@@ -136,7 +136,7 @@ export default function AboutMe() {
 
   return (
     <Box bg={pageBg}>
-      <Container maxW={'7xl'} py={{ base: 12, md: 22 }} px={{ base: 4, md: 6 }}>
+      <Container maxW={'6xl'} py={{ base: 12, md: 22 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 18 }}>
           <Stack
             direction={{ base: 'column', md: 'row' }}
@@ -181,7 +181,7 @@ export default function AboutMe() {
             </Stack>
           </Stack>
 
-          <Stack maxW={'5xl'} spacing={{ base: 5, md: 6 }} minW={0}>
+          <Stack maxW={'4xl'} spacing={{ base: 5, md: 6 }} minW={0}>
             <Text
               fontSize={'xs'}
               fontWeight={800}
