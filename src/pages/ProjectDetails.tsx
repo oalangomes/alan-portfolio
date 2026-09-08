@@ -81,7 +81,7 @@ export default function ProjectDetails() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               404
             </Text>
             <Heading fontSize={{ base: '4xl', md: '5xl' }}>
@@ -132,7 +132,7 @@ export default function ProjectDetails() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               {project.eyebrow}
             </Text>
 
@@ -248,7 +248,20 @@ export default function ProjectDetails() {
                 borderColor={borderColor}
                 borderRadius={'3xl'}
                 bg={cardBg}
-                boxShadow={detailShadow}>
+                boxShadow={detailShadow}
+                position={'relative'}
+                overflow={'hidden'}>
+                <Box
+                  position={'absolute'}
+                  top={0}
+                  left={6}
+                  right={6}
+                  h={'2px'}
+                  bg={`linear-gradient(90deg, transparent, rgba(${rgb},0.52), transparent)`}
+                  boxShadow={`0 0 12px rgba(${rgb},0.14)`}
+                  opacity={0.62}
+                  pointerEvents={'none'}
+                />
                 <Text
                   fontSize={'xs'}
                   fontWeight={800}
