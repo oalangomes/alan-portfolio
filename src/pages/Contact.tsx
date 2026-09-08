@@ -25,7 +25,7 @@ export default function Contact() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               {isPortuguese ? 'Contato' : 'Contact'}
             </Text>
             <Heading
