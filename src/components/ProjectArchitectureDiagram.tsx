@@ -110,6 +110,7 @@ export default function ProjectArchitectureDiagram({
     `${visual.tone}.300`,
   );
   const muted = useColorModeValue('gray.500', 'gray.400');
+  const badgeBg = useColorModeValue('whiteAlpha.700', 'blackAlpha.200');
   const { language } = useLanguage();
   const viewLabel = language === 'pt-BR' ? 'visão do sistema' : 'system view';
   const ambientOpacity = useColorModeValue(0.28, 0.42);
@@ -312,7 +313,7 @@ export default function ProjectArchitectureDiagram({
           borderWidth={'1px'}
           borderColor={border}
           borderRadius={'full'}
-          bg={useColorModeValue('whiteAlpha.700', 'blackAlpha.200')}>
+          bg={badgeBg}>
           <Text
             color={muted}
             fontSize={'9px'}
