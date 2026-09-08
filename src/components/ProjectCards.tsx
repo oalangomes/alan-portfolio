@@ -77,6 +77,10 @@ export default function ProjectCards(project: ProjectCardProps) {
         transform: 'translateY(-5px)',
         boxShadow: cardHoverShadow,
         borderColor: `${project.visual.tone}.300`,
+      }}
+      _focusWithin={{
+        boxShadow: cardHoverShadow,
+        borderColor: `${project.visual.tone}.300`,
       }}>
       <Box
         position={'absolute'}
