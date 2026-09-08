@@ -172,12 +172,12 @@ const projectDefinitions: ProjectDefinition[] = [
   },
   {
     id: 1,
-    name: 'runnerctl',
+    name: 'RunnerOps',
     eyebrow: {
       en: 'Developer Tooling / Open Source',
       'pt-BR': 'Ferramentas para Desenvolvedores / Open Source',
     },
-    githubUrl: 'https://github.com/oalangomes/actions-runners',
+    githubUrl: 'https://github.com/oalangomes/RunnerOps',
     hashtags: ['GitHub Actions', 'Linux', 'systemd', 'Automation'],
     summary: {
       en: 'A lightweight Linux control plane for operating multiple self-hosted GitHub Actions runners safely and on demand.',
@@ -185,9 +185,9 @@ const projectDefinitions: ProjectDefinition[] = [
         'Um control plane leve em Linux para operar múltiplos runners self-hosted do GitHub Actions com segurança e sob demanda.',
     },
     description: {
-      en: 'runnerctl turns a collection of local self-hosted runners into a small operational platform. It provides a stable CLI, systemd-based lifecycle management, machine-local configuration, health checks, diagnostics, package verification and portable Agent Skills for coding assistants.',
+      en: 'RunnerOps turns a collection of local self-hosted runners into a small operational platform. Its public CLI, `runnerctl`, provides systemd-based lifecycle management, machine-local configuration, health checks, diagnostics, package verification, CI feedback and portable Agent Skills for coding assistants.',
       'pt-BR':
-        'runnerctl transforma uma coleção de runners self-hosted locais em uma pequena plataforma operacional. Ele oferece uma CLI estável, gerenciamento de lifecycle com systemd, configuração local da máquina, health checks, diagnósticos, verificação de pacotes e Agent Skills portáveis para assistentes de código.',
+        'RunnerOps transforma uma coleção de runners self-hosted locais em uma pequena plataforma operacional. Sua CLI pública, `runnerctl`, oferece gerenciamento de lifecycle com systemd, configuração local da máquina, health checks, diagnósticos, verificação de pacotes, feedback de CI e Agent Skills portáveis para assistentes de código.',
     },
     highlights: {
       en: [

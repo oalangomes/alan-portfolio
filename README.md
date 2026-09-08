@@ -26,7 +26,7 @@ The portfolio itself is also an engineering project:
 
 The published portfolio currently highlights representative work across:
 
-- **runnerctl** — open-source local control plane for self-hosted GitHub Actions runners;
+- **RunnerOps** — open-source Linux operations layer for self-hosted GitHub Actions runners, with `runnerctl` as its public CLI;
 - **AgentsOrchNext** — governed coding-agent and context-engineering R&D;
 - **Sports Intelligence Lab** — predictive-analytics experiments focused on sports data, backtesting, evaluation and evidence-based decision support;
 - **EA FC MANAGER MODE HUB** — data-driven football-management workspace with automation, dashboards and auditability;

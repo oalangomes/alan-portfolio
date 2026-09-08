@@ -4,7 +4,7 @@ test('orders selected work intentionally and includes project-specific architect
   const projects = getProjects('en');
 
   expect(projects.map((project) => project.name)).toEqual([
-    'runnerctl',
+    'RunnerOps',
     'AgentsOrchNext',
     'Sports Intelligence Lab',
     'EA FC MANAGER MODE HUB',
