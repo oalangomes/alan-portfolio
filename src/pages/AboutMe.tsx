@@ -163,7 +163,7 @@ export default function AboutMe() {
                   fontWeight={800}
                   fontSize={'xs'}
                   textTransform={'uppercase'}
-                  letterSpacing={'0.16em'}>
+                  letterSpacing={'0.14em'}>
                   {content.eyebrow}
                 </Text>
                 <Heading
@@ -223,7 +223,7 @@ export default function AboutMe() {
                 fontWeight={800}
                 fontSize={'xs'}
                 textTransform={'uppercase'}
-                letterSpacing={'0.16em'}>
+                letterSpacing={'0.14em'}>
                 {content.journeyLabel}
               </Text>
               <Heading
