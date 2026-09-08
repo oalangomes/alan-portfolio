@@ -2,42 +2,61 @@ import { Box, useColorModeValue } from '@chakra-ui/react';
 
 export default function ArchitectureMotif() {
   const line = useColorModeValue(
-    'rgba(var(--portfolio-accent-rgb),0.22)',
+    'rgba(var(--portfolio-accent-rgb),0.20)',
     'rgba(var(--portfolio-accent-rgb),0.18)',
   );
-  const dot = 'var(--portfolio-accent)';
+  const nodeStroke = useColorModeValue(
+    'rgba(var(--portfolio-accent-rgb),0.28)',
+    'rgba(var(--portfolio-accent-rgb),0.24)',
+  );
 
   return (
     <Box
       aria-hidden={'true'}
       position={'absolute'}
-      right={{ base: -8, md: -4 }}
-      bottom={{ base: -10, md: -8 }}
-      w={{ base: '170px', md: '220px' }}
-      h={{ base: '120px', md: '150px' }}
-      opacity={0.55}
+      right={{ base: 2, md: 4 }}
+      bottom={{ base: 1, md: 2 }}
+      w={{ base: '132px', md: '170px' }}
+      h={{ base: '86px', md: '108px' }}
+      opacity={{ base: 0.34, md: 0.42 }}
       pointerEvents={'none'}>
       <svg
-        viewBox="0 0 220 150"
+        viewBox="0 0 180 110"
         width="100%"
         height="100%"
         preserveAspectRatio="xMidYMid meet">
-        <line x1="28" y1="92" x2="92" y2="46" stroke={line} strokeWidth="1.5" />
-        <line x1="92" y1="46" x2="154" y2="78" stroke={line} strokeWidth="1.5" />
-        <line x1="92" y1="46" x2="126" y2="124" stroke={line} strokeWidth="1.5" />
-        <line x1="126" y1="124" x2="194" y2="104" stroke={line} strokeWidth="1.5" />
+        <path
+          d="M18 72 L66 34 L112 54 L154 25"
+          fill="none"
+          stroke={line}
+          strokeWidth="1.4"
+        />
+        <path
+          d="M66 34 L92 88 L144 78"
+          fill="none"
+          stroke={line}
+          strokeWidth="1.4"
+        />
 
         {[
-          [28, 92],
-          [92, 46],
-          [154, 78],
-          [126, 124],
-          [194, 104],
-        ].map(([cx, cy], index) => (
-          <g key={index}>
-            <circle cx={cx} cy={cy} r="8" fill="none" stroke={line} strokeWidth="1.5" />
-            <circle cx={cx} cy={cy} r="2.5" fill={dot} />
-          </g>
+          [18, 72],
+          [66, 34],
+          [112, 54],
+          [154, 25],
+          [92, 88],
+          [144, 78],
+        ].map(([x, y], index) => (
+          <rect
+            key={index}
+            x={x - 4}
+            y={y - 4}
+            width="8"
+            height="8"
+            rx="2"
+            fill="transparent"
+            stroke={nodeStroke}
+            strokeWidth="1.3"
+          />
         ))}
       </svg>
     </Box>

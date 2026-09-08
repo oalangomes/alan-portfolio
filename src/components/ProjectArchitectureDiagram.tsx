@@ -7,6 +7,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { ProjectVisual } from '../data/projects';
+import { useLanguage } from '../i18n/LanguageContext';
 
 interface ProjectArchitectureDiagramProps {
   visual: ProjectVisual;
@@ -61,8 +62,8 @@ function Node({
     emphasis ? `${tone}.300` : 'whiteAlpha.200',
   );
   const shadow = useColorModeValue(
-    emphasis ? `0 8px 22px rgba(${rgb},0.10), 0 0 18px rgba(${rgb},0.08)` : 'none',
-    emphasis ? `0 10px 28px rgba(0,0,0,0.20), 0 0 26px rgba(${rgb},0.22)` : 'none',
+    emphasis ? `0 8px 22px rgba(${rgb},0.12), 0 0 20px rgba(${rgb},0.10)` : 'none',
+    emphasis ? `0 10px 28px rgba(0,0,0,0.20), 0 0 28px rgba(${rgb},0.24)` : 'none',
   );
   const hoverShadow = useColorModeValue(
     `0 10px 26px rgba(${rgb},0.13), 0 0 22px rgba(${rgb},0.10)`,
@@ -109,7 +110,10 @@ export default function ProjectArchitectureDiagram({
     `${visual.tone}.300`,
   );
   const muted = useColorModeValue('gray.500', 'gray.400');
-  const ambientOpacity = useColorModeValue(0.45, 0.75);
+  const badgeBg = useColorModeValue('whiteAlpha.700', 'blackAlpha.200');
+  const { language } = useLanguage();
+  const viewLabel = language === 'pt-BR' ? 'visão do sistema' : 'system view';
+  const ambientOpacity = useColorModeValue(0.28, 0.42);
   const diagramShadow = useColorModeValue(
     compact
       ? `0 8px 24px rgba(${rgb},0.05)`
@@ -302,19 +306,23 @@ export default function ProjectArchitectureDiagram({
           overflowWrap={'anywhere'}>
           {visual.label}
         </Text>
-        <HStack spacing={1.5} flexShrink={0}>
-          {[0, 1, 2].map((dot) => (
-            <Box
-              key={dot}
-              w={1.5}
-              h={1.5}
-              borderRadius={'full'}
-              bg={dot === 0 ? accent : muted}
-              opacity={dot === 0 ? 1 : 0.4}
-              boxShadow={dot === 0 ? `0 0 14px rgba(${rgb},0.70)` : undefined}
-            />
-          ))}
-        </HStack>
+        <Box
+          flexShrink={0}
+          px={2.5}
+          py={1}
+          borderWidth={'1px'}
+          borderColor={border}
+          borderRadius={'full'}
+          bg={badgeBg}>
+          <Text
+            color={muted}
+            fontSize={'9px'}
+            fontWeight={800}
+            textTransform={'uppercase'}
+            letterSpacing={'0.10em'}>
+            {viewLabel}
+          </Text>
+        </Box>
       </HStack>
 
       <Box position={'relative'} zIndex={1}>

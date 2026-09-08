@@ -44,12 +44,12 @@ export default function Projects() {
   const cardBg = useColorModeValue('white', 'gray.900');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
   const ambientGlow = useColorModeValue(
-    'radial-gradient(circle at 82% 10%, rgba(var(--portfolio-accent-secondary-rgb),0.08), transparent 26%), radial-gradient(circle at 18% 42%, rgba(var(--portfolio-accent-rgb),0.07), transparent 30%)',
-    'radial-gradient(circle at 82% 10%, rgba(var(--portfolio-accent-secondary-rgb),0.12), transparent 28%), radial-gradient(circle at 18% 42%, rgba(var(--portfolio-accent-rgb),0.10), transparent 32%)',
+    'radial-gradient(circle at 82% 10%, rgba(var(--portfolio-accent-secondary-rgb),0.06), transparent 26%), radial-gradient(circle at 18% 42%, rgba(var(--portfolio-accent-rgb),0.05), transparent 30%)',
+    'radial-gradient(circle at 82% 10%, rgba(var(--portfolio-accent-secondary-rgb),0.09), transparent 28%), radial-gradient(circle at 18% 42%, rgba(var(--portfolio-accent-rgb),0.07), transparent 32%)',
   );
   const ctaShadow = useColorModeValue(
-    '0 16px 42px rgba(15,23,42,0.08), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.04), 0 0 34px rgba(var(--portfolio-accent-rgb),0.05)',
-    '0 18px 50px rgba(0,0,0,0.28), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.08), 0 0 40px rgba(var(--portfolio-accent-rgb),0.10)',
+    '0 16px 38px rgba(15,23,42,0.07), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.035)',
+    '0 18px 46px rgba(0,0,0,0.25), 0 0 28px rgba(var(--portfolio-accent-rgb),0.06)',
   );
   const buttonGlow = useColorModeValue(
     '0 8px 22px rgba(var(--portfolio-accent-rgb),0.16)',
@@ -84,7 +84,7 @@ export default function Projects() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               {content.eyebrow}
             </Text>
             <Heading
@@ -111,7 +111,20 @@ export default function Projects() {
             borderColor={borderColor}
             borderRadius={'3xl'}
             bg={cardBg}
-            boxShadow={ctaShadow}>
+            boxShadow={ctaShadow}
+            position={'relative'}
+            overflow={'hidden'}>
+            <Box
+              position={'absolute'}
+              top={0}
+              left={{ base: 6, md: 8 }}
+              right={{ base: 6, md: 8 }}
+              h={'2px'}
+              bg={'linear-gradient(90deg, transparent, rgba(var(--portfolio-accent-rgb),0.58), transparent)'}
+              boxShadow={'0 0 14px rgba(var(--portfolio-accent-rgb),0.12)'}
+              opacity={0.6}
+              pointerEvents={'none'}
+            />
             <Stack
               direction={{ base: 'column', lg: 'row' }}
               justify={'space-between'}

@@ -11,11 +11,23 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
 import { FiArrowLeft, FiCheck, FiGithub } from 'react-icons/fi';
 import { Link as RouterLink, useParams } from 'react-router-dom';
 import ProjectArchitectureDiagram from '../components/ProjectArchitectureDiagram';
 import { getProjects } from '../data/projects';
 import { useLanguage } from '../i18n/LanguageContext';
+
+const pageEnter = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const toneRgb = {
   orange: '251,146,60',
@@ -43,12 +55,12 @@ export default function ProjectDetails() {
     'rgba(var(--portfolio-accent-rgb),0.08)',
   );
   const ambientGlow = useColorModeValue(
-    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.08), transparent 28%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.05), transparent 30%)`,
-    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.14), transparent 30%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.08), transparent 32%)`,
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.06), transparent 28%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.04), transparent 30%)`,
+    `radial-gradient(circle at 82% 8%, rgba(${rgb},0.10), transparent 30%), radial-gradient(circle at 12% 48%, rgba(var(--portfolio-accent-rgb),0.06), transparent 32%)`,
   );
   const detailShadow = useColorModeValue(
-    `0 14px 36px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.025)`,
-    `0 16px 44px rgba(0,0,0,0.24), 0 0 30px rgba(${rgb},0.055)`,
+    `0 14px 34px rgba(15,23,42,0.06)`,
+    `0 16px 40px rgba(0,0,0,0.22), 0 0 22px rgba(${rgb},0.035)`,
   );
   const buttonGlow = useColorModeValue(
     '0 8px 22px rgba(var(--portfolio-accent-rgb),0.16)',
@@ -69,7 +81,7 @@ export default function ProjectDetails() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               404
             </Text>
             <Heading fontSize={{ base: '4xl', md: '5xl' }}>
@@ -100,8 +112,9 @@ export default function ProjectDetails() {
         maxW={'7xl'}
         position={'relative'}
         py={{ base: 16, md: 22 }}
-        px={{ base: 4, md: 6 }}>
-        <Stack spacing={{ base: 10, md: 14 }}>
+        px={{ base: 4, md: 6 }}
+        animation={`${pageEnter} 180ms ease-out both`}>
+        <Stack spacing={{ base: 12, md: 14 }}>
           <Stack spacing={5} maxW={'5xl'} minW={0}>
             <Button
               as={RouterLink}
@@ -119,7 +132,7 @@ export default function ProjectDetails() {
               fontWeight={800}
               fontSize={'xs'}
               textTransform={'uppercase'}
-              letterSpacing={'0.16em'}>
+              letterSpacing={'0.14em'}>
               {project.eyebrow}
             </Text>
 
@@ -184,7 +197,9 @@ export default function ProjectDetails() {
             </Text>
           </Stack>
 
-          <ProjectArchitectureDiagram visual={project.visual} />
+          <Box mt={{ base: 1, md: 0 }}>
+            <ProjectArchitectureDiagram visual={project.visual} />
+          </Box>
 
           <Grid
             templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
@@ -197,7 +212,20 @@ export default function ProjectDetails() {
                 borderColor={borderColor}
                 borderRadius={'3xl'}
                 bg={cardBg}
-                boxShadow={detailShadow}>
+                boxShadow={detailShadow}
+                position={'relative'}
+                overflow={'hidden'}>
+                <Box
+                  position={'absolute'}
+                  top={0}
+                  left={6}
+                  right={6}
+                  h={'2px'}
+                  bg={`linear-gradient(90deg, transparent, rgba(${rgb},0.52), transparent)`}
+                  boxShadow={`0 0 12px rgba(${rgb},0.14)`}
+                  opacity={0.62}
+                  pointerEvents={'none'}
+                />
                 <Text
                   fontSize={'xs'}
                   fontWeight={800}
@@ -220,7 +248,20 @@ export default function ProjectDetails() {
                 borderColor={borderColor}
                 borderRadius={'3xl'}
                 bg={cardBg}
-                boxShadow={detailShadow}>
+                boxShadow={detailShadow}
+                position={'relative'}
+                overflow={'hidden'}>
+                <Box
+                  position={'absolute'}
+                  top={0}
+                  left={6}
+                  right={6}
+                  h={'2px'}
+                  bg={`linear-gradient(90deg, transparent, rgba(${rgb},0.52), transparent)`}
+                  boxShadow={`0 0 12px rgba(${rgb},0.14)`}
+                  opacity={0.62}
+                  pointerEvents={'none'}
+                />
                 <Text
                   fontSize={'xs'}
                   fontWeight={800}

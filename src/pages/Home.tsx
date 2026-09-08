@@ -104,16 +104,16 @@ export default function Home() {
     'radial-gradient(circle at 14% 16%, rgba(var(--portfolio-accent-rgb),0.24), transparent 34%), radial-gradient(circle at 88% 12%, rgba(var(--portfolio-accent-secondary-rgb),0.13), transparent 28%), radial-gradient(circle at 55% 84%, rgba(var(--portfolio-accent-rgb),0.10), transparent 32%)',
   );
   const panelShadow = useColorModeValue(
-    '0 24px 70px rgba(15,23,42,0.10), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.05), 0 0 42px rgba(var(--portfolio-accent-rgb),0.06)',
-    '0 28px 90px rgba(0,0,0,0.38), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.10), 0 0 54px rgba(var(--portfolio-accent-rgb),0.13)',
+    '0 22px 58px rgba(15,23,42,0.09), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.04), 0 0 30px rgba(var(--portfolio-accent-rgb),0.045)',
+    '0 26px 72px rgba(0,0,0,0.34), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.08), 0 0 38px rgba(var(--portfolio-accent-rgb),0.09)',
   );
   const cardShadow = useColorModeValue(
-    '0 10px 30px rgba(15,23,42,0.06), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.025)',
-    '0 14px 38px rgba(0,0,0,0.22), 0 0 28px rgba(var(--portfolio-accent-rgb),0.045)',
+    '0 10px 28px rgba(15,23,42,0.055)',
+    '0 14px 34px rgba(0,0,0,0.20), 0 0 20px rgba(var(--portfolio-accent-rgb),0.03)',
   );
   const cardHoverShadow = useColorModeValue(
-    '0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.08), 0 0 32px rgba(var(--portfolio-accent-rgb),0.08)',
-    '0 20px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.12), 0 0 42px rgba(var(--portfolio-accent-rgb),0.13)',
+    '0 18px 38px rgba(15,23,42,0.10), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.06)',
+    '0 20px 46px rgba(0,0,0,0.29), 0 0 0 1px rgba(var(--portfolio-accent-rgb),0.09), 0 0 30px rgba(var(--portfolio-accent-rgb),0.08)',
   );
   const badgeGlow = useColorModeValue(
     '0 0 0 1px rgba(var(--portfolio-accent-rgb),0.05)',
@@ -240,14 +240,26 @@ export default function Home() {
                 borderColor={borderColor}
                 bg={panelBg}
                 backdropFilter={'blur(16px)'}
-                boxShadow={panelShadow}>
+                boxShadow={panelShadow}
+                overflow={'hidden'}>
+                <Box
+                  position={'absolute'}
+                  top={0}
+                  left={{ base: 5, md: 8 }}
+                  right={{ base: 5, md: 8 }}
+                  h={'2px'}
+                  bg={'linear-gradient(90deg, transparent, rgba(var(--portfolio-accent-rgb),0.72), transparent)'}
+                  boxShadow={'0 0 16px rgba(var(--portfolio-accent-rgb),0.16)'}
+                  opacity={0.72}
+                  pointerEvents={'none'}
+                />
                 <HStack justify={'space-between'} align={'flex-start'} gap={4} mb={{ base: 6, md: 8 }}>
                   <Text
                     fontSize={'xs'}
                     fontWeight={800}
                     color={'var(--portfolio-accent)'}
                     textTransform={'uppercase'}
-                    letterSpacing={'0.12em'}
+                    letterSpacing={'0.14em'}
                     minW={0}>
                     {content.current}
                   </Text>
@@ -308,7 +320,7 @@ export default function Home() {
             borderRadius={'2xl'}
             bg={cardBg}
             boxShadow={cardShadow}>
-            <Stack spacing={5}>
+            <Stack spacing={{ base: 6, md: 5 }}>
               <Stack
                 direction={{ base: 'column', md: 'row' }}
                 justify={'space-between'}
