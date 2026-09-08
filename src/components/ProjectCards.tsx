@@ -42,12 +42,12 @@ export default function ProjectCards(project: ProjectCardProps) {
   );
   const rgb = toneRgb[project.visual.tone];
   const cardShadow = useColorModeValue(
-    `0 12px 32px rgba(15,23,42,0.07), 0 0 0 1px rgba(${rgb},0.03), 0 0 28px rgba(${rgb},0.04)`,
-    `0 16px 42px rgba(0,0,0,0.24), 0 0 0 1px rgba(${rgb},0.06), 0 0 32px rgba(${rgb},0.08)`,
+    `0 12px 30px rgba(15,23,42,0.065), 0 0 0 1px rgba(${rgb},0.025)`,
+    `0 16px 40px rgba(0,0,0,0.22), 0 0 24px rgba(${rgb},0.05)`,
   );
   const cardHoverShadow = useColorModeValue(
-    `0 18px 44px rgba(15,23,42,0.12), 0 0 0 1px rgba(${rgb},0.10), 0 0 36px rgba(${rgb},0.10)`,
-    `0 22px 56px rgba(0,0,0,0.34), 0 0 0 1px rgba(${rgb},0.14), 0 0 48px rgba(${rgb},0.16)`,
+    `0 18px 42px rgba(15,23,42,0.11), 0 0 0 1px rgba(${rgb},0.08), 0 0 30px rgba(${rgb},0.07)`,
+    `0 22px 52px rgba(0,0,0,0.32), 0 0 0 1px rgba(${rgb},0.10), 0 0 38px rgba(${rgb},0.11)`,
   );
   const actionGlow = useColorModeValue(
     '0 7px 20px rgba(var(--portfolio-accent-rgb),0.14)',
@@ -81,16 +81,27 @@ export default function ProjectCards(project: ProjectCardProps) {
       <Box
         position={'absolute'}
         top={0}
+        left={{ base: 5, md: 8 }}
+        right={{ base: 5, md: 8 }}
+        h={'2px'}
+        bg={`linear-gradient(90deg, transparent, rgba(${rgb},0.78), transparent)`}
+        boxShadow={`0 0 16px rgba(${rgb},0.20)`}
+        opacity={0.7}
+        pointerEvents={'none'}
+      />
+      <Box
+        position={'absolute'}
+        top={0}
         right={0}
-        w={'140px'}
-        h={'140px'}
+        w={'110px'}
+        h={'110px'}
         borderBottomLeftRadius={'full'}
         bg={accentSurface}
-        opacity={0.55}
+        opacity={0.28}
         pointerEvents={'none'}
       />
 
-      <Stack spacing={{ base: 5, md: 6 }} height={'100%'} position={'relative'} minW={0}>
+      <Stack spacing={{ base: 6, md: 6 }} height={'100%'} position={'relative'} minW={0}>
         <ProjectCover visual={project.visual} />
 
         <HStack justify={'space-between'} align={'flex-start'} gap={4} minW={0}>
