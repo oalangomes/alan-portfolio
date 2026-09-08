@@ -23,7 +23,7 @@ export const App = () => (
     <AccentThemeProvider>
       <LanguageProvider>
         <HashRouter>
-        <Box w={'100%'} maxW={'100vw'} overflowX={'hidden'}>
+        <Box w={'100%'} maxW={'100vw'} overflowX={'clip'}>
           <SkipToContent />
 
           <Header />

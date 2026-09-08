@@ -140,10 +140,10 @@ export default function AboutMe() {
       <Container maxW={'7xl'} py={{ base: 12, md: 22 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 18 }}>
           <Grid
-            templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
-            gap={{ base: 6, lg: 12 }}
+            templateColumns={{ base: '1fr', lg: '260px minmax(0, 1fr)' }}
+            gap={{ base: 6, lg: 10 }}
             alignItems={'center'}>
-            <GridItem minW={0} colSpan={{ base: 1, lg: 4 }}>
+            <GridItem minW={0}>
               <Box
                 p={{ base: 2, md: 3 }}
                 display={'inline-block'}
@@ -156,7 +156,7 @@ export default function AboutMe() {
               </Box>
             </GridItem>
 
-            <GridItem minW={0} colSpan={{ base: 1, lg: 8 }}>
+            <GridItem minW={0}>
               <Stack spacing={4}>
                 <Text
                   color={'var(--portfolio-accent)'}
@@ -184,9 +184,10 @@ export default function AboutMe() {
           </Grid>
 
           <Grid
-            templateColumns={{ base: '1fr', lg: 'repeat(12, 1fr)' }}
-            gap={{ base: 5, lg: 12 }}>
-            <GridItem minW={0} colSpan={{ base: 1, lg: 4 }}>
+            templateColumns={{ base: '1fr', lg: '260px minmax(0, 1fr)' }}
+            gap={{ base: 5, lg: 10 }}
+            alignItems={'start'}>
+            <GridItem minW={0}>
               <Text
                 fontSize={'xs'}
                 fontWeight={800}
@@ -196,7 +197,7 @@ export default function AboutMe() {
                 2012 → {language === 'pt-BR' ? 'Hoje' : 'Today'}
               </Text>
             </GridItem>
-            <GridItem minW={0} colSpan={{ base: 1, lg: 8 }}>
+            <GridItem minW={0}>
               <Stack
                 spacing={{ base: 4, md: 5 }}
                 fontSize={{ base: 'md', md: 'lg' }}
