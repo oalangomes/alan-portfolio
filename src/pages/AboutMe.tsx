@@ -2,7 +2,6 @@ import {
   Box,
   Container,
   Grid,
-  GridItem,
   Heading,
   HStack,
   SimpleGrid,
@@ -139,86 +138,80 @@ export default function AboutMe() {
     <Box bg={pageBg}>
       <Container maxW={'7xl'} py={{ base: 12, md: 22 }} px={{ base: 4, md: 6 }}>
         <Stack spacing={{ base: 10, md: 18 }}>
-          <Grid
-            templateColumns={{ base: '1fr', lg: '260px minmax(0, 1fr)' }}
-            gap={{ base: 6, lg: 10 }}
-            alignItems={'center'}>
-            <GridItem minW={0}>
-              <Box
-                p={{ base: 2, md: 3 }}
-                display={'inline-block'}
-                borderRadius={'3xl'}
-                borderWidth={'1px'}
-                borderColor={borderColor}
-                bg={cardBg}
-                boxShadow={'xl'}>
-                <MyAvatar size={'xl'} />
-              </Box>
-            </GridItem>
+          <Stack
+            direction={{ base: 'column', md: 'row' }}
+            spacing={{ base: 5, md: 7 }}
+            align={{ base: 'flex-start', md: 'center' }}
+            maxW={'5xl'}
+            minW={0}>
+            <Box
+              p={{ base: 2, md: 3 }}
+              display={'inline-block'}
+              borderRadius={'3xl'}
+              borderWidth={'1px'}
+              borderColor={borderColor}
+              bg={cardBg}
+              boxShadow={'xl'}
+              flexShrink={0}>
+              <MyAvatar size={'xl'} />
+            </Box>
 
-            <GridItem minW={0}>
-              <Stack spacing={4}>
-                <Text
-                  color={'var(--portfolio-accent)'}
-                  fontWeight={800}
-                  fontSize={'xs'}
-                  textTransform={'uppercase'}
-                  letterSpacing={'0.14em'}>
-                  {content.eyebrow}
-                </Text>
-                <Heading
-                  fontSize={{ base: '4xl', md: '6xl' }}
-                  lineHeight={1}
-                  letterSpacing={'-0.04em'}>
-                  Alan Gomes
-                </Heading>
-                <Text
-                  fontSize={{ base: 'lg', md: 'xl' }}
-                  color={subtle}
-                  maxW={'3xl'}
-                  overflowWrap={'anywhere'}>
-                  {content.role}
-                </Text>
-              </Stack>
-            </GridItem>
-          </Grid>
-
-          <Grid
-            templateColumns={{ base: '1fr', lg: '260px minmax(0, 1fr)' }}
-            gap={{ base: 5, lg: 10 }}
-            alignItems={'start'}>
-            <GridItem minW={0}>
+            <Stack spacing={3} minW={0}>
               <Text
-                fontSize={'xs'}
+                color={'var(--portfolio-accent)'}
                 fontWeight={800}
+                fontSize={'xs'}
                 textTransform={'uppercase'}
-                letterSpacing={'0.14em'}
-                color={muted}>
-                2012 → {language === 'pt-BR' ? 'Hoje' : 'Today'}
+                letterSpacing={'0.14em'}>
+                {content.eyebrow}
               </Text>
-            </GridItem>
-            <GridItem minW={0}>
-              <Stack
-                spacing={{ base: 4, md: 5 }}
-                fontSize={{ base: 'md', md: 'lg' }}
-                lineHeight={{ base: 1.75, md: 1.9 }}
-                color={subtle}>
-                {content.intro.map((paragraph, index) => (
-                  <Text
-                    key={paragraph}
-                    fontSize={index === 0 ? { base: 'md', md: 'xl' } : undefined}
-                    color={index === 0 ? primaryText : subtle}
-                    fontWeight={index === 0 ? 600 : 400}
-                    overflowWrap={'anywhere'}>
-                    {paragraph}
-                  </Text>
-                ))}
-              </Stack>
-            </GridItem>
-          </Grid>
+              <Heading
+                fontSize={{ base: '4xl', md: '6xl' }}
+                lineHeight={1}
+                letterSpacing={'-0.04em'}>
+                Alan Gomes
+              </Heading>
+              <Text
+                fontSize={{ base: 'lg', md: 'xl' }}
+                color={subtle}
+                maxW={'3xl'}
+                overflowWrap={'anywhere'}>
+                {content.role}
+              </Text>
+            </Stack>
+          </Stack>
 
-          <Stack spacing={7}>
-            <Stack spacing={3} maxW={'4xl'} minW={0}>
+          <Stack maxW={'5xl'} spacing={{ base: 5, md: 6 }} minW={0}>
+            <Text
+              fontSize={'xs'}
+              fontWeight={800}
+              textTransform={'uppercase'}
+              letterSpacing={'0.14em'}
+              color={muted}>
+              2012 → {language === 'pt-BR' ? 'Hoje' : 'Today'}
+            </Text>
+
+            <Stack
+              spacing={{ base: 4, md: 5 }}
+              fontSize={{ base: 'md', md: 'lg' }}
+              lineHeight={{ base: 1.75, md: 1.9 }}
+              color={subtle}>
+              {content.intro.map((paragraph, index) => (
+                <Text
+                  key={paragraph}
+                  fontSize={index === 0 ? { base: 'lg', md: '2xl' } : undefined}
+                  color={index === 0 ? primaryText : subtle}
+                  fontWeight={index === 0 ? 600 : 400}
+                  lineHeight={index === 0 ? { base: 1.6, md: 1.55 } : undefined}
+                  overflowWrap={'anywhere'}>
+                  {paragraph}
+                </Text>
+              ))}
+            </Stack>
+          </Stack>
+
+          <Stack spacing={{ base: 7, md: 9 }} maxW={'6xl'}>
+            <Stack spacing={3} maxW={'5xl'} minW={0}>
               <Text
                 color={'var(--portfolio-accent)'}
                 fontWeight={800}
@@ -242,8 +235,8 @@ export default function AboutMe() {
               {content.journey.map((item, index) => (
                 <Grid
                   key={item.period}
-                  templateColumns={{ base: '1fr', md: '180px 1fr' }}
-                  gap={{ base: 3, md: 8 }}
+                  templateColumns={{ base: '1fr', md: '150px minmax(0, 1fr)' }}
+                  gap={{ base: 3, md: 10 }}
                   py={{ base: 6, md: 8 }}
                   borderTopWidth={'1px'}
                   borderColor={borderColor}>
@@ -286,7 +279,7 @@ export default function AboutMe() {
             </Stack>
           </Stack>
 
-          <Stack spacing={7}>
+          <Stack spacing={7} pt={{ base: 2, md: 5 }}>
             <Heading
               fontSize={{ base: '3xl', md: '4xl' }}
               letterSpacing={'-0.03em'}>
