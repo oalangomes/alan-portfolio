@@ -3,8 +3,12 @@ import { extendTheme } from '@chakra-ui/react';
 const theme = extendTheme({
   styles: {
     global: {
-      'html, body': {
+      'html, body, #root': {
         minWidth: 0,
+        minHeight: '100%',
+      },
+      body: {
+        overflowX: 'clip',
       },
       html: {
         '--portfolio-accent': '#dd6b20',
