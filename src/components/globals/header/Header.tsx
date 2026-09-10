@@ -55,9 +55,12 @@ export default function Nav() {
   return (
     <Box
       as={'header'}
-      position={'sticky'}
+      position={'fixed'}
       top={0}
-      zIndex={20}
+      left={0}
+      right={0}
+      w={'100%'}
+      zIndex={'sticky'}
       bg={headerBg}
       backdropFilter={'blur(18px) saturate(140%)'}
       isolation={'isolate'}

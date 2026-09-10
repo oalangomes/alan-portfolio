@@ -13,7 +13,7 @@ export default function SkipToContent() {
       position={'fixed'}
       top={2}
       left={2}
-      zIndex={100}
+      zIndex={'skipLink'}
       size={'sm'}
       borderRadius={'lg'}
       bg={'var(--portfolio-accent)'}
