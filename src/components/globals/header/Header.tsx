@@ -41,8 +41,8 @@ export default function Nav() {
   const isPortuguese = language === 'pt-BR';
 
   const headerBg = useColorModeValue(
-    'rgba(255,255,255,0.84)',
-    'rgba(17,24,39,0.84)',
+    'rgba(255,255,255,0.96)',
+    'rgba(17,24,39,0.96)',
   );
   const navBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
   const activeBg = useColorModeValue('white', 'whiteAlpha.200');
@@ -59,7 +59,8 @@ export default function Nav() {
       top={0}
       zIndex={20}
       bg={headerBg}
-      backdropFilter={'blur(18px)'}
+      backdropFilter={'blur(18px) saturate(140%)'}
+      isolation={'isolate'}
       borderBottomWidth={'1px'}
       borderColor={borderColor}
       boxShadow={'0 1px 0 rgba(var(--portfolio-accent-rgb),0.10), 0 8px 30px rgba(var(--portfolio-accent-rgb),0.035)'}>
