@@ -50,7 +50,6 @@ export default function Nav() {
   const activeText = useColorModeValue('gray.900', 'white');
   const inactiveText = useColorModeValue('gray.600', 'gray.300');
   const brandSubtle = useColorModeValue('gray.500', 'gray.400');
-  const logoBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
 
   return (
     <Box
@@ -86,7 +85,7 @@ export default function Nav() {
                 w={10}
                 h={10}
                 borderRadius={'xl'}
-                bg={logoBg}
+                bg={'transparent'}
                 overflow={'hidden'}>
                 <Logo size={25} />
               </Box>
