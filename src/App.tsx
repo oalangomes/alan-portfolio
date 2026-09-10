@@ -27,7 +27,7 @@ export const App = () => (
           <SkipToContent />
 
           <Header />
-          <Box aria-hidden={'true'} h={{ base: 16, lg: 18 }} />
+          <Box aria-hidden={'true'} h={{ base: 16, lg: 20 }} />
 
           <Box as={'main'} id={'main-content'} tabIndex={-1}>
             <ErrorBoundary>
