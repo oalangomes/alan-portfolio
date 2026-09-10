@@ -44,8 +44,6 @@ export default function Nav() {
     'rgba(255,255,255,0.96)',
     'rgba(17,24,39,0.96)',
   );
-  const navBg = 'transparent';
-  const navBorder = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
   const inactiveHoverBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.50');
   const activeBg = useColorModeValue('white', 'whiteAlpha.200');
   const borderColor = useColorModeValue('blackAlpha.100', 'whiteAlpha.200');
@@ -70,7 +68,7 @@ export default function Nav() {
       boxShadow={'0 1px 0 rgba(var(--portfolio-accent-rgb),0.10), 0 8px 30px rgba(var(--portfolio-accent-rgb),0.035)'}>
       <Container maxW={'7xl'} px={{ base: 3, sm: 4, lg: 6 }}>
         <Flex
-          h={{ base: 16, lg: 20 }}
+          h={{ base: 16, lg: '76px' }}
           align={'center'}
           justify={'space-between'}
           gap={3}>
@@ -84,12 +82,12 @@ export default function Nav() {
               <Box
                 display={'grid'}
                 placeItems={'center'}
-                w={{ base: 10, lg: 11 }}
-                h={{ base: 10, lg: 11 }}
+                w={10}
+                h={10}
                 borderRadius={'xl'}
                 bg={'transparent'}
                 overflow={'hidden'}>
-                <Logo size={28} />
+                <Logo size={25} />
               </Box>
               <Box display={{ base: 'none', xl: 'block' }}>
                 <Text fontWeight={800} lineHeight={1}>
@@ -109,11 +107,6 @@ export default function Nav() {
             as={'nav'}
             spacing={1}
             display={{ base: 'none', lg: 'flex' }}
-            p={0.5}
-            borderRadius={'full'}
-            bg={navBg}
-            borderWidth={'1px'}
-            borderColor={navBorder}
             flexShrink={0}>
             {links.map((link) => {
               const active = location.pathname === link.to;
@@ -125,7 +118,7 @@ export default function Nav() {
                   to={link.to}
                   aria-current={active ? 'page' : undefined}
                   px={4}
-                  py={2.5}
+                  py={2}
                   borderRadius={'full'}
                   bg={active ? activeBg : 'transparent'}
                   boxShadow={
